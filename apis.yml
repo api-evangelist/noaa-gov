@@ -1,0 +1,430 @@
+aid: noaa-gov
+url: https://raw.githubusercontent.com/api-evangelist/noaa-gov/refs/heads/main/apis.yml
+name: NOAA — National Oceanic and Atmospheric Administration
+description: The National Oceanic and Atmospheric Administration (NOAA) is the United States scientific and
+  regulatory agency within the Department of Commerce charged with monitoring oceanic and atmospheric conditions,
+  charting the seas, conducting deep-sea exploration, managing fishing and protection of marine mammals, and
+  providing weather, climate, space weather, and ecosystem forecasts and warnings. NOAA's developer surface
+  spans six line offices — the National Weather Service (NWS), the National Environmental Satellite, Data, and
+  Information Service (NESDIS) including the National Centers for Environmental Information (NCEI), the
+  National Ocean Service (NOS) including Tides & Currents (CO-OPS), the National Marine Fisheries Service
+  (NMFS / NOAA Fisheries), the Office of Oceanic and Atmospheric Research (OAR), and the Office of Marine and
+  Aviation Operations (OMAO). NOAA exposes free, open APIs at api.weather.gov, services.swpc.noaa.gov,
+  api.tidesandcurrents.noaa.gov, ncei.noaa.gov/access, ERDDAP servers across line offices, the National Data
+  Buoy Center (NDBC), and bulk forecast model output (GFS, GEFS, HRRR, GOES) through the NOAA Open Data
+  Dissemination (NODD) program on AWS, GCP, and Azure.
+image: https://www.noaa.gov/themes/custom/noaa_components/logo.svg
+created: '2026-05-25'
+modified: '2026-05-25'
+specificationVersion: '0.19'
+tags:
+  - Weather
+  - Climate
+  - Ocean
+  - Space Weather
+  - Government
+  - Open Data
+  - Forecast
+  - Marine
+  - Atmospheric
+  - Hydrology
+  - Satellite
+  - Fisheries
+  - Aviation
+  - Emergency Management
+apis:
+  - aid: noaa-gov:weather-gov-api
+    name: National Weather Service API (api.weather.gov)
+    description: The National Weather Service public REST API delivers real-time weather forecasts, alerts,
+      observations, gridded forecast data, aviation weather products, and metadata for offices, zones, and
+      radar stations across the United States and US territories. Responses default to GeoJSON with content
+      negotiation for JSON-LD, CAP, ATOM, and DWML. No API key is required — only a unique User-Agent string
+      identifying the calling application. Stable production endpoint at api.weather.gov, current spec version
+      3.9.2.
+    humanURL: https://www.weather.gov/documentation/services-web-api
+    baseURL: https://api.weather.gov
+    tags:
+      - Weather
+      - Forecast
+      - Alerts
+      - Observations
+      - Aviation
+      - Hydrology
+      - GeoJSON
+    properties:
+      - url: https://www.weather.gov/documentation/services-web-api
+        type: Documentation
+      - url: https://api.weather.gov/openapi.json
+        type: OpenAPI
+      - url: openapi/weather-gov-api-openapi.json
+        type: OpenAPI
+      - url: https://github.com/weather-gov/api
+        type: GitHubRepository
+      - url: https://api.weather.gov
+        type: BaseURL
+      - url: https://www.weather.gov/documentation/services-web-api#/changelog
+        type: Changelog
+    contact:
+      - FN: National Weather Service API Team
+        url: https://www.weather.gov/about/contact-us
+  - aid: noaa-gov:swpc-data-service
+    name: Space Weather Prediction Center (SWPC) Data Service
+    description: SWPC publishes solar wind, geomagnetic, X-ray flux, aurora forecast, radiation storm, and
+      coronal mass ejection products through a static-file data service organised by format. JSON, text, and
+      image feeds refresh on intervals from one minute (real-time solar wind) to daily summaries. No
+      authentication required; products power aviation, satellite, power grid, GPS, and HAM radio operators.
+      A modernization of the JSON catalog landed 2026-03-31 with old products deprecated 2026-04-30.
+    humanURL: https://www.swpc.noaa.gov/content/data-access
+    baseURL: https://services.swpc.noaa.gov
+    tags:
+      - Space Weather
+      - Solar
+      - Geomagnetic
+      - Aurora
+      - Real-Time
+    properties:
+      - url: https://www.swpc.noaa.gov/content/data-access
+        type: Documentation
+      - url: https://services.swpc.noaa.gov/json/
+        type: BaseURL
+      - url: https://services.swpc.noaa.gov/products/
+        type: BaseURL
+      - url: https://services.swpc.noaa.gov/text/
+        type: BaseURL
+      - url: https://services.swpc.noaa.gov/images/
+        type: BaseURL
+      - url: https://www.swpc.noaa.gov/news/scn-upcoming-json-modifications-and-changes
+        type: Changelog
+  - aid: noaa-gov:co-ops-data-api
+    name: CO-OPS Data Retrieval API (Tides & Currents)
+    description: The Center for Operational Oceanographic Products and Services (CO-OPS) Data API returns
+      water-level observations, tide predictions, currents, meteorological observations, and operational
+      forecast model output (NOS OFS nowcasts) for over 200 stations along US coasts, the Great Lakes, and
+      US territories. Supports XML, JSON, and CSV with selectable datums (MLLW, MHHW, MSL, plus Great Lakes
+      datums), units, and time zones. Free, no key required. Stable endpoint at api.tidesandcurrents.noaa.gov.
+    humanURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+    baseURL: https://api.tidesandcurrents.noaa.gov/api/prod
+    tags:
+      - Ocean
+      - Tides
+      - Currents
+      - Water Level
+      - Marine
+    properties:
+      - url: https://api.tidesandcurrents.noaa.gov/api/prod/
+        type: Documentation
+      - url: https://tidesandcurrents.noaa.gov/api-helper/url-generator.html
+        type: Sandbox
+      - url: https://tidesandcurrents.noaa.gov/products.html
+        type: Documentation
+  - aid: noaa-gov:co-ops-metadata-api
+    name: CO-OPS Metadata API (MDAPI v1)
+    description: The CO-OPS Metadata API exposes station inventory, harmonic constituents, NOS PORTS station
+      lists, flood thresholds, and high/low water station catalogs. Supports radius and bounding-box station
+      discovery and returns JSON or XML. Stable endpoint at api.tidesandcurrents.noaa.gov/mdapi/prod.
+    humanURL: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+    baseURL: https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi
+    tags:
+      - Ocean
+      - Metadata
+      - Stations
+      - PORTS
+    properties:
+      - url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+        type: Documentation
+      - url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/releasenotes.html
+        type: Changelog
+  - aid: noaa-gov:co-ops-derived-product-api
+    name: CO-OPS Derived Product API (DPAPI v0.1)
+    description: Derived products computed from historical CO-OPS water-level records — sea level trends,
+      annual mean sea level reports, top-10 water levels, and extreme event summaries — exposed as a
+      machine-readable companion to the data and metadata APIs.
+    humanURL: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+    baseURL: https://api.tidesandcurrents.noaa.gov/dpapi/prod
+    tags:
+      - Ocean
+      - Sea Level
+      - Climate
+    properties:
+      - url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+        type: Documentation
+  - aid: noaa-gov:ncei-access-data-service
+    name: NCEI Access Data Service (v1)
+    description: The National Centers for Environmental Information (NCEI) Access Data Service is the
+      modern, token-free replacement for the legacy CDO web service. It exposes daily summaries (GHCND),
+      hourly summaries, monthly summaries, normals, global summaries of the day, sea-surface temperature,
+      and many archived climate datasets. Returns CSV, JSON, NetCDF, or PDF. Stable endpoint at
+      ncei.noaa.gov/access/services/data/v1.
+    humanURL: https://www.ncei.noaa.gov/support/access-data-service-api-user-documentation
+    baseURL: https://www.ncei.noaa.gov/access/services/data/v1
+    tags:
+      - Climate
+      - Historical
+      - Stations
+      - GHCND
+    properties:
+      - url: https://www.ncei.noaa.gov/support/access-data-service-api-user-documentation
+        type: Documentation
+      - url: https://www.ncei.noaa.gov/access
+        type: Documentation
+  - aid: noaa-gov:ncei-cdo-v2-api
+    name: NCEI Climate Data Online (CDO) v2 API
+    description: The legacy Climate Data Online v2 REST API exposes datasets, datatypes, stations, locations,
+      data categories, and observation records. Requires a free token from ncei.noaa.gov/cdo-web/token in
+      the `token` header. Enforces 5 requests/second and 10,000 requests/day per token. Being superseded
+      by the Access Data Service v1, but still widely deployed.
+    humanURL: https://www.ncdc.noaa.gov/cdo-web/webservices/v2
+    baseURL: https://www.ncei.noaa.gov/cdo-web/api/v2
+    tags:
+      - Climate
+      - Historical
+      - Stations
+      - Datasets
+    properties:
+      - url: https://www.ncdc.noaa.gov/cdo-web/webservices/v2
+        type: Documentation
+      - url: https://www.ncdc.noaa.gov/cdo-web/token
+        type: Authentication
+      - url: rate-limits/noaa-gov-rate-limits.yml
+        type: RateLimits
+  - aid: noaa-gov:ndbc-data-service
+    name: National Data Buoy Center (NDBC) Web Data Service
+    description: NDBC publishes real-time meteorological and oceanographic observations (the last 45 days)
+      and historical archives from a global network of over 900 moored buoys, drifting buoys, C-MAN coastal
+      stations, and partner stations. Data is exposed via HTTP file URLs, a THREDDS Data Server, and an
+      OGC API Features collection. Observations include wave height, period, direction, sea surface
+      temperature, wind, air pressure, salinity, and visibility.
+    humanURL: https://www.ndbc.noaa.gov/docs/ndbc_web_data_guide.pdf
+    baseURL: https://www.ndbc.noaa.gov/data
+    tags:
+      - Ocean
+      - Marine
+      - Buoys
+      - Waves
+      - Observations
+    properties:
+      - url: https://www.ndbc.noaa.gov/docs/ndbc_web_data_guide.pdf
+        type: Documentation
+      - url: https://www.ndbc.noaa.gov/faq/rt_data_access.shtml
+        type: Documentation
+      - url: https://www.ndbc.noaa.gov/thredds/catalog.html
+        type: Documentation
+  - aid: noaa-gov:erddap-coastwatch
+    name: NOAA CoastWatch ERDDAP Server
+    description: ERDDAP (Environmental Research Division Data Access Program) is a NOAA-funded, open-source
+      server that unifies access to gridded (`griddap`) and tabular (`tabledap`) scientific datasets across
+      OPeNDAP, WMS, and REST. CoastWatch, ERD/PFEG, NCEI, IOOS, and many NOAA line offices each operate
+      ERDDAP instances exposing tens of thousands of datasets (satellite SST, chlorophyll, ocean color,
+      altimetry, model output, in-situ observations) in CSV, JSON, NetCDF, MATLAB, Parquet, and image
+      formats.
+    humanURL: https://coastwatch.pfeg.noaa.gov/erddap/information.html
+    baseURL: https://coastwatch.pfeg.noaa.gov/erddap
+    tags:
+      - Ocean
+      - Satellite
+      - Climate
+      - Scientific Data
+      - OPeNDAP
+    properties:
+      - url: https://coastwatch.pfeg.noaa.gov/erddap/information.html
+        type: Documentation
+      - url: https://coastwatch.pfeg.noaa.gov/erddap/rest.html
+        type: Documentation
+      - url: https://coastwatch.pfeg.noaa.gov/erddap/griddap/documentation.html
+        type: Documentation
+      - url: https://www.ncei.noaa.gov/erddap/
+        type: BaseURL
+      - url: https://coastwatch.noaa.gov/erddap/
+        type: BaseURL
+  - aid: noaa-gov:nodd-open-data
+    name: NOAA Open Data Dissemination (NODD)
+    description: NODD is NOAA's bulk-data dissemination program, providing free, low-latency public access
+      to tens of terabytes per day of forecast model output, satellite imagery, radar, and observation
+      archives through public-private partnerships with AWS, Google Cloud, and Microsoft Azure. Datasets
+      include GFS, GEFS, HRRR, RAP, NAM, RRFS, GraphCast, GOES-16/17/18/19, NEXRAD Level II/III, and
+      hundreds of climate archives — all addressable as S3/GCS/Azure Blob objects, without keys.
+    humanURL: https://www.noaa.gov/information-technology/open-data-dissemination
+    baseURL: https://noaa-gfs-bdp-pds.s3.amazonaws.com
+    tags:
+      - Open Data
+      - Cloud
+      - Bulk Data
+      - Forecast Models
+      - Satellite
+      - Radar
+    properties:
+      - url: https://www.noaa.gov/information-technology/open-data-dissemination
+        type: Documentation
+      - url: https://www.noaa.gov/nodd/datasets
+        type: Documentation
+      - url: https://registry.opendata.aws/collab/noaa/
+        type: Documentation
+      - url: https://registry.opendata.aws/noaa-gfs-bdp-pds/
+        type: BaseURL
+      - url: https://registry.opendata.aws/noaa-hrrr-pds/
+        type: BaseURL
+      - url: https://registry.opendata.aws/noaa-gefs/
+        type: BaseURL
+      - url: https://registry.opendata.aws/noaa-space-weather/
+        type: BaseURL
+  - aid: noaa-gov:foss-landings-api
+    name: NOAA Fisheries One Stop Shop (FOSS) ODS / ORDS
+    description: The Fisheries One Stop Shop (FOSS) Operational Data Store, hosted on Oracle REST Data
+      Services (ORDS), exposes US commercial fisheries landings, foreign trade, fishing gear, and species
+      reference data. Cloud-hosted at apps-st.fisheries.noaa.gov with a public metadata catalog and
+      paginated REST endpoints; suitable for fisheries economics, stock assessment, and policy analysis.
+    humanURL: https://www.fisheries.noaa.gov/foss/f?p=215:35
+    baseURL: https://apps-st.fisheries.noaa.gov/ods/foss
+    tags:
+      - Fisheries
+      - Landings
+      - Marine
+      - Trade
+      - Reference Data
+    properties:
+      - url: https://www.fisheries.noaa.gov/foss/f?p=215:35
+        type: Documentation
+      - url: https://apps-st.fisheries.noaa.gov/ods/foss/metadata-catalog/?offset=0&limit=100
+        type: Documentation
+      - url: https://www.fisheries.noaa.gov/inport/item/10574
+        type: Documentation
+  - aid: noaa-gov:inport-metadata-api
+    name: NOAA InPort Metadata Catalog
+    description: InPort is the authoritative metadata repository for NOAA Fisheries and the National Ocean
+      Service and the NOAA-wide platform for data management plans. Catalog records describe data products,
+      services, projects, and contacts; the public-facing site supports search and item retrieval, while
+      web service endpoints support catalog-item path lookup and contact management. Public API endpoints
+      are stabilising — full machine-to-machine surface is in beta.
+    humanURL: https://www.fisheries.noaa.gov/inport/
+    baseURL: https://www.fisheries.noaa.gov/inport
+    tags:
+      - Metadata
+      - Catalog
+      - Fisheries
+      - Ocean
+    properties:
+      - url: https://www.fisheries.noaa.gov/inport/
+        type: Documentation
+      - url: https://www.fisheries.noaa.gov/inport/release-notes
+        type: Changelog
+common:
+  - url: https://www.noaa.gov/
+    type: Portal
+  - url: https://www.noaa.gov/organization
+    type: Documentation
+  - url: https://www.noaa.gov/information-technology/open-data-dissemination
+    type: Documentation
+  - url: https://catalog.data.gov/organization/noaa-gov
+    type: Documentation
+  - url: https://data.noaa.gov/
+    type: Portal
+  - url: https://www.noaa.gov/foia
+    type: Documentation
+  - url: https://www.noaa.gov/legal
+    type: TermsOfService
+  - url: https://www.noaa.gov/privacy-policy
+    type: PrivacyPolicy
+  - url: https://www.noaa.gov/news
+    type: Blog
+  - url: https://www.weather.gov/news
+    type: Blog
+  - url: https://www.swpc.noaa.gov/news
+    type: Blog
+  - url: https://www.weather.gov/contact
+    type: Support
+  - url: https://www.ncei.noaa.gov/contact
+    type: Support
+  - url: https://www.noaa.gov/jobs
+    type: Documentation
+  - url: https://github.com/NOAA-EMC
+    type: GitHubOrganization
+  - url: https://github.com/NOAA-GFDL
+    type: GitHubOrganization
+  - url: https://github.com/NOAA-GSL
+    type: GitHubOrganization
+  - url: https://github.com/NOAA-OWP
+    type: GitHubOrganization
+  - url: https://github.com/NOAA-PSL
+    type: GitHubOrganization
+  - url: https://github.com/NOAA-PMEL
+    type: GitHubOrganization
+  - url: https://github.com/NOAAGFDL
+    type: GitHubOrganization
+  - url: https://github.com/weather-gov
+    type: GitHubOrganization
+  - url: https://github.com/weather-gov/api
+    type: GitHubRepository
+  - url: https://github.com/weather-gov/weather.gov
+    type: GitHubRepository
+  - url: https://github.com/NOAA-EMC/global-workflow
+    type: GitHubRepository
+  - url: https://github.com/NOAA-GSL/Rocoto
+    type: GitHubRepository
+  - url: https://www.weather.gov/sti/
+    type: Documentation
+  - url: https://www.weather.gov/about/who-we-are
+    type: Documentation
+  - url: https://www.nesdis.noaa.gov/
+    type: Portal
+  - url: https://oceanservice.noaa.gov/
+    type: Portal
+  - url: https://www.fisheries.noaa.gov/
+    type: Portal
+  - url: https://research.noaa.gov/
+    type: Portal
+  - url: https://www.omao.noaa.gov/
+    type: Portal
+  - url: https://www.ncei.noaa.gov/
+    type: Portal
+  - url: https://www.ncei.noaa.gov/erddap/
+    type: BaseURL
+  - url: https://json-ld/noaa-gov-context.jsonld
+    type: JSONLD
+  - url: https://vocabulary/noaa-gov-vocabulary.yml
+    type: Vocabulary
+  - url: https://rate-limits/noaa-gov-rate-limits.yml
+    type: RateLimits
+  - type: Features
+    data:
+      - Free and open weather, climate, ocean, fisheries, and space-weather APIs — no payment required and
+        most endpoints require no API key
+      - National Weather Service api.weather.gov — alerts (CAP), gridded forecasts, observations, aviation
+        (SIGMETs/AIRMETs/TAFs), radar, zones, points, glossary — 66 documented endpoints in OpenAPI 3.9.2
+      - GeoJSON, JSON-LD, CAP, ATOM, and DWML response formats via content negotiation on NWS API
+      - Space Weather Prediction Center JSON, text, and image feeds for solar wind, geomagnetic, X-ray flux,
+        aurora, and CME products at services.swpc.noaa.gov
+      - CO-OPS Tides & Currents — data, metadata, and derived-product APIs covering 200+ coastal,
+        Great Lakes, and territorial stations with selectable datums and units
+      - NCEI Access Data Service v1 — token-free climate data access (GHCND, hourly/monthly summaries,
+        normals, SST archives) in CSV, JSON, NetCDF
+      - NCEI CDO v2 — token-based legacy climate API with 5 req/sec, 10k req/day rate limits
+      - National Data Buoy Center (NDBC) — 900+ buoys and coastal stations with real-time + historical
+        oceanographic and meteorological observations via HTTP, THREDDS, and OGC API Features
+      - ERDDAP servers across CoastWatch, NCEI, IOOS, and line offices — unified gridded/tabular access via
+        griddap and tabledap REST endpoints
+      - NOAA Open Data Dissemination (NODD) — GFS, GEFS, HRRR, RAP, NAM, RRFS, GraphCast, GOES, NEXRAD on
+        AWS, GCP, and Azure (S3/GCS/Azure Blob)
+      - NOAA Fisheries FOSS Landings — Oracle REST Data Services exposing commercial landings, foreign
+        trade, gear, and species data
+      - InPort metadata catalog — authoritative data inventory for NOAA Fisheries and NOS, beta API for
+        machine-to-machine catalog access
+      - User-Agent header required on api.weather.gov for identification and security contact
+      - Hundreds of NOAA GitHub orgs (NOAA-EMC, NOAA-GFDL, NOAA-GSL, NOAA-OWP, NOAA-PMEL, NOAA-PSL,
+        weather-gov) publishing forecast model code, workflow systems, scientific libraries, and tools
+    sources:
+      - https://www.weather.gov/documentation/services-web-api
+      - https://api.weather.gov/openapi.json
+      - https://www.swpc.noaa.gov/content/data-access
+      - https://api.tidesandcurrents.noaa.gov/api/prod/
+      - https://www.ncei.noaa.gov/support/access-data-service-api-user-documentation
+      - https://www.ncdc.noaa.gov/cdo-web/webservices/v2
+      - https://www.ndbc.noaa.gov/docs/ndbc_web_data_guide.pdf
+      - https://coastwatch.pfeg.noaa.gov/erddap/information.html
+      - https://www.noaa.gov/information-technology/open-data-dissemination
+      - https://www.fisheries.noaa.gov/foss/f?p=215:35
+    updated: '2026-05-25'
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
+    X: apievangelist
+    url: https://apievangelist.com

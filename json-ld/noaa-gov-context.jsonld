@@ -1,0 +1,81 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "noaa": "https://api-evangelist.github.io/noaa-gov/vocab#",
+    "wx": "https://api.weather.gov/ontology#",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dct": "http://purl.org/dc/terms/",
+    "cap": "urn:oasis:names:tc:emergency:cap:1.2#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+
+    "id": "@id",
+    "type": "@type",
+
+    "Agency": "schema:GovernmentOrganization",
+    "Office": "schema:GovernmentOrganization",
+    "Station": "wx:ObservationStation",
+    "Alert": "cap:Alert",
+    "Forecast": "wx:Forecast",
+    "Observation": "wx:Observation",
+    "GridPoint": "wx:GridPoint",
+    "Zone": "wx:Zone",
+    "RadarStation": "wx:RadarStation",
+    "Buoy": "noaa:Buoy",
+    "Dataset": "dcat:Dataset",
+    "DataService": "dcat:DataService",
+    "Distribution": "dcat:Distribution",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "publisher": {
+      "@id": "dct:publisher",
+      "@type": "@id"
+    },
+    "license": "dct:license",
+    "issued": {
+      "@id": "dct:issued",
+      "@type": "xsd:dateTime"
+    },
+    "modified": {
+      "@id": "dct:modified",
+      "@type": "xsd:dateTime"
+    },
+    "spatial": "dct:spatial",
+    "temporal": "dct:temporal",
+    "keyword": "dcat:keyword",
+
+    "stationIdentifier": "wx:stationIdentifier",
+    "elevation": "wx:elevation",
+    "geometry": "geo:hasGeometry",
+    "latitude": "schema:latitude",
+    "longitude": "schema:longitude",
+
+    "severity": "cap:severity",
+    "certainty": "cap:certainty",
+    "urgency": "cap:urgency",
+    "event": "cap:event",
+    "headline": "cap:headline",
+    "areaDesc": "cap:areaDesc",
+    "effective": "cap:effective",
+    "expires": "cap:expires",
+    "sender": "cap:sender",
+    "msgType": "cap:msgType",
+
+    "temperature": "wx:temperature",
+    "windSpeed": "wx:windSpeed",
+    "windDirection": "wx:windDirection",
+    "barometricPressure": "wx:barometricPressure",
+    "relativeHumidity": "wx:relativeHumidity",
+    "precipitation": "wx:precipitationLastHour",
+    "visibility": "wx:visibility",
+    "waveHeight": "noaa:waveHeight",
+    "waterLevel": "noaa:waterLevel",
+    "datum": "noaa:datum",
+    "tidePrediction": "noaa:tidePrediction",
+    "geomagneticKpIndex": "noaa:kpIndex",
+    "solarWindSpeed": "noaa:solarWindSpeed"
+  }
+}

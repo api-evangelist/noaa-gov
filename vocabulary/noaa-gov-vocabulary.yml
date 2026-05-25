@@ -1,0 +1,182 @@
+name: NOAA Vocabulary
+description: A controlled vocabulary covering NOAA's developer surface — line offices, programs, data product
+  families, observation types, and the canonical names used across weather, climate, ocean, fisheries, and
+  space-weather APIs.
+specificationVersion: '0.1'
+created: '2026-05-25'
+modified: '2026-05-25'
+terms:
+  organization:
+    - id: noaa
+      label: National Oceanic and Atmospheric Administration
+      description: Scientific and regulatory agency within the US Department of Commerce.
+      url: https://www.noaa.gov
+    - id: nws
+      label: National Weather Service
+      description: NOAA line office providing weather, water, and climate forecasts and warnings.
+      url: https://www.weather.gov
+    - id: nesdis
+      label: National Environmental Satellite, Data, and Information Service
+      description: Operates US civilian environmental satellites and runs NCEI, the national climate
+        archive.
+      url: https://www.nesdis.noaa.gov
+    - id: ncei
+      label: National Centers for Environmental Information
+      description: NOAA's authoritative archive of atmospheric, coastal, geophysical, and oceanic research.
+      url: https://www.ncei.noaa.gov
+    - id: nos
+      label: National Ocean Service
+      description: Coastal, ocean, and Great Lakes science and services line office.
+      url: https://oceanservice.noaa.gov
+    - id: co-ops
+      label: Center for Operational Oceanographic Products and Services
+      description: NOS sub-organization operating the national water-level and currents observing network.
+      url: https://tidesandcurrents.noaa.gov
+    - id: nmfs
+      label: National Marine Fisheries Service (NOAA Fisheries)
+      description: Stewardship of US marine resources and habitats.
+      url: https://www.fisheries.noaa.gov
+    - id: oar
+      label: Office of Oceanic and Atmospheric Research
+      description: NOAA's research arm including PMEL, GFDL, GSL, PSL, and AOML laboratories.
+      url: https://research.noaa.gov
+    - id: omao
+      label: Office of Marine and Aviation Operations
+      description: Operates NOAA ships and aircraft and the NOAA Commissioned Officer Corps.
+      url: https://www.omao.noaa.gov
+    - id: swpc
+      label: Space Weather Prediction Center
+      description: NWS National Center providing space weather alerts, watches, warnings, and forecasts.
+      url: https://www.swpc.noaa.gov
+    - id: ndbc
+      label: National Data Buoy Center
+      description: Designs, deploys, and maintains the US marine observing network of buoys and coastal
+        stations.
+      url: https://www.ndbc.noaa.gov
+
+  weatherProducts:
+    - id: alert
+      label: Weather Alert
+      description: CAP-formatted advisory, watch, warning, or statement issued by NWS for a defined area.
+    - id: forecast
+      label: Forecast
+      description: Predicted weather conditions for a location or zone — 12-hour, hourly, or extended.
+    - id: gridpoint
+      label: Forecast Gridpoint
+      description: Numerical forecast value addressable by a 2.5 km grid cell within an NWS Weather
+        Forecast Office (WFO).
+    - id: observation
+      label: Observation
+      description: Latest or historical surface-weather observation from a METAR-reporting station.
+    - id: zone
+      label: Zone
+      description: NWS public, fire-weather, or marine zone polygon used for area-based forecasts.
+    - id: cwa
+      label: Center Weather Advisory
+      description: Aviation advisory issued by a Center Weather Service Unit (CWSU).
+    - id: sigmet
+      label: SIGMET / AIRMET
+      description: Significant or airmen's meteorological information for aviation hazards.
+    - id: taf
+      label: Terminal Aerodrome Forecast
+      description: Coded aviation forecast for an airport vicinity.
+    - id: radarStation
+      label: Radar Station
+      description: NEXRAD or terminal Doppler radar site metadata.
+
+  oceanProducts:
+    - id: waterLevel
+      label: Water Level
+      description: Observed or predicted water level relative to a tidal or geodetic datum.
+    - id: tidePrediction
+      label: Tide Prediction
+      description: Computed future water level based on harmonic constituents.
+    - id: currents
+      label: Currents
+      description: Real-time or predicted current speed and direction at a station and depth.
+    - id: harmonicConstituent
+      label: Harmonic Constituent
+      description: A tidal frequency component used to predict water level.
+    - id: datum
+      label: Datum
+      description: Reference plane for water level — MLLW, MHHW, MSL, NAVD88, IGLD85, and others.
+    - id: ports
+      label: PORTS
+      description: Physical Oceanographic Real-Time System — high-resolution observations in select US
+        seaports.
+    - id: buoy
+      label: Buoy
+      description: Moored or drifting marine platform reporting meteorological and oceanographic
+        observations.
+
+  climateProducts:
+    - id: ghcnd
+      label: Global Historical Climatology Network Daily
+      description: Daily summaries from over 100,000 stations worldwide.
+    - id: normals
+      label: Climate Normals
+      description: 30-year averages for stations, computed every decade.
+    - id: gsod
+      label: Global Summary of the Day
+      description: Daily summaries derived from global hourly observations.
+    - id: ohd
+      label: Hourly Climate Summaries
+      description: Aggregated hourly climate data.
+
+  spaceWeatherProducts:
+    - id: kpIndex
+      label: Planetary K-index
+      description: 3-hour geomagnetic activity index.
+    - id: solarWind
+      label: Solar Wind
+      description: Real-time solar wind plasma and magnetic field measurements (DSCOVR, ACE).
+    - id: xrayFlux
+      label: GOES X-Ray Flux
+      description: Real-time X-ray flux for solar flare classification.
+    - id: auroraForecast
+      label: Aurora Forecast
+      description: Short-term aurora visibility forecast.
+
+  forecastModels:
+    - id: gfs
+      label: Global Forecast System
+      description: NCEP global numerical weather prediction model.
+    - id: gefs
+      label: Global Ensemble Forecast System
+      description: 31-member global ensemble.
+    - id: hrrr
+      label: High-Resolution Rapid Refresh
+      description: 3 km hourly-updated convection-allowing model.
+    - id: rap
+      label: Rapid Refresh
+      description: 13 km hourly-updated regional model.
+    - id: nam
+      label: North American Mesoscale Model
+    - id: rrfs
+      label: Rapid Refresh Forecast System
+      description: Next-generation hourly-updated regional model.
+    - id: graphCast
+      label: GraphCast
+      description: ML-based global forecast model — EAGLE ensemble experimental product.
+
+  formats:
+    - id: geojson
+      label: GeoJSON
+    - id: jsonLd
+      label: JSON-LD
+    - id: cap
+      label: CAP (Common Alerting Protocol)
+    - id: dwml
+      label: DWML (Digital Weather Markup Language)
+    - id: atom
+      label: Atom Feed
+    - id: netcdf
+      label: NetCDF
+    - id: grib2
+      label: GRIB2
+    - id: bufr
+      label: BUFR
+    - id: hdf5
+      label: HDF5
+    - id: parquet
+      label: Parquet

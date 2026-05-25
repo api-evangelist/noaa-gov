@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/noaa-gov/refs/heads/main/json-schema/noaa-gov-alert-schema.json",
+  "title": "NWS Alert",
+  "description": "A National Weather Service alert in the GeoJSON representation returned by api.weather.gov. Conforms to the Common Alerting Protocol (CAP 1.2) profile used by NWS.",
+  "type": "object",
+  "required": ["id", "type", "geometry", "properties"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical NWS URI for the alert."
+    },
+    "type": {
+      "type": "string",
+      "const": "Feature"
+    },
+    "geometry": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["type", "coordinates"],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["Polygon", "MultiPolygon"]
+            },
+            "coordinates": {
+              "type": "array"
+            }
+          }
+        }
+      ],
+      "description": "GeoJSON Polygon or MultiPolygon delimiting the affected area; may be null when only zone references are provided."
+    },
+    "properties": {
+      "type": "object",
+      "required": ["id", "event", "sender", "sent", "effective", "expires", "severity", "certainty", "urgency", "headline"],
+      "properties": {
+        "id": { "type": "string" },
+        "areaDesc": { "type": "string", "description": "Human-readable description of the affected area." },
+        "geocode": {
+          "type": "object",
+          "properties": {
+            "SAME": { "type": "array", "items": { "type": "string" } },
+            "UGC": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "affectedZones": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri" }
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "@id": { "type": "string" },
+              "identifier": { "type": "string" },
+              "sender": { "type": "string" },
+              "sent": { "type": "string", "format": "date-time" }
+            }
+          }
+        },
+        "sent": { "type": "string", "format": "date-time" },
+        "effective": { "type": "string", "format": "date-time" },
+        "onset": { "type": "string", "format": "date-time" },
+        "expires": { "type": "string", "format": "date-time" },
+        "ends": { "type": "string", "format": "date-time" },
+        "status": {
+          "type": "string",
+          "enum": ["Actual", "Exercise", "System", "Test", "Draft"]
+        },
+        "messageType": {
+          "type": "string",
+          "enum": ["Alert", "Update", "Cancel", "Ack", "Error"]
+        },
+        "category": {
+          "type": "string",
+          "enum": ["Met", "Geo", "Safety", "Security", "Rescue", "Fire", "Health", "Env", "Transport", "Infra", "CBRNE", "Other"]
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["Extreme", "Severe", "Moderate", "Minor", "Unknown"]
+        },
+        "certainty": {
+          "type": "string",
+          "enum": ["Observed", "Likely", "Possible", "Unlikely", "Unknown"]
+        },
+        "urgency": {
+          "type": "string",
+          "enum": ["Immediate", "Expected", "Future", "Past", "Unknown"]
+        },
+        "event": { "type": "string", "description": "Plain-language event type (e.g., Tornado Warning)." },
+        "sender": { "type": "string", "format": "email" },
+        "senderName": { "type": "string" },
+        "headline": { "type": "string" },
+        "description": { "type": "string" },
+        "instruction": { "type": "string" },
+        "response": {
+          "type": "string",
+          "enum": ["Shelter", "Evacuate", "Prepare", "Execute", "Avoid", "Monitor", "Assess", "AllClear", "None"]
+        },
+        "parameters": {
+          "type": "object",
+          "description": "Arbitrary CAP-style key/value parameters such as VTEC, eventEndingTime, NWSheadline."
+        }
+      }
+    }
+  }
+}

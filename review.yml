@@ -1,0 +1,52 @@
+aid: noaa-gov
+name: NOAA — National Oceanic and Atmospheric Administration
+type: government
+profiledAt: '2026-05-25'
+tier: 1
+tierReason: comprehensive-open-developer-surface
+reviewer: Kin Lane
+url: https://www.noaa.gov
+summary: >
+  NOAA is one of the most consequential API providers in the United States federal government, exposing free,
+  open, unauthenticated developer surfaces across weather, climate, ocean, fisheries, space weather, and
+  satellite domains. Tier-1 designation reflects the breadth of canonical APIs (NWS api.weather.gov,
+  CO-OPS Tides & Currents, NCEI Climate Data Online and Access Data Service, SWPC, NDBC), the depth of
+  bulk-data dissemination via NODD across AWS / GCP / Azure, an active GitHub ecosystem spanning more than
+  a dozen NOAA orgs (NOAA-EMC, NOAA-GFDL, NOAA-GSL, NOAA-OWP, NOAA-PMEL, NOAA-PSL, weather-gov), and a
+  published, version-controlled OpenAPI 3.9.2 specification for the NWS API.
+strengths:
+  - Free, open, unauthenticated access across the majority of developer endpoints
+  - Published OpenAPI 3.9.2 for api.weather.gov covering 66 paths with content negotiation for GeoJSON,
+    JSON-LD, CAP, ATOM, and DWML
+  - Multi-cloud bulk-data dissemination through NODD (S3, GCS, Azure Blob) for GFS, GEFS, HRRR, RAP, NAM,
+    RRFS, GOES, NEXRAD
+  - Mature ERDDAP deployments unifying gridded and tabular scientific datasets across line offices
+  - Active GitHub presence: weather-gov, NOAA-EMC, NOAA-GFDL, NOAA-GSL, NOAA-OWP, NOAA-PMEL, NOAA-PSL
+  - Multiple authoritative metadata catalogs (InPort, data.noaa.gov, catalog.data.gov/organization/noaa-gov)
+  - CAP-compliant alerts pipeline integrating directly with downstream emergency-management systems
+weaknesses:
+  - Some endpoints (NCEI CDO v2, InPort beta) issue per-token quotas or are partially gated behind support
+    requests
+  - No single unified developer portal — the developer surface is fragmented across line-office subdomains
+  - Rate-limit numbers are largely undisclosed on api.weather.gov (soft enforcement)
+  - Several legacy SOAP and FTP endpoints remain in production alongside modern REST/cloud distribution
+recommendations:
+  - Unify the developer portal across NWS, NCEI, CO-OPS, SWPC, NDBC, and fisheries under a single
+    developer.noaa.gov entry point
+  - Publish rate-limit values for api.weather.gov so clients can adopt responsible defaults
+  - Promote the InPort metadata API to GA with full machine-to-machine endpoints
+  - Continue migrating CDO v2 traffic to the modern Access Data Service v1
+references:
+  - https://www.weather.gov/documentation/services-web-api
+  - https://api.weather.gov/openapi.json
+  - https://www.swpc.noaa.gov/content/data-access
+  - https://api.tidesandcurrents.noaa.gov/api/prod/
+  - https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - https://www.ncei.noaa.gov/support/access-data-service-api-user-documentation
+  - https://www.ncdc.noaa.gov/cdo-web/webservices/v2
+  - https://www.ndbc.noaa.gov/docs/ndbc_web_data_guide.pdf
+  - https://coastwatch.pfeg.noaa.gov/erddap/information.html
+  - https://www.noaa.gov/information-technology/open-data-dissemination
+  - https://www.fisheries.noaa.gov/foss/f?p=215:35
+  - https://github.com/weather-gov
+  - https://github.com/NOAA-EMC

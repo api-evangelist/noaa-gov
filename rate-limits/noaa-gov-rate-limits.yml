@@ -1,0 +1,73 @@
+aid: noaa-gov-rate-limits
+name: NOAA Rate Limits
+description: Documented rate-limit policies across NOAA's public API surface. Most NOAA endpoints are free and
+  do not require an API key, but many publish soft rate limits to protect shared infrastructure. NCEI's legacy
+  CDO v2 API is the only NOAA surface that issues per-token quotas; the rest enforce per-IP throttling that
+  resets quickly.
+specificationVersion: '0.1'
+created: '2026-05-25'
+modified: '2026-05-25'
+policies:
+  - id: nws-api
+    name: National Weather Service API
+    api: noaa-gov:weather-gov-api
+    scope: per-User-Agent / per-IP
+    enforced: soft
+    description: api.weather.gov enforces undisclosed rate limits "to prevent abuse and help ensure that
+      everyone has access." Throttled requests typically clear within 5 seconds. Clients must supply a
+      unique, identifying User-Agent string with contact information so the NWS can reach operators of
+      misbehaving clients.
+    headers:
+      - X-RateLimit-Remaining
+      - Retry-After
+    notes:
+      - User-Agent header is required on every request; opaque clients may be blocked outright.
+      - No published per-key or per-IP request-per-minute number.
+  - id: ncei-cdo-v2
+    name: NCEI Climate Data Online v2
+    api: noaa-gov:ncei-cdo-v2-api
+    scope: per-token
+    enforced: hard
+    requestsPerSecond: 5
+    requestsPerDay: 10000
+    description: CDO v2 issues a free API token via ncei.noaa.gov/cdo-web/token. Each token is limited to
+      five requests per second and 10,000 requests per day. The token is supplied in the `token` HTTP
+      header on every request.
+    headers:
+      - token
+  - id: ncei-access-data-service
+    name: NCEI Access Data Service v1
+    api: noaa-gov:ncei-access-data-service
+    scope: per-IP
+    enforced: soft
+    description: The modern NCEI Access Data Service does not require a token and does not publish a hard
+      quota; operational throttling protects bulk requests. Pull large historical archives from NODD on
+      AWS / GCP / Azure for unrestricted access.
+  - id: co-ops
+    name: CO-OPS Tides & Currents APIs
+    api: noaa-gov:co-ops-data-api
+    scope: per-IP
+    enforced: soft
+    description: CO-OPS Data, Metadata, and Derived-Product APIs are free and unauthenticated. CO-OPS
+      caps per-request payload sizes — 1-minute interval data limited to 4 days, hourly data to 1 year,
+      monthly means to 200 years — and applies operational throttling at the edge.
+    perRequestLimits:
+      oneMinute: 4 days
+      hourly: 1 year
+      monthly: 200 years
+  - id: nodd
+    name: NOAA Open Data Dissemination
+    api: noaa-gov:nodd-open-data
+    scope: per-IP (cloud-provider enforced)
+    enforced: cloud-provider
+    description: NODD datasets are served directly from public S3, GCS, and Azure Blob buckets without
+      authentication. Rate limits and throttling are enforced by the underlying cloud provider; effectively
+      unlimited for typical workloads.
+  - id: swpc
+    name: SWPC Data Service
+    api: noaa-gov:swpc-data-service
+    scope: per-IP
+    enforced: soft
+    description: services.swpc.noaa.gov serves static JSON, text, and image files updated on cadence (1
+      minute to daily). No published rate limit; clients should cache responses and respect refresh
+      intervals to avoid edge throttling.
