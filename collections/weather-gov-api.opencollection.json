@@ -1,0 +1,1950 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "weather.gov API",
+    "version": "3.9.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "User-Agent",
+      "value": "{{User-Agent}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "alerts_query",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/alerts",
+        "params": [
+          {
+            "name": "active",
+            "value": "",
+            "type": "query",
+            "description": "List only active alerts (use /alerts/active endpoints instead)"
+          },
+          {
+            "name": "start",
+            "value": "",
+            "type": "query",
+            "description": "Start time"
+          },
+          {
+            "name": "end",
+            "value": "",
+            "type": "query",
+            "description": "End time"
+          },
+          {
+            "name": "status",
+            "value": "",
+            "type": "query",
+            "description": "Status (actual, exercise, system, test, draft)"
+          },
+          {
+            "name": "message_type",
+            "value": "",
+            "type": "query",
+            "description": "Message type (alert, update, cancel)"
+          },
+          {
+            "name": "event",
+            "value": "",
+            "type": "query",
+            "description": "Event name"
+          },
+          {
+            "name": "code",
+            "value": "",
+            "type": "query",
+            "description": "Event code"
+          },
+          {
+            "name": "area",
+            "value": "",
+            "type": "query",
+            "description": "State/territory code or marine area code\nThis parameter is incompatible with the following parameters: point, region, region_type, zone\n"
+          },
+          {
+            "name": "point",
+            "value": "",
+            "type": "query",
+            "description": "Point (latitude,longitude)\nThis parameter is incompatible with the following parameters: area, region, region_type, zone\n"
+          },
+          {
+            "name": "region",
+            "value": "",
+            "type": "query",
+            "description": "Marine region code\nThis parameter is incompatible with the following parameters: area, point, region_type, zone\n"
+          },
+          {
+            "name": "region_type",
+            "value": "",
+            "type": "query",
+            "description": "Region type (land or marine)\nThis parameter is incompatible with the following parameters: area, point, region, zone\n"
+          },
+          {
+            "name": "zone",
+            "value": "",
+            "type": "query",
+            "description": "Zone ID (forecast or county)\nThis parameter is incompatible with the following parameters: area, point, region, region_type\n"
+          },
+          {
+            "name": "urgency",
+            "value": "",
+            "type": "query",
+            "description": "Urgency (immediate, expected, future, past, unknown)"
+          },
+          {
+            "name": "severity",
+            "value": "",
+            "type": "query",
+            "description": "Severity (extreme, severe, moderate, minor, unknown)"
+          },
+          {
+            "name": "certainty",
+            "value": "",
+            "type": "query",
+            "description": "Certainty (observed, likely, possible, unlikely, unknown)"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Limit"
+          },
+          {
+            "name": "cursor",
+            "value": "",
+            "type": "query",
+            "description": "Pagination cursor"
+          }
+        ]
+      },
+      "docs": "Returns all alerts"
+    },
+    {
+      "info": {
+        "name": "alerts_active",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/alerts/active",
+        "params": [
+          {
+            "name": "status",
+            "value": "",
+            "type": "query",
+            "description": "Status (actual, exercise, system, test, draft)"
+          },
+          {
+            "name": "message_type",
+            "value": "",
+            "type": "query",
+            "description": "Message type (alert, update, cancel)"
+          },
+          {
+            "name": "event",
+            "value": "",
+            "type": "query",
+            "description": "Event name"
+          },
+          {
+            "name": "code",
+            "value": "",
+            "type": "query",
+            "description": "Event code"
+          },
+          {
+            "name": "area",
+            "value": "",
+            "type": "query",
+            "description": "State/territory code or marine area code\nThis parameter is incompatible with the following parameters: point, region, region_type, zone\n"
+          },
+          {
+            "name": "point",
+            "value": "",
+            "type": "query",
+            "description": "Point (latitude,longitude)\nThis parameter is incompatible with the following parameters: area, region, region_type, zone\n"
+          },
+          {
+            "name": "region",
+            "value": "",
+            "type": "query",
+            "description": "Marine region code\nThis parameter is incompatible with the following parameters: area, point, region_type, zone\n"
+          },
+          {
+            "name": "region_type",
+            "value": "",
+            "type": "query",
+            "description": "Region type (land or marine)\nThis parameter is incompatible with the following parameters: area, point, region, zone\n"
+          },
+          {
+            "name": "zone",
+            "value": "",
+            "type": "query",
+            "description": "Zone ID (forecast or county)\nThis parameter is incompatible with the following parameters: area, point, region, region_type\n"
+          },
+          {
+            "name": "urgency",
+            "value": "",
+            "type": "query",
+            "description": "Urgency (immediate, expected, future, past, unknown)"
+          },
+          {
+            "name": "severity",
+            "value": "",
+            "type": "query",
+            "description": "Severity (extreme, severe, moderate, minor, unknown)"
+          },
+          {
+            "name": "certainty",
+            "value": "",
+            "type": "query",
+            "description": "Certainty (observed, likely, possible, unlikely, unknown)"
+          }
+        ]
+      },
+      "docs": "Returns all currently active alerts"
+    },
+    {
+      "info": {
+        "name": "alerts_active_count",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/alerts/active/count"
+      },
+      "docs": "Returns info on the number of active alerts"
+    },
+    {
+      "info": {
+        "name": "alerts_active_zone",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/alerts/active/zone/:zoneId",
+        "params": [
+          {
+            "name": "zoneId",
+            "value": "",
+            "type": "path",
+            "description": "NWS public zone/county identifier"
+          }
+        ]
+      },
+      "docs": "Returns active alerts for the given NWS public zone or county"
+    },
+    {
+      "info": {
+        "name": "alerts_active_area",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/alerts/active/area/:area",
+        "params": [
+          {
+            "name": "area",
+            "value": "",
+            "type": "path",
+            "description": "State/area ID"
+          }
+        ]
+      },
+      "docs": "Returns active alerts for the given area (state or marine area)"
+    },
+    {
+      "info": {
+        "name": "alerts_active_region",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/alerts/active/region/:region",
+        "params": [
+          {
+            "name": "region",
+            "value": "",
+            "type": "path",
+            "description": "Marine region ID"
+          }
+        ]
+      },
+      "docs": "Returns active alerts for the given marine region"
+    },
+    {
+      "info": {
+        "name": "alerts_types",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/alerts/types"
+      },
+      "docs": "Returns a list of alert types"
+    },
+    {
+      "info": {
+        "name": "alerts_single",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/alerts/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "Alert identifier"
+          }
+        ]
+      },
+      "docs": "Returns a specific alert"
+    },
+    {
+      "info": {
+        "name": "cwsu",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/aviation/cwsus/:cwsuId",
+        "params": [
+          {
+            "name": "cwsuId",
+            "value": "",
+            "type": "path",
+            "description": "NWS CWSU ID"
+          }
+        ]
+      },
+      "docs": "Returns metadata about a Center Weather Service Unit"
+    },
+    {
+      "info": {
+        "name": "cwas",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/aviation/cwsus/:cwsuId/cwas",
+        "params": [
+          {
+            "name": "cwsuId",
+            "value": "",
+            "type": "path",
+            "description": "NWS CWSU ID"
+          }
+        ]
+      },
+      "docs": "Returns a list of Center Weather Advisories from a CWSU"
+    },
+    {
+      "info": {
+        "name": "cwa",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/aviation/cwsus/:cwsuId/cwas/:date/:sequence",
+        "params": [
+          {
+            "name": "cwsuId",
+            "value": "",
+            "type": "path",
+            "description": "NWS CWSU ID"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path",
+            "description": "Date (YYYY-MM-DD format)"
+          },
+          {
+            "name": "sequence",
+            "value": "",
+            "type": "path",
+            "description": "Sequence number"
+          }
+        ]
+      },
+      "docs": "Returns a list of Center Weather Advisories from a CWSU"
+    },
+    {
+      "info": {
+        "name": "sigmetQuery",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/aviation/sigmets",
+        "params": [
+          {
+            "name": "start",
+            "value": "",
+            "type": "query",
+            "description": "Start time"
+          },
+          {
+            "name": "end",
+            "value": "",
+            "type": "query",
+            "description": "End time"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "query",
+            "description": "Date (YYYY-MM-DD format)"
+          },
+          {
+            "name": "atsu",
+            "value": "",
+            "type": "query",
+            "description": "ATSU identifier"
+          },
+          {
+            "name": "sequence",
+            "value": "",
+            "type": "query",
+            "description": "SIGMET sequence number"
+          }
+        ]
+      },
+      "docs": "Returns a list of SIGMET/AIRMETs"
+    },
+    {
+      "info": {
+        "name": "sigmetsByATSU",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/aviation/sigmets/:atsu",
+        "params": [
+          {
+            "name": "atsu",
+            "value": "",
+            "type": "path",
+            "description": "ATSU identifier"
+          }
+        ]
+      },
+      "docs": "Returns a list of SIGMET/AIRMETs for the specified ATSU"
+    },
+    {
+      "info": {
+        "name": "sigmetsByATSUByDate",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/aviation/sigmets/:atsu/:date",
+        "params": [
+          {
+            "name": "atsu",
+            "value": "",
+            "type": "path",
+            "description": "ATSU identifier"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path",
+            "description": "Date (YYYY-MM-DD format)"
+          }
+        ]
+      },
+      "docs": "Returns a list of SIGMET/AIRMETs for the specified ATSU for the specified date"
+    },
+    {
+      "info": {
+        "name": "sigmet",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/aviation/sigmets/:atsu/:date/:time",
+        "params": [
+          {
+            "name": "atsu",
+            "value": "",
+            "type": "path",
+            "description": "ATSU identifier"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path",
+            "description": "Date (YYYY-MM-DD format)"
+          },
+          {
+            "name": "time",
+            "value": "",
+            "type": "path",
+            "description": "Time (HHMM format). This time is always specified in UTC (Zulu) time."
+          }
+        ]
+      },
+      "docs": "Returns a specific SIGMET/AIRMET"
+    },
+    {
+      "info": {
+        "name": "glossary",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/glossary"
+      },
+      "docs": "Returns glossary terms"
+    },
+    {
+      "info": {
+        "name": "gridpoint",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/gridpoints/:wfo/:x,:y",
+        "params": [
+          {
+            "name": "wfo",
+            "value": "",
+            "type": "path",
+            "description": "Forecast office ID"
+          },
+          {
+            "name": "x",
+            "value": "",
+            "type": "path",
+            "description": "Forecast grid X coordinate"
+          },
+          {
+            "name": "y",
+            "value": "",
+            "type": "path",
+            "description": "Forecast grid Y coordinate"
+          }
+        ]
+      },
+      "docs": "Returns raw numerical forecast data for a 2.5km grid area"
+    },
+    {
+      "info": {
+        "name": "gridpoint_forecast",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/gridpoints/:wfo/:x,:y/forecast",
+        "headers": [
+          {
+            "name": "Feature-Flags",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "wfo",
+            "value": "",
+            "type": "path",
+            "description": "Forecast office ID"
+          },
+          {
+            "name": "x",
+            "value": "",
+            "type": "path",
+            "description": "Forecast grid X coordinate"
+          },
+          {
+            "name": "y",
+            "value": "",
+            "type": "path",
+            "description": "Forecast grid Y coordinate"
+          },
+          {
+            "name": "units",
+            "value": "",
+            "type": "query",
+            "description": "Use US customary or SI (metric) units in textual output"
+          }
+        ]
+      },
+      "docs": "Returns a textual forecast for a 2.5km grid area"
+    },
+    {
+      "info": {
+        "name": "gridpoint_forecast_hourly",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/gridpoints/:wfo/:x,:y/forecast/hourly",
+        "headers": [
+          {
+            "name": "Feature-Flags",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "wfo",
+            "value": "",
+            "type": "path",
+            "description": "Forecast office ID"
+          },
+          {
+            "name": "x",
+            "value": "",
+            "type": "path",
+            "description": "Forecast grid X coordinate"
+          },
+          {
+            "name": "y",
+            "value": "",
+            "type": "path",
+            "description": "Forecast grid Y coordinate"
+          },
+          {
+            "name": "units",
+            "value": "",
+            "type": "query",
+            "description": "Use US customary or SI (metric) units in textual output"
+          }
+        ]
+      },
+      "docs": "Returns a textual hourly forecast for a 2.5km grid area"
+    },
+    {
+      "info": {
+        "name": "gridpoint_stations",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/gridpoints/:wfo/:x,:y/stations",
+        "params": [
+          {
+            "name": "wfo",
+            "value": "",
+            "type": "path",
+            "description": "Forecast office ID"
+          },
+          {
+            "name": "x",
+            "value": "",
+            "type": "path",
+            "description": "Forecast grid X coordinate"
+          },
+          {
+            "name": "y",
+            "value": "",
+            "type": "path",
+            "description": "Forecast grid Y coordinate"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Limit"
+          }
+        ]
+      },
+      "docs": "Returns a list of observation stations usable for a given 2.5km grid area"
+    },
+    {
+      "info": {
+        "name": "icons",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/icons/:set/:timeOfDay/:first",
+        "params": [
+          {
+            "name": "set",
+            "value": "",
+            "type": "path",
+            "description": "."
+          },
+          {
+            "name": "timeOfDay",
+            "value": "",
+            "type": "path",
+            "description": "."
+          },
+          {
+            "name": "first",
+            "value": "",
+            "type": "path",
+            "description": "."
+          },
+          {
+            "name": "size",
+            "value": "",
+            "type": "query",
+            "description": "Font size"
+          },
+          {
+            "name": "fontsize",
+            "value": "",
+            "type": "query",
+            "description": "Font size"
+          }
+        ]
+      },
+      "docs": "Returns a forecast icon. Icon services in API are deprecated."
+    },
+    {
+      "info": {
+        "name": "iconsDualCondition",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/icons/:set/:timeOfDay/:first/:second",
+        "params": [
+          {
+            "name": "set",
+            "value": "",
+            "type": "path",
+            "description": "."
+          },
+          {
+            "name": "timeOfDay",
+            "value": "",
+            "type": "path",
+            "description": "."
+          },
+          {
+            "name": "first",
+            "value": "",
+            "type": "path",
+            "description": "."
+          },
+          {
+            "name": "second",
+            "value": "",
+            "type": "path",
+            "description": "."
+          },
+          {
+            "name": "size",
+            "value": "",
+            "type": "query",
+            "description": "Font size"
+          },
+          {
+            "name": "fontsize",
+            "value": "",
+            "type": "query",
+            "description": "Font size"
+          }
+        ]
+      },
+      "docs": "Returns a forecast icon. Icon services in API are deprecated."
+    },
+    {
+      "info": {
+        "name": "icons_summary",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/icons"
+      },
+      "docs": "Returns a list of icon codes and textual descriptions. Icon services in API are deprecated."
+    },
+    {
+      "info": {
+        "name": "satellite_thumbnails",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/thumbnails/satellite/:area",
+        "params": [
+          {
+            "name": "area",
+            "value": "",
+            "type": "path",
+            "description": "."
+          }
+        ]
+      },
+      "docs": "Returns a thumbnail image for a satellite region. Image services in API are deprecated."
+    },
+    {
+      "info": {
+        "name": "station_observation_list",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/stations/:stationId/observations",
+        "params": [
+          {
+            "name": "stationId",
+            "value": "",
+            "type": "path",
+            "description": "Observation station ID"
+          },
+          {
+            "name": "start",
+            "value": "",
+            "type": "query",
+            "description": "Start time"
+          },
+          {
+            "name": "end",
+            "value": "",
+            "type": "query",
+            "description": "End time"
+          },
+          {
+            "name": "cursor",
+            "value": "",
+            "type": "query",
+            "description": "Pagination cursor"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Limit"
+          }
+        ]
+      },
+      "docs": "Returns a list of observations for a given station"
+    },
+    {
+      "info": {
+        "name": "station_observation_latest",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/stations/:stationId/observations/latest",
+        "params": [
+          {
+            "name": "stationId",
+            "value": "",
+            "type": "path",
+            "description": "Observation station ID"
+          },
+          {
+            "name": "require_qc",
+            "value": "",
+            "type": "query",
+            "description": "Require QC"
+          }
+        ]
+      },
+      "docs": "Returns the latest observation for a station"
+    },
+    {
+      "info": {
+        "name": "station_observation_time",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/stations/:stationId/observations/:time",
+        "params": [
+          {
+            "name": "stationId",
+            "value": "",
+            "type": "path",
+            "description": "Observation station ID"
+          },
+          {
+            "name": "time",
+            "value": "",
+            "type": "path",
+            "description": "Timestamp of requested observation"
+          }
+        ]
+      },
+      "docs": "Returns a single observation."
+    },
+    {
+      "info": {
+        "name": "tafs",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/stations/:stationId/tafs",
+        "params": [
+          {
+            "name": "stationId",
+            "value": "",
+            "type": "path",
+            "description": "Observation station ID"
+          }
+        ]
+      },
+      "docs": "Returns Terminal Aerodrome Forecasts for the specified airport station."
+    },
+    {
+      "info": {
+        "name": "taf",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/stations/:stationId/tafs/:date/:time",
+        "params": [
+          {
+            "name": "stationId",
+            "value": "",
+            "type": "path",
+            "description": "Observation station ID"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path",
+            "description": "Date (YYYY-MM-DD format)"
+          },
+          {
+            "name": "time",
+            "value": "",
+            "type": "path",
+            "description": "Time (HHMM format). This time is always specified in UTC (Zulu) time."
+          }
+        ]
+      },
+      "docs": "Returns a single Terminal Aerodrome Forecast."
+    },
+    {
+      "info": {
+        "name": "obs_stations",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/stations",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "query",
+            "description": "Filter by observation station ID"
+          },
+          {
+            "name": "state",
+            "value": "",
+            "type": "query",
+            "description": "Filter by state/marine area code"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Limit"
+          },
+          {
+            "name": "cursor",
+            "value": "",
+            "type": "query",
+            "description": "Pagination cursor"
+          }
+        ]
+      },
+      "docs": "Returns a list of observation stations."
+    },
+    {
+      "info": {
+        "name": "obs_station",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/stations/:stationId",
+        "params": [
+          {
+            "name": "stationId",
+            "value": "",
+            "type": "path",
+            "description": "Observation station ID"
+          }
+        ]
+      },
+      "docs": "Returns metadata about a given observation station"
+    },
+    {
+      "info": {
+        "name": "office",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/offices/:officeId",
+        "params": [
+          {
+            "name": "officeId",
+            "value": "",
+            "type": "path",
+            "description": "NWS office ID"
+          }
+        ]
+      },
+      "docs": "Returns metadata about a NWS forecast office"
+    },
+    {
+      "info": {
+        "name": "office_briefing",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/offices/:officeId/briefing",
+        "params": [
+          {
+            "name": "officeId",
+            "value": "",
+            "type": "path",
+            "description": "NWS office ID"
+          }
+        ]
+      },
+      "docs": "Returns active briefing for an NWS office"
+    },
+    {
+      "info": {
+        "name": "office_briefing_download_latest",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/offices/:officeId/briefing/download/latest",
+        "params": [
+          {
+            "name": "officeId",
+            "value": "",
+            "type": "path",
+            "description": "NWS office ID"
+          }
+        ]
+      },
+      "docs": "Returns the latest briefing for an office"
+    },
+    {
+      "info": {
+        "name": "office_briefing_download",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/offices/:officeId/briefing/download/:briefingId",
+        "params": [
+          {
+            "name": "officeId",
+            "value": "",
+            "type": "path",
+            "description": "NWS office ID"
+          },
+          {
+            "name": "briefingId",
+            "value": "",
+            "type": "path",
+            "description": "."
+          }
+        ]
+      },
+      "docs": "Returns a briefing for an office"
+    },
+    {
+      "info": {
+        "name": "office_headline",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/offices/:officeId/headlines/:headlineId",
+        "params": [
+          {
+            "name": "officeId",
+            "value": "",
+            "type": "path",
+            "description": "NWS office ID"
+          },
+          {
+            "name": "headlineId",
+            "value": "",
+            "type": "path",
+            "description": "Headline record ID"
+          }
+        ]
+      },
+      "docs": "Returns a specific news headline for a given NWS office"
+    },
+    {
+      "info": {
+        "name": "office_headlines",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/offices/:officeId/headlines",
+        "params": [
+          {
+            "name": "officeId",
+            "value": "",
+            "type": "path",
+            "description": "NWS office ID"
+          }
+        ]
+      },
+      "docs": "Returns a list of news headlines for a given NWS office"
+    },
+    {
+      "info": {
+        "name": "office_weatherstory",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/offices/:officeId/weatherstories",
+        "params": [
+          {
+            "name": "officeId",
+            "value": "",
+            "type": "path",
+            "description": "NWS office ID"
+          }
+        ]
+      },
+      "docs": "Returns active weather stories for an NWS office"
+    },
+    {
+      "info": {
+        "name": "office_weatherstory_image",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/offices/:officeId/weatherstories/download/:imageId",
+        "params": [
+          {
+            "name": "officeId",
+            "value": "",
+            "type": "path",
+            "description": "NWS office ID"
+          },
+          {
+            "name": "imageId",
+            "value": "",
+            "type": "path",
+            "description": "."
+          }
+        ]
+      },
+      "docs": "Returns the image for a weather story"
+    },
+    {
+      "info": {
+        "name": "point",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/points/:latitude,:longitude",
+        "params": [
+          {
+            "name": "latitude",
+            "value": "",
+            "type": "path",
+            "description": "Latitude"
+          },
+          {
+            "name": "longitude",
+            "value": "",
+            "type": "path",
+            "description": "Longitude"
+          }
+        ]
+      },
+      "docs": "Returns metadata about a given latitude/longitude point"
+    },
+    {
+      "info": {
+        "name": "point_radio",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/points/:latitude,:longitude/radio",
+        "params": [
+          {
+            "name": "latitude",
+            "value": "",
+            "type": "path",
+            "description": "Latitude"
+          },
+          {
+            "name": "longitude",
+            "value": "",
+            "type": "path",
+            "description": "Longitude"
+          }
+        ]
+      },
+      "docs": "Returns NOAA Weather Radio broadcast script for a latitude/longitude point"
+    },
+    {
+      "info": {
+        "name": "point_stations",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/points/:latitude,:longitude/stations",
+        "params": [
+          {
+            "name": "latitude",
+            "value": "",
+            "type": "path",
+            "description": "Latitude"
+          },
+          {
+            "name": "longitude",
+            "value": "",
+            "type": "path",
+            "description": "Longitude"
+          }
+        ]
+      },
+      "docs": "Returns a list of observation stations for a given point"
+    },
+    {
+      "info": {
+        "name": "radar_servers",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/radar/servers",
+        "params": [
+          {
+            "name": "reportingHost",
+            "value": "",
+            "type": "query",
+            "description": "Show records from specific reporting host"
+          }
+        ]
+      },
+      "docs": "Returns a list of radar servers"
+    },
+    {
+      "info": {
+        "name": "radar_server",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/radar/servers/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "Server ID"
+          },
+          {
+            "name": "reportingHost",
+            "value": "",
+            "type": "query",
+            "description": "Show records from specific reporting host"
+          }
+        ]
+      },
+      "docs": "Returns metadata about a given radar server"
+    },
+    {
+      "info": {
+        "name": "radar_spgds",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/radar/spgds",
+        "params": [
+          {
+            "name": "published",
+            "value": "",
+            "type": "query",
+            "description": "Range for publish time"
+          }
+        ]
+      },
+      "docs": "Returns a list of radar spgds"
+    },
+    {
+      "info": {
+        "name": "radar_stations",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/radar/stations",
+        "params": [
+          {
+            "name": "stationType",
+            "value": "",
+            "type": "query",
+            "description": "Limit results to a specific station type or types"
+          },
+          {
+            "name": "reportingHost",
+            "value": "",
+            "type": "query",
+            "description": "Show RDA and latency info from specific reporting host"
+          },
+          {
+            "name": "host",
+            "value": "",
+            "type": "query",
+            "description": "Show latency info from specific LDM host"
+          }
+        ]
+      },
+      "docs": "Returns a list of radar stations"
+    },
+    {
+      "info": {
+        "name": "radar_station",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/radar/stations/:stationId",
+        "params": [
+          {
+            "name": "stationId",
+            "value": "",
+            "type": "path",
+            "description": "Radar station ID"
+          },
+          {
+            "name": "reportingHost",
+            "value": "",
+            "type": "query",
+            "description": "Show RDA and latency info from specific reporting host"
+          },
+          {
+            "name": "host",
+            "value": "",
+            "type": "query",
+            "description": "Show latency info from specific LDM host"
+          }
+        ]
+      },
+      "docs": "Returns metadata about a given radar station"
+    },
+    {
+      "info": {
+        "name": "radar_station_alarms",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/radar/stations/:stationId/alarms",
+        "params": [
+          {
+            "name": "stationId",
+            "value": "",
+            "type": "path",
+            "description": "Radar station ID"
+          }
+        ]
+      },
+      "docs": "Returns metadata about a given radar station alarms"
+    },
+    {
+      "info": {
+        "name": "radar_queue",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/radar/queues/:host",
+        "params": [
+          {
+            "name": "host",
+            "value": "",
+            "type": "path",
+            "description": "LDM host"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Record limit"
+          },
+          {
+            "name": "arrived",
+            "value": "",
+            "type": "query",
+            "description": "Range for arrival time"
+          },
+          {
+            "name": "created",
+            "value": "",
+            "type": "query",
+            "description": "Range for creation time"
+          },
+          {
+            "name": "published",
+            "value": "",
+            "type": "query",
+            "description": "Range for publish time"
+          },
+          {
+            "name": "station",
+            "value": "",
+            "type": "query",
+            "description": "Station identifier"
+          },
+          {
+            "name": "type",
+            "value": "",
+            "type": "query",
+            "description": "Record type"
+          },
+          {
+            "name": "feed",
+            "value": "",
+            "type": "query",
+            "description": "Originating product feed"
+          },
+          {
+            "name": "resolution",
+            "value": "",
+            "type": "query",
+            "description": "Resolution version"
+          }
+        ]
+      },
+      "docs": "Returns metadata about a given radar queue"
+    },
+    {
+      "info": {
+        "name": "radar_profiler",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/radar/profilers/:stationId",
+        "params": [
+          {
+            "name": "stationId",
+            "value": "",
+            "type": "path",
+            "description": "Profiler station ID"
+          },
+          {
+            "name": "time",
+            "value": "",
+            "type": "query",
+            "description": "Time interval"
+          },
+          {
+            "name": "interval",
+            "value": "",
+            "type": "query",
+            "description": "Averaging interval"
+          }
+        ]
+      },
+      "docs": "Returns metadata about a given radar wind profiler"
+    },
+    {
+      "info": {
+        "name": "area_radio",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/radio/:callSign/broadcast",
+        "params": [
+          {
+            "name": "callSign",
+            "value": "",
+            "type": "path",
+            "description": "The call sign identifier for a NOAA transmitter station."
+          }
+        ]
+      },
+      "docs": "Returns NOAA Weather Radio broadcast script for a transmitter"
+    },
+    {
+      "info": {
+        "name": "products_query",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/products",
+        "params": [
+          {
+            "name": "location",
+            "value": "",
+            "type": "query",
+            "description": "Location id"
+          },
+          {
+            "name": "start",
+            "value": "",
+            "type": "query",
+            "description": "Start time"
+          },
+          {
+            "name": "end",
+            "value": "",
+            "type": "query",
+            "description": "End time"
+          },
+          {
+            "name": "office",
+            "value": "",
+            "type": "query",
+            "description": "Issuing office"
+          },
+          {
+            "name": "wmoid",
+            "value": "",
+            "type": "query",
+            "description": "WMO id code"
+          },
+          {
+            "name": "type",
+            "value": "",
+            "type": "query",
+            "description": "Product code"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Limit"
+          }
+        ]
+      },
+      "docs": "Returns a list of text products"
+    },
+    {
+      "info": {
+        "name": "product_locations",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/products/locations"
+      },
+      "docs": "Returns a list of valid text product issuance locations"
+    },
+    {
+      "info": {
+        "name": "product_types",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/products/types"
+      },
+      "docs": "Returns a list of valid text product types and codes"
+    },
+    {
+      "info": {
+        "name": "product",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/products/:productId",
+        "params": [
+          {
+            "name": "productId",
+            "value": "",
+            "type": "path",
+            "description": "."
+          }
+        ]
+      },
+      "docs": "Returns a specific text product"
+    },
+    {
+      "info": {
+        "name": "products_type",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/products/types/:typeId",
+        "params": [
+          {
+            "name": "typeId",
+            "value": "",
+            "type": "path",
+            "description": "."
+          }
+        ]
+      },
+      "docs": "Returns a list of text products of a given type"
+    },
+    {
+      "info": {
+        "name": "products_type_locations",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/products/types/:typeId/locations",
+        "params": [
+          {
+            "name": "typeId",
+            "value": "",
+            "type": "path",
+            "description": "."
+          }
+        ]
+      },
+      "docs": "Returns a list of valid text product issuance locations for a given product type"
+    },
+    {
+      "info": {
+        "name": "location_products",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/products/locations/:locationId/types",
+        "params": [
+          {
+            "name": "locationId",
+            "value": "",
+            "type": "path",
+            "description": "."
+          }
+        ]
+      },
+      "docs": "Returns a list of valid text product types for a given issuance location"
+    },
+    {
+      "info": {
+        "name": "products_type_location",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/products/types/:typeId/locations/:locationId",
+        "params": [
+          {
+            "name": "typeId",
+            "value": "",
+            "type": "path",
+            "description": "."
+          },
+          {
+            "name": "locationId",
+            "value": "",
+            "type": "path",
+            "description": "."
+          }
+        ]
+      },
+      "docs": "Returns a list of text products of a given type for a given issuance location"
+    },
+    {
+      "info": {
+        "name": "latest_product_type_location",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/products/types/:typeId/locations/:locationId/latest",
+        "params": [
+          {
+            "name": "typeId",
+            "value": "",
+            "type": "path",
+            "description": "."
+          },
+          {
+            "name": "locationId",
+            "value": "",
+            "type": "path",
+            "description": "."
+          }
+        ]
+      },
+      "docs": "Returns latest text products of a given type for a given issuance location with product text"
+    },
+    {
+      "info": {
+        "name": "zone_list",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/zones",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "query",
+            "description": "Zone ID (forecast or county)"
+          },
+          {
+            "name": "area",
+            "value": "",
+            "type": "query",
+            "description": "State/marine area code"
+          },
+          {
+            "name": "region",
+            "value": "",
+            "type": "query",
+            "description": "Region code"
+          },
+          {
+            "name": "type",
+            "value": "",
+            "type": "query",
+            "description": "Zone type"
+          },
+          {
+            "name": "point",
+            "value": "",
+            "type": "query",
+            "description": "Point (latitude,longitude)"
+          },
+          {
+            "name": "include_geometry",
+            "value": "",
+            "type": "query",
+            "description": "Include geometry in results (true/false)"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Limit"
+          },
+          {
+            "name": "effective",
+            "value": "",
+            "type": "query",
+            "description": "Effective date/time"
+          }
+        ]
+      },
+      "docs": "Returns a list of zones"
+    },
+    {
+      "info": {
+        "name": "zone_list_type",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/zones/:type",
+        "params": [
+          {
+            "name": "type",
+            "value": "",
+            "type": "path",
+            "description": "Zone type"
+          },
+          {
+            "name": "id",
+            "value": "",
+            "type": "query",
+            "description": "Zone ID (forecast or county)"
+          },
+          {
+            "name": "area",
+            "value": "",
+            "type": "query",
+            "description": "State/marine area code"
+          },
+          {
+            "name": "region",
+            "value": "",
+            "type": "query",
+            "description": "Region code"
+          },
+          {
+            "name": "type",
+            "value": "",
+            "type": "query",
+            "description": "Zone type"
+          },
+          {
+            "name": "point",
+            "value": "",
+            "type": "query",
+            "description": "Point (latitude,longitude)"
+          },
+          {
+            "name": "include_geometry",
+            "value": "",
+            "type": "query",
+            "description": "Include geometry in results (true/false)"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Limit"
+          },
+          {
+            "name": "effective",
+            "value": "",
+            "type": "query",
+            "description": "Effective date/time"
+          }
+        ]
+      },
+      "docs": "Returns a list of zones of a given type"
+    },
+    {
+      "info": {
+        "name": "zone",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/zones/:type/:zoneId",
+        "params": [
+          {
+            "name": "type",
+            "value": "",
+            "type": "path",
+            "description": "Zone type"
+          },
+          {
+            "name": "zoneId",
+            "value": "",
+            "type": "path",
+            "description": "NWS public zone/county identifier"
+          },
+          {
+            "name": "effective",
+            "value": "",
+            "type": "query",
+            "description": "Effective date/time"
+          }
+        ]
+      },
+      "docs": "Returns metadata about a given zone"
+    },
+    {
+      "info": {
+        "name": "zone_forecast",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/zones/:type/:zoneId/forecast",
+        "params": [
+          {
+            "name": "type",
+            "value": "",
+            "type": "path",
+            "description": "Zone type"
+          },
+          {
+            "name": "zoneId",
+            "value": "",
+            "type": "path",
+            "description": "NWS public zone/county identifier"
+          }
+        ]
+      },
+      "docs": "Returns the current zone forecast for a given zone"
+    },
+    {
+      "info": {
+        "name": "zone_obs",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/zones/forecast/:zoneId/observations",
+        "params": [
+          {
+            "name": "zoneId",
+            "value": "",
+            "type": "path",
+            "description": "NWS public zone/county identifier"
+          },
+          {
+            "name": "start",
+            "value": "",
+            "type": "query",
+            "description": "Start date/time"
+          },
+          {
+            "name": "end",
+            "value": "",
+            "type": "query",
+            "description": "End date/time"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Limit"
+          }
+        ]
+      },
+      "docs": "Returns a list of observations for a given zone"
+    },
+    {
+      "info": {
+        "name": "zone_stations",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.weather.gov/zones/forecast/:zoneId/stations",
+        "params": [
+          {
+            "name": "zoneId",
+            "value": "",
+            "type": "path",
+            "description": "NWS public zone/county identifier"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Limit"
+          },
+          {
+            "name": "cursor",
+            "value": "",
+            "type": "query",
+            "description": "Pagination cursor"
+          }
+        ]
+      },
+      "docs": "Returns a list of observation stations for a given zone"
+    }
+  ],
+  "bundled": true
+}
