@@ -63,7 +63,7 @@ apis:
       - url: https://api.weather.gov
         type: BaseURL
       - url: https://www.weather.gov/documentation/services-web-api#/changelog
-        type: Changelog
+        type: ChangeLog
     contact:
       - FN: National Weather Service API Team
         url: https://www.weather.gov/about/contact-us
@@ -94,7 +94,7 @@ apis:
       - url: https://services.swpc.noaa.gov/images/
         type: BaseURL
       - url: https://www.swpc.noaa.gov/news/scn-upcoming-json-modifications-and-changes
-        type: Changelog
+        type: ChangeLog
   - aid: noaa-gov:co-ops-data-api
     name: CO-OPS Data Retrieval API (Tides & Currents)
     description: The Center for Operational Oceanographic Products and Services (CO-OPS) Data API returns
@@ -133,7 +133,7 @@ apis:
       - url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
         type: Documentation
       - url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/releasenotes.html
-        type: Changelog
+        type: ChangeLog
   - aid: noaa-gov:co-ops-derived-product-api
     name: CO-OPS Derived Product API (DPAPI v0.1)
     description: Derived products computed from historical CO-OPS water-level records — sea level trends,
@@ -306,7 +306,7 @@ apis:
       - url: https://www.fisheries.noaa.gov/inport/
         type: Documentation
       - url: https://www.fisheries.noaa.gov/inport/release-notes
-        type: Changelog
+        type: ChangeLog
 common:
   - url: https://www.noaa.gov/
     type: Portal
