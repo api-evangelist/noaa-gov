@@ -1,0 +1,27 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/weather-gov-api-openapi.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: userAgent
+  type: apiKey
+  in: header
+  parameter: User-Agent
+  description: |-
+    We require that all consumers of the API include a User-Agent header in requests. This is due to a high number of scripts exhibiting abusive behavior (intentional or unintentional). We recommend setting the value to something that identifies your application and includes a contact email. This will help us contact you if we notice unusual behavior and also aid in troubleshooting issues.
+    The API rem
+  sources:
+  - openapi/weather-gov-api-openapi.json
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: API-Key
+  description: |-
+    We are testing including a more traditional API Key system on certain endpoints.  This is due to a large change in the weather.gov site.
+    The API remains open and free to use and there are no limits imposed based on the X-Api-Key string.
+  sources:
+  - openapi/weather-gov-api-openapi.json

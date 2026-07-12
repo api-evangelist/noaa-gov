@@ -308,6 +308,10 @@ apis:
       - url: https://www.fisheries.noaa.gov/inport/release-notes
         type: ChangeLog
 common:
+  - type: DomainSecurity
+    url: security/noaa-gov-domain-security.yml
+  - type: Authentication
+    url: authentication/noaa-gov-authentication.yml
   - url: https://www.noaa.gov/
     type: Portal
   - url: https://www.noaa.gov/organization
