@@ -1,0 +1,674 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/weather-gov-api-openapi.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 66
+  by_action_class:
+    connected: 66
+  by_consequence:
+    read: 66
+  human_in_the_loop_required: 0
+operations:
+- path: /alerts
+  method: get
+  operationId: alerts_query
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /alerts/active
+  method: get
+  operationId: alerts_active
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /alerts/active/count
+  method: get
+  operationId: alerts_active_count
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /alerts/active/zone/{zoneId}
+  method: get
+  operationId: alerts_active_zone
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /alerts/active/area/{area}
+  method: get
+  operationId: alerts_active_area
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /alerts/active/region/{region}
+  method: get
+  operationId: alerts_active_region
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /alerts/types
+  method: get
+  operationId: alerts_types
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /alerts/{id}
+  method: get
+  operationId: alerts_single
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /aviation/cwsus/{cwsuId}
+  method: get
+  operationId: cwsu
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /aviation/cwsus/{cwsuId}/cwas
+  method: get
+  operationId: cwas
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /aviation/cwsus/{cwsuId}/cwas/{date}/{sequence}
+  method: get
+  operationId: cwa
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /aviation/sigmets
+  method: get
+  operationId: sigmetQuery
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /aviation/sigmets/{atsu}
+  method: get
+  operationId: sigmetsByATSU
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /aviation/sigmets/{atsu}/{date}
+  method: get
+  operationId: sigmetsByATSUByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /aviation/sigmets/{atsu}/{date}/{time}
+  method: get
+  operationId: sigmet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /glossary
+  method: get
+  operationId: glossary
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gridpoints/{wfo}/{x},{y}
+  method: get
+  operationId: gridpoint
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gridpoints/{wfo}/{x},{y}/forecast
+  method: get
+  operationId: gridpoint_forecast
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gridpoints/{wfo}/{x},{y}/forecast/hourly
+  method: get
+  operationId: gridpoint_forecast_hourly
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /gridpoints/{wfo}/{x},{y}/stations
+  method: get
+  operationId: gridpoint_stations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /icons/{set}/{timeOfDay}/{first}
+  method: get
+  operationId: icons
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /icons/{set}/{timeOfDay}/{first}/{second}
+  method: get
+  operationId: iconsDualCondition
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /icons
+  method: get
+  operationId: icons_summary
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /thumbnails/satellite/{area}
+  method: get
+  operationId: satellite_thumbnails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stations/{stationId}/observations
+  method: get
+  operationId: station_observation_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stations/{stationId}/observations/latest
+  method: get
+  operationId: station_observation_latest
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stations/{stationId}/observations/{time}
+  method: get
+  operationId: station_observation_time
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stations/{stationId}/tafs
+  method: get
+  operationId: tafs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stations/{stationId}/tafs/{date}/{time}
+  method: get
+  operationId: taf
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stations
+  method: get
+  operationId: obs_stations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stations/{stationId}
+  method: get
+  operationId: obs_station
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /offices/{officeId}
+  method: get
+  operationId: office
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /offices/{officeId}/briefing
+  method: get
+  operationId: office_briefing
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /offices/{officeId}/briefing/download/latest
+  method: get
+  operationId: office_briefing_download_latest
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /offices/{officeId}/briefing/download/{briefingId}
+  method: get
+  operationId: office_briefing_download
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /offices/{officeId}/headlines/{headlineId}
+  method: get
+  operationId: office_headline
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /offices/{officeId}/headlines
+  method: get
+  operationId: office_headlines
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /offices/{officeId}/weatherstories
+  method: get
+  operationId: office_weatherstory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /offices/{officeId}/weatherstories/download/{imageId}
+  method: get
+  operationId: office_weatherstory_image
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /points/{latitude},{longitude}
+  method: get
+  operationId: point
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /points/{latitude},{longitude}/radio
+  method: get
+  operationId: point_radio
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /points/{latitude},{longitude}/stations
+  method: get
+  operationId: point_stations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /radar/servers
+  method: get
+  operationId: radar_servers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /radar/servers/{id}
+  method: get
+  operationId: radar_server
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /radar/spgds
+  method: get
+  operationId: radar_spgds
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /radar/stations
+  method: get
+  operationId: radar_stations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /radar/stations/{stationId}
+  method: get
+  operationId: radar_station
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /radar/stations/{stationId}/alarms
+  method: get
+  operationId: radar_station_alarms
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /radar/queues/{host}
+  method: get
+  operationId: radar_queue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /radar/profilers/{stationId}
+  method: get
+  operationId: radar_profiler
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /radio/{callSign}/broadcast
+  method: get
+  operationId: area_radio
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /products
+  method: get
+  operationId: products_query
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /products/locations
+  method: get
+  operationId: product_locations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /products/types
+  method: get
+  operationId: product_types
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /products/{productId}
+  method: get
+  operationId: product
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /products/types/{typeId}
+  method: get
+  operationId: products_type
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /products/types/{typeId}/locations
+  method: get
+  operationId: products_type_locations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /products/locations/{locationId}/types
+  method: get
+  operationId: location_products
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /products/types/{typeId}/locations/{locationId}
+  method: get
+  operationId: products_type_location
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /products/types/{typeId}/locations/{locationId}/latest
+  method: get
+  operationId: latest_product_type_location
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /zones
+  method: get
+  operationId: zone_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /zones/{type}
+  method: get
+  operationId: zone_list_type
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /zones/{type}/{zoneId}
+  method: get
+  operationId: zone
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /zones/{type}/{zoneId}/forecast
+  method: get
+  operationId: zone_forecast
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /zones/forecast/{zoneId}/observations
+  method: get
+  operationId: zone_obs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /zones/forecast/{zoneId}/stations
+  method: get
+  operationId: zone_stations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
