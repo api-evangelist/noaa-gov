@@ -1,0 +1,473 @@
+openapi: 3.1.2
+info:
+  title: weather.gov Alerts Radar API
+  description: weather.gov API
+  version: 3.9.2
+servers:
+- url: https://api.weather.gov
+  description: Production server
+security:
+- userAgent: []
+- apiKeyAuth: []
+tags:
+- name: Radar
+paths:
+  /radar/servers:
+    get:
+      description: Returns a list of radar servers
+      operationId: radar_servers
+      parameters:
+      - name: reportingHost
+        in: query
+        description: Show records from specific reporting host
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+            X-Api-Key:
+              $ref: '#/components/headers/X-Api-Key'
+          content:
+            application/ld+json:
+              schema: {}
+        default:
+          $ref: '#/components/responses/Error'
+      tags:
+      - Radar
+  /radar/servers/{id}:
+    parameters:
+    - name: id
+      in: path
+      description: Server ID
+      required: true
+      schema:
+        type: string
+    get:
+      description: Returns metadata about a given radar server
+      operationId: radar_server
+      parameters:
+      - name: reportingHost
+        in: query
+        description: Show records from specific reporting host
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            application/ld+json:
+              schema: {}
+        default:
+          $ref: '#/components/responses/Error'
+      tags:
+      - Radar
+  /radar/spgds:
+    get:
+      description: Returns a list of radar spgds
+      operationId: radar_spgds
+      parameters:
+      - name: published
+        in: query
+        description: Range for publish time
+        schema:
+          $ref: '#/components/schemas/ISO8601Interval'
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            application/ld+json:
+              schema: {}
+        default:
+          $ref: '#/components/responses/Error'
+      tags:
+      - Radar
+  /radar/stations:
+    get:
+      description: Returns a list of radar stations
+      operationId: radar_stations
+      parameters:
+      - name: stationType
+        in: query
+        description: Limit results to a specific station type or types
+        style: form
+        explode: false
+        schema:
+          type: array
+          items:
+            pattern: ^[A-Za-z0-9-]+$
+            type: string
+      - name: reportingHost
+        in: query
+        description: Show RDA and latency info from specific reporting host
+        schema:
+          type: string
+      - name: host
+        in: query
+        description: Show latency info from specific LDM host
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            application/geo+json:
+              schema: {}
+            application/ld+json:
+              schema: {}
+        default:
+          $ref: '#/components/responses/Error'
+      tags:
+      - Radar
+  /radar/stations/{stationId}:
+    parameters:
+    - name: stationId
+      in: path
+      description: Radar station ID
+      required: true
+      schema:
+        type: string
+    get:
+      description: Returns metadata about a given radar station
+      operationId: radar_station
+      parameters:
+      - name: reportingHost
+        in: query
+        description: Show RDA and latency info from specific reporting host
+        schema:
+          type: string
+      - name: host
+        in: query
+        description: Show latency info from specific LDM host
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            application/geo+json:
+              schema: {}
+            application/ld+json:
+              schema: {}
+        default:
+          $ref: '#/components/responses/Error'
+      tags:
+      - Radar
+  /radar/stations/{stationId}/alarms:
+    parameters:
+    - name: stationId
+      in: path
+      description: Radar station ID
+      required: true
+      schema:
+        type: string
+    get:
+      description: Returns metadata about a given radar station alarms
+      operationId: radar_station_alarms
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            application/ld+json:
+              schema: {}
+        default:
+          $ref: '#/components/responses/Error'
+      parameters: []
+      tags:
+      - Radar
+  /radar/queues/{host}:
+    parameters:
+    - name: host
+      in: path
+      description: LDM host
+      required: true
+      schema:
+        enum:
+        - rds
+        - tds
+        type: string
+    get:
+      description: Returns metadata about a given radar queue
+      operationId: radar_queue
+      parameters:
+      - name: limit
+        in: query
+        description: Record limit
+        schema:
+          maximum: 50000
+          minimum: 1
+          type: integer
+      - name: arrived
+        in: query
+        description: Range for arrival time
+        schema:
+          $ref: '#/components/schemas/ISO8601Interval'
+      - name: created
+        in: query
+        description: Range for creation time
+        schema:
+          $ref: '#/components/schemas/ISO8601Interval'
+      - name: published
+        in: query
+        description: Range for publish time
+        schema:
+          $ref: '#/components/schemas/ISO8601Interval'
+      - name: station
+        in: query
+        description: Station identifier
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Record type
+        schema:
+          type: string
+      - name: feed
+        in: query
+        description: Originating product feed
+        schema:
+          type: string
+      - name: resolution
+        in: query
+        description: Resolution version
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            application/ld+json:
+              schema: {}
+        default:
+          $ref: '#/components/responses/Error'
+      tags:
+      - Radar
+  /radar/profilers/{stationId}:
+    parameters:
+    - name: stationId
+      in: path
+      description: Profiler station ID
+      required: true
+      schema:
+        type: string
+    get:
+      description: Returns metadata about a given radar wind profiler
+      operationId: radar_profiler
+      parameters:
+      - name: time
+        in: query
+        description: Time interval
+        schema:
+          $ref: '#/components/schemas/ISO8601Interval'
+      - name: interval
+        in: query
+        description: Averaging interval
+        schema:
+          $ref: '#/components/schemas/ISO8601Duration'
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            application/ld+json:
+              schema: {}
+        default:
+          $ref: '#/components/responses/Error'
+      tags:
+      - Radar
+components:
+  schemas:
+    ISO8601Duration:
+      pattern: ^P(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$
+      type: string
+      description: A time duration in ISO 8601 format.
+      examples:
+      - P2DT12H
+    ProblemDetail:
+      required:
+      - type
+      - title
+      - status
+      - detail
+      - instance
+      - correlationId
+      type: object
+      properties:
+        type:
+          type: string
+          description: 'A URI reference (RFC 3986) that identifies the problem type. This is only an identifier and is not necessarily a resolvable URL.
+
+            '
+          format: uri
+          default: about:blank
+          examples:
+          - urn:noaa:nws:api:UnexpectedProblem
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type.
+          examples:
+          - Unexpected Problem
+        status:
+          maximum: 999
+          minimum: 100
+          type: number
+          description: 'The HTTP status code (RFC 7231, Section 6) generated by the origin server for this occurrence of the problem.
+
+            '
+          examples:
+          - 500
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+          examples:
+          - An unexpected problem has occurred.
+        instance:
+          type: string
+          description: 'A URI reference (RFC 3986) that identifies the specific occurrence of the problem. This is only an identifier and is not necessarily a resolvable URL.
+
+            '
+          format: uri
+          examples:
+          - urn:noaa:nws:api:request:493c3a1d-f87e-407f-ae2c-24483f5aab63
+        correlationId:
+          type: string
+          description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+
+            '
+          examples:
+          - 493c3a1d-f87e-407f-ae2c-24483f5aab63
+      description: Detail about an error. This document conforms to RFC 7807 (Problem Details for HTTP APIs).
+      additionalProperties: true
+    ISO8601Interval:
+      oneOf:
+      - pattern: ^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(Z|[+-]\d{2}:?\d{2}?)|NOW)\/(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(Z|[+-]\d{2}:?\d{2}?)|NOW)$
+        type: string
+        examples:
+        - 2007-03-01T13:00:00Z/2008-05-11T15:30:00Z
+      - pattern: ^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(Z|[+-]\d{2}:?\d{2}?)|NOW)\/P(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$
+        type: string
+        examples:
+        - 2007-03-01T13:00:00Z/P1Y2M10DT2H30M
+      - pattern: ^P(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?\/(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(Z|[+-]\d{2}:?\d{2}?)|NOW)$
+        type: string
+        examples:
+        - P1Y2M10DT2H30M/2008-05-11T15:30:00Z
+      description: "A time interval in ISO 8601 format. This can be one of:\n\n    1. Start and end time\n    2. Start time and duration\n    3. Duration and end time\nThe string \"NOW\" can also be used in place of a start/end time.\n"
+  headers:
+    CorrelationId:
+      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+
+        '
+      schema:
+        type: string
+    ServerId:
+      description: 'The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+
+        '
+      schema:
+        type: string
+    RequestId:
+      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+
+        '
+      schema:
+        type: string
+    X-Api-Key:
+      description: 'A token that a client provides when making API calls.  Please include this identifier with any correspondence to help us investigate your issue.
+
+        '
+      schema:
+        type: string
+  responses:
+    Error:
+      description: An error response.
+      headers:
+        X-Correlation-Id:
+          $ref: '#/components/headers/CorrelationId'
+        X-Request-Id:
+          $ref: '#/components/headers/RequestId'
+        X-Server-Id:
+          $ref: '#/components/headers/ServerId'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+  securitySchemes:
+    userAgent:
+      type: apiKey
+      description: 'We require that all consumers of the API include a User-Agent header in requests. This is due to a high number of scripts exhibiting abusive behavior (intentional or unintentional). We recommend setting the value to something that identifies your application and includes a contact email. This will help us contact you if we notice unusual behavior and also aid in troubleshooting issues.
+
+        The API remains open and free to use and there are no limits imposed based on the User-Agent string.
+
+        This mechanism will be replaced with a more typical API key system at a later date.
+
+        '
+      name: User-Agent
+      in: header
+    apiKeyAuth:
+      type: apiKey
+      description: 'We are testing including a more traditional API Key system on certain endpoints.  This is due to a large change in the weather.gov site.
+
+        The API remains open and free to use and there are no limits imposed based on the X-Api-Key string.
+
+        '
+      name: API-Key
+      in: header
+externalDocs:
+  description: Full API documentation
+  url: https://www.weather.gov/documentation/services-web-api

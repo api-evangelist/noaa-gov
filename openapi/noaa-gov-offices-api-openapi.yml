@@ -1,0 +1,688 @@
+openapi: 3.1.2
+info:
+  title: weather.gov Alerts Offices API
+  description: weather.gov API
+  version: 3.9.2
+servers:
+- url: https://api.weather.gov
+  description: Production server
+security:
+- userAgent: []
+- apiKeyAuth: []
+tags:
+- name: Offices
+paths:
+  /offices/{officeId}:
+    parameters:
+    - $ref: '#/components/parameters/NWSOfficeId'
+    get:
+      description: Returns metadata about a NWS forecast office
+      operationId: office
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Office'
+        default:
+          $ref: '#/components/responses/Error'
+      parameters: []
+      tags:
+      - Offices
+  /offices/{officeId}/briefing:
+    parameters:
+    - $ref: '#/components/parameters/NWSOfficeId'
+    get:
+      description: Returns active briefing for an NWS office
+      operationId: office_briefing
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/OfficeBriefing'
+        default:
+          $ref: '#/components/responses/Error'
+      parameters: []
+      tags:
+      - Offices
+  /offices/{officeId}/briefing/download/latest:
+    parameters:
+    - $ref: '#/components/parameters/NWSOfficeId'
+    get:
+      description: Returns the latest briefing for an office
+      operationId: office_briefing_download_latest
+      responses:
+        '302':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+        default:
+          $ref: '#/components/responses/Error'
+      parameters: []
+      tags:
+      - Offices
+  /offices/{officeId}/briefing/download/{briefingId}:
+    parameters:
+    - $ref: '#/components/parameters/NWSOfficeId'
+    - name: briefingId
+      in: path
+      description: .
+      required: true
+      schema:
+        type: string
+    get:
+      description: Returns a briefing for an office
+      operationId: office_briefing_download
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            application/pdf:
+              schema:
+                $ref: '#/components/schemas/BinaryFile'
+        default:
+          $ref: '#/components/responses/Error'
+      parameters: []
+      tags:
+      - Offices
+  /offices/{officeId}/headlines/{headlineId}:
+    parameters:
+    - $ref: '#/components/parameters/NWSOfficeId'
+    - name: headlineId
+      in: path
+      description: Headline record ID
+      required: true
+      schema:
+        type: string
+    get:
+      description: Returns a specific news headline for a given NWS office
+      operationId: office_headline
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/OfficeHeadline'
+        default:
+          $ref: '#/components/responses/Error'
+      parameters: []
+      tags:
+      - Offices
+  /offices/{officeId}/headlines:
+    parameters:
+    - $ref: '#/components/parameters/NWSOfficeId'
+    get:
+      description: Returns a list of news headlines for a given NWS office
+      operationId: office_headlines
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/OfficeHeadlineCollection'
+        default:
+          $ref: '#/components/responses/Error'
+      parameters: []
+      tags:
+      - Offices
+  /offices/{officeId}/weatherstories:
+    parameters:
+    - $ref: '#/components/parameters/NWSOfficeId'
+    get:
+      description: Returns active weather stories for an NWS office
+      operationId: office_weatherstory
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/OfficeWeatherStoryCollection'
+        default:
+          $ref: '#/components/responses/Error'
+      parameters: []
+      tags:
+      - Offices
+  /offices/{officeId}/weatherstories/download/{imageId}:
+    parameters:
+    - $ref: '#/components/parameters/NWSOfficeId'
+    - name: imageId
+      in: path
+      description: .
+      required: true
+      schema:
+        type: string
+    get:
+      description: Returns the image for a weather story
+      operationId: office_weatherstory_image
+      responses:
+        '200':
+          description: success
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            X-Server-Id:
+              $ref: '#/components/headers/ServerId'
+          content:
+            image/*:
+              schema:
+                $ref: '#/components/schemas/BinaryFile'
+        default:
+          $ref: '#/components/responses/Error'
+      parameters: []
+      tags:
+      - Offices
+components:
+  schemas:
+    OfficeWeatherStory:
+      required:
+      - startTime
+      - endTime
+      - updateTime
+      - title
+      - description
+      - altText
+      - priority
+      - order
+      - download
+      allOf:
+      - $ref: '#/components/schemas/NWSConnectDocumentMetadata'
+      - type: object
+        properties:
+          altText:
+            type: string
+            description: Alternative text description of the content of the image for assistive technology.
+          order:
+            maximum: 7
+            minimum: 1
+            type: integer
+            description: The order in which a weather story should be displayed. Unique for each object.
+    NWSRegionalHQId:
+      enum:
+      - ARH
+      - CRH
+      - ERH
+      - PRH
+      - SRH
+      - WRH
+      type: string
+      description: Three-letter identifier for a NWS Regional HQ.
+    OfficeHeadline:
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/JsonLdContext'
+        '@id':
+          type: string
+          format: uri
+        id:
+          type: string
+        office:
+          type: string
+          format: uri
+        important:
+          type: boolean
+        issuanceTime:
+          type: string
+          format: date-time
+        link:
+          type: string
+          format: uri
+        name:
+          type: string
+        title:
+          type: string
+        summary:
+          type:
+          - string
+          - 'null'
+        content:
+          type: string
+    BinaryFile:
+      type: string
+      format: binary
+    NWSForecastOfficeId:
+      enum:
+      - AKQ
+      - ALY
+      - BGM
+      - BOX
+      - BTV
+      - BUF
+      - CAE
+      - CAR
+      - CHS
+      - CLE
+      - CTP
+      - GSP
+      - GYX
+      - ILM
+      - ILN
+      - LWX
+      - MHX
+      - OKX
+      - PBZ
+      - PHI
+      - RAH
+      - RLX
+      - RNK
+      - ABQ
+      - AMA
+      - BMX
+      - BRO
+      - CRP
+      - EPZ
+      - EWX
+      - FFC
+      - FWD
+      - HGX
+      - HUN
+      - JAN
+      - JAX
+      - KEY
+      - LCH
+      - LIX
+      - LUB
+      - LZK
+      - MAF
+      - MEG
+      - MFL
+      - MLB
+      - MOB
+      - MRX
+      - OHX
+      - OUN
+      - SHV
+      - SJT
+      - SJU
+      - TAE
+      - TBW
+      - TSA
+      - ABR
+      - APX
+      - ARX
+      - BIS
+      - BOU
+      - CYS
+      - DDC
+      - DLH
+      - DMX
+      - DTX
+      - DVN
+      - EAX
+      - FGF
+      - FSD
+      - GID
+      - GJT
+      - GLD
+      - GRB
+      - GRR
+      - ICT
+      - ILX
+      - IND
+      - IWX
+      - JKL
+      - LBF
+      - LMK
+      - LOT
+      - LSX
+      - MKX
+      - MPX
+      - MQT
+      - OAX
+      - PAH
+      - PUB
+      - RIW
+      - SGF
+      - TOP
+      - UNR
+      - BOI
+      - BYZ
+      - EKA
+      - FGZ
+      - GGW
+      - HNX
+      - LKN
+      - LOX
+      - MFR
+      - MSO
+      - MTR
+      - OTX
+      - PDT
+      - PIH
+      - PQR
+      - PSR
+      - REV
+      - SEW
+      - SGX
+      - SLC
+      - STO
+      - TFX
+      - TWC
+      - VEF
+      - AER
+      - AFC
+      - AFG
+      - AJK
+      - ALU
+      - GUM
+      - HPA
+      - HFO
+      - PPG
+      - PQE
+      - PQW
+      - STU
+      - NH1
+      - NH2
+      - ONA
+      - ONP
+      type: string
+      description: Three-letter identifier for a NWS office.
+    NWSConnectDocumentMetadata:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        startTime:
+          type: string
+          description: The time when the document becomes active. ISO8601 datetime.
+          format: date-time
+        endTime:
+          type: string
+          description: The time when the document becomes inactive. ISO8601 datetime.
+          format: date-time
+        updateTime:
+          type: string
+          description: When the document was last updated. ISO8601 datetime.
+          format: date-time
+        title:
+          maxLength: 50
+          type: string
+          description: A short title.
+        description:
+          type: string
+          description: A longer description and/or caption.
+        priority:
+          type: boolean
+          description: An indicator that a weather story should be emphasized.
+        download:
+          type: string
+          description: The URL of the media content for the weather story.
+          format: uri
+      description: Metadata for an NWS Connect document.
+    Office:
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/JsonLdContext'
+        '@type':
+          enum:
+          - GovernmentOrganization
+          type: string
+        '@id':
+          type: string
+          format: uri
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          type: object
+          properties:
+            '@type':
+              enum:
+              - PostalAddress
+              type: string
+            streetAddress:
+              type: string
+            addressLocality:
+              type: string
+            addressRegion:
+              type: string
+            postalCode:
+              type: string
+          additionalProperties: false
+        telephone:
+          type: string
+        faxNumber:
+          type: string
+        email:
+          type: string
+        sameAs:
+          type: string
+          format: uri
+        nwsRegion:
+          type: string
+        parentOrganization:
+          type: string
+          format: uri
+        responsibleCounties:
+          type: array
+          items:
+            type: string
+            format: uri
+        responsibleForecastZones:
+          type: array
+          items:
+            type: string
+            format: uri
+        responsibleFireZones:
+          type: array
+          items:
+            type: string
+            format: uri
+        approvedObservationStations:
+          type: array
+          items:
+            type: string
+            format: uri
+      additionalProperties: false
+    NWSNationalHQId:
+      enum:
+      - NWS
+      type: string
+      description: Three-letter identifier for NWS National HQ.
+    OfficeWeatherStoryCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/OfficeWeatherStory'
+    NWSOfficeId:
+      oneOf:
+      - $ref: '#/components/schemas/NWSForecastOfficeId'
+      - $ref: '#/components/schemas/NWSRegionalHQId'
+      - $ref: '#/components/schemas/NWSNationalHQId'
+    OfficeHeadlineCollection:
+      required:
+      - '@context'
+      - '@graph'
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/JsonLdContext'
+        '@graph':
+          type: array
+          items:
+            $ref: '#/components/schemas/OfficeHeadline'
+      additionalProperties: false
+    OfficeBriefing:
+      $ref: '#/components/schemas/NWSConnectDocumentMetadata'
+    ProblemDetail:
+      required:
+      - type
+      - title
+      - status
+      - detail
+      - instance
+      - correlationId
+      type: object
+      properties:
+        type:
+          type: string
+          description: 'A URI reference (RFC 3986) that identifies the problem type. This is only an identifier and is not necessarily a resolvable URL.
+
+            '
+          format: uri
+          default: about:blank
+          examples:
+          - urn:noaa:nws:api:UnexpectedProblem
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type.
+          examples:
+          - Unexpected Problem
+        status:
+          maximum: 999
+          minimum: 100
+          type: number
+          description: 'The HTTP status code (RFC 7231, Section 6) generated by the origin server for this occurrence of the problem.
+
+            '
+          examples:
+          - 500
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+          examples:
+          - An unexpected problem has occurred.
+        instance:
+          type: string
+          description: 'A URI reference (RFC 3986) that identifies the specific occurrence of the problem. This is only an identifier and is not necessarily a resolvable URL.
+
+            '
+          format: uri
+          examples:
+          - urn:noaa:nws:api:request:493c3a1d-f87e-407f-ae2c-24483f5aab63
+        correlationId:
+          type: string
+          description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+
+            '
+          examples:
+          - 493c3a1d-f87e-407f-ae2c-24483f5aab63
+      description: Detail about an error. This document conforms to RFC 7807 (Problem Details for HTTP APIs).
+      additionalProperties: true
+    JsonLdContext:
+      anyOf:
+      - type: array
+        items: {}
+      - type: object
+  headers:
+    RequestId:
+      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+
+        '
+      schema:
+        type: string
+    CorrelationId:
+      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+
+        '
+      schema:
+        type: string
+    ServerId:
+      description: 'The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+
+        '
+      schema:
+        type: string
+  responses:
+    Error:
+      description: An error response.
+      headers:
+        X-Correlation-Id:
+          $ref: '#/components/headers/CorrelationId'
+        X-Request-Id:
+          $ref: '#/components/headers/RequestId'
+        X-Server-Id:
+          $ref: '#/components/headers/ServerId'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+  parameters:
+    NWSOfficeId:
+      name: officeId
+      in: path
+      description: NWS office ID
+      required: true
+      schema:
+        $ref: '#/components/schemas/NWSOfficeId'
+  securitySchemes:
+    userAgent:
+      type: apiKey
+      description: 'We require that all consumers of the API include a User-Agent header in requests. This is due to a high number of scripts exhibiting abusive behavior (intentional or unintentional). We recommend setting the value to something that identifies your application and includes a contact email. This will help us contact you if we notice unusual behavior and also aid in troubleshooting issues.
+
+        The API remains open and free to use and there are no limits imposed based on the User-Agent string.
+
+        This mechanism will be replaced with a more typical API key system at a later date.
+
+        '
+      name: User-Agent
+      in: header
+    apiKeyAuth:
+      type: apiKey
+      description: 'We are testing including a more traditional API Key system on certain endpoints.  This is due to a large change in the weather.gov site.
+
+        The API remains open and free to use and there are no limits imposed based on the X-Api-Key string.
+
+        '
+      name: API-Key
+      in: header
+externalDocs:
+  description: Full API documentation
+  url: https://www.weather.gov/documentation/services-web-api
