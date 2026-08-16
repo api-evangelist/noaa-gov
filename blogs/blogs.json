@@ -5,7 +5,7 @@
       "source": "https://www.noaa.gov/rss.xml",
       "feed_url": "https://www.noaa.gov/rss.xml",
       "title": "",
-      "saved": 0,
+      "saved": 9,
       "method": "feed"
     },
     {
@@ -13,7 +13,8 @@
       "feed_url": "https://www.weather.gov/news",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "none",
+      "error": "parse_failed"
     },
     {
       "source": "https://www.noaa.gov/news",
@@ -24,6 +25,6 @@
       "error": "HTTPError"
     }
   ],
-  "post_count": 31,
-  "fetched": "2026-08-06T14:08:46Z"
+  "post_count": 40,
+  "fetched": "2026-08-15T12:11:08Z"
 }
