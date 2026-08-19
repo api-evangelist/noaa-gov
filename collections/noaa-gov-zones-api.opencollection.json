@@ -1,0 +1,278 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "weather.gov Alerts Zones API",
+    "version": "3.9.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "User-Agent",
+      "value": "{{User-Agent}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "zone_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/zones",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Zone ID (forecast or county)"
+              },
+              {
+                "name": "area",
+                "value": "",
+                "type": "query",
+                "description": "State/marine area code"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "Region code"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Zone type"
+              },
+              {
+                "name": "point",
+                "value": "",
+                "type": "query",
+                "description": "Point (latitude,longitude)"
+              },
+              {
+                "name": "include_geometry",
+                "value": "",
+                "type": "query",
+                "description": "Include geometry in results (true/false)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit"
+              },
+              {
+                "name": "effective",
+                "value": "",
+                "type": "query",
+                "description": "Effective date/time"
+              }
+            ]
+          },
+          "docs": "Returns a list of zones"
+        },
+        {
+          "info": {
+            "name": "zone_list_type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/zones/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Zone type"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Zone ID (forecast or county)"
+              },
+              {
+                "name": "area",
+                "value": "",
+                "type": "query",
+                "description": "State/marine area code"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "Region code"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Zone type"
+              },
+              {
+                "name": "point",
+                "value": "",
+                "type": "query",
+                "description": "Point (latitude,longitude)"
+              },
+              {
+                "name": "include_geometry",
+                "value": "",
+                "type": "query",
+                "description": "Include geometry in results (true/false)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit"
+              },
+              {
+                "name": "effective",
+                "value": "",
+                "type": "query",
+                "description": "Effective date/time"
+              }
+            ]
+          },
+          "docs": "Returns a list of zones of a given type"
+        },
+        {
+          "info": {
+            "name": "zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/zones/:type/:zoneId",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Zone type"
+              },
+              {
+                "name": "zoneId",
+                "value": "",
+                "type": "path",
+                "description": "NWS public zone/county identifier"
+              },
+              {
+                "name": "effective",
+                "value": "",
+                "type": "query",
+                "description": "Effective date/time"
+              }
+            ]
+          },
+          "docs": "Returns metadata about a given zone"
+        },
+        {
+          "info": {
+            "name": "zone_forecast",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/zones/:type/:zoneId/forecast",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Zone type"
+              },
+              {
+                "name": "zoneId",
+                "value": "",
+                "type": "path",
+                "description": "NWS public zone/county identifier"
+              }
+            ]
+          },
+          "docs": "Returns the current zone forecast for a given zone"
+        },
+        {
+          "info": {
+            "name": "zone_obs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/zones/forecast/:zoneId/observations",
+            "params": [
+              {
+                "name": "zoneId",
+                "value": "",
+                "type": "path",
+                "description": "NWS public zone/county identifier"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start date/time"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End date/time"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit"
+              }
+            ]
+          },
+          "docs": "Returns a list of observations for a given zone"
+        },
+        {
+          "info": {
+            "name": "zone_stations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/zones/forecast/:zoneId/stations",
+            "params": [
+              {
+                "name": "zoneId",
+                "value": "",
+                "type": "path",
+                "description": "NWS public zone/county identifier"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Returns a list of observation stations for a given zone"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

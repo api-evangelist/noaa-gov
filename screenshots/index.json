@@ -1,0 +1,11 @@
+[
+  {
+    "repo": "noaa-gov",
+    "captured_at": "2026-08-17T124233",
+    "source_url": "https://www.noaa.gov/",
+    "source_type": "Portal",
+    "file": "noaa-gov-2026-08-17T124233.png",
+    "bytes": 1529841,
+    "capture": "playwright-local"
+  }
+]

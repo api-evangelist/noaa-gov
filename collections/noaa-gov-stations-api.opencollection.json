@@ -1,0 +1,225 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "weather.gov Alerts Stations API",
+    "version": "3.9.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "User-Agent",
+      "value": "{{User-Agent}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "station_observation_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/stations/:stationId/observations",
+            "params": [
+              {
+                "name": "stationId",
+                "value": "",
+                "type": "path",
+                "description": "Observation station ID"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start time"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End time"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit"
+              }
+            ]
+          },
+          "docs": "Returns a list of observations for a given station"
+        },
+        {
+          "info": {
+            "name": "station_observation_latest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/stations/:stationId/observations/latest",
+            "params": [
+              {
+                "name": "stationId",
+                "value": "",
+                "type": "path",
+                "description": "Observation station ID"
+              },
+              {
+                "name": "require_qc",
+                "value": "",
+                "type": "query",
+                "description": "Require QC"
+              }
+            ]
+          },
+          "docs": "Returns the latest observation for a station"
+        },
+        {
+          "info": {
+            "name": "station_observation_time",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/stations/:stationId/observations/:time",
+            "params": [
+              {
+                "name": "stationId",
+                "value": "",
+                "type": "path",
+                "description": "Observation station ID"
+              },
+              {
+                "name": "time",
+                "value": "",
+                "type": "path",
+                "description": "Timestamp of requested observation"
+              }
+            ]
+          },
+          "docs": "Returns a single observation."
+        },
+        {
+          "info": {
+            "name": "tafs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/stations/:stationId/tafs",
+            "params": [
+              {
+                "name": "stationId",
+                "value": "",
+                "type": "path",
+                "description": "Observation station ID"
+              }
+            ]
+          },
+          "docs": "Returns Terminal Aerodrome Forecasts for the specified airport station."
+        },
+        {
+          "info": {
+            "name": "taf",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/stations/:stationId/tafs/:date/:time",
+            "params": [
+              {
+                "name": "stationId",
+                "value": "",
+                "type": "path",
+                "description": "Observation station ID"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "Date (YYYY-MM-DD format)"
+              },
+              {
+                "name": "time",
+                "value": "",
+                "type": "path",
+                "description": "Time (HHMM format). This time is always specified in UTC (Zulu) time."
+              }
+            ]
+          },
+          "docs": "Returns a single Terminal Aerodrome Forecast."
+        },
+        {
+          "info": {
+            "name": "obs_stations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/stations",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by observation station ID"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Filter by state/marine area code"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Returns a list of observation stations."
+        },
+        {
+          "info": {
+            "name": "obs_station",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/stations/:stationId",
+            "params": [
+              {
+                "name": "stationId",
+                "value": "",
+                "type": "path",
+                "description": "Observation station ID"
+              }
+            ]
+          },
+          "docs": "Returns metadata about a given observation station"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

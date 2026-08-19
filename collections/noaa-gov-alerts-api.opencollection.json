@@ -1,0 +1,324 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "weather.gov Alerts API",
+    "version": "3.9.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "User-Agent",
+      "value": "{{User-Agent}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "alerts_query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/alerts",
+            "params": [
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "List only active alerts (use /alerts/active endpoints instead)"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start time"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End time"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Status (actual, exercise, system, test, draft)"
+              },
+              {
+                "name": "message_type",
+                "value": "",
+                "type": "query",
+                "description": "Message type (alert, update, cancel)"
+              },
+              {
+                "name": "event",
+                "value": "",
+                "type": "query",
+                "description": "Event name"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Event code"
+              },
+              {
+                "name": "area",
+                "value": "",
+                "type": "query",
+                "description": "State/territory code or marine area code\nThis parameter is incompatible with the following parameters: point, region, region_type, zone\n"
+              },
+              {
+                "name": "point",
+                "value": "",
+                "type": "query",
+                "description": "Point (latitude,longitude)\nThis parameter is incompatible with the following parameters: area, region, region_type, zone\n"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "Marine region code\nThis parameter is incompatible with the following parameters: area, point, region_type, zone\n"
+              },
+              {
+                "name": "region_type",
+                "value": "",
+                "type": "query",
+                "description": "Region type (land or marine)\nThis parameter is incompatible with the following parameters: area, point, region, zone\n"
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone ID (forecast or county)\nThis parameter is incompatible with the following parameters: area, point, region, region_type\n"
+              },
+              {
+                "name": "urgency",
+                "value": "",
+                "type": "query",
+                "description": "Urgency (immediate, expected, future, past, unknown)"
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query",
+                "description": "Severity (extreme, severe, moderate, minor, unknown)"
+              },
+              {
+                "name": "certainty",
+                "value": "",
+                "type": "query",
+                "description": "Certainty (observed, likely, possible, unlikely, unknown)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "Returns all alerts"
+        },
+        {
+          "info": {
+            "name": "alerts_active",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/alerts/active",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Status (actual, exercise, system, test, draft)"
+              },
+              {
+                "name": "message_type",
+                "value": "",
+                "type": "query",
+                "description": "Message type (alert, update, cancel)"
+              },
+              {
+                "name": "event",
+                "value": "",
+                "type": "query",
+                "description": "Event name"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Event code"
+              },
+              {
+                "name": "area",
+                "value": "",
+                "type": "query",
+                "description": "State/territory code or marine area code\nThis parameter is incompatible with the following parameters: point, region, region_type, zone\n"
+              },
+              {
+                "name": "point",
+                "value": "",
+                "type": "query",
+                "description": "Point (latitude,longitude)\nThis parameter is incompatible with the following parameters: area, region, region_type, zone\n"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "Marine region code\nThis parameter is incompatible with the following parameters: area, point, region_type, zone\n"
+              },
+              {
+                "name": "region_type",
+                "value": "",
+                "type": "query",
+                "description": "Region type (land or marine)\nThis parameter is incompatible with the following parameters: area, point, region, zone\n"
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone ID (forecast or county)\nThis parameter is incompatible with the following parameters: area, point, region, region_type\n"
+              },
+              {
+                "name": "urgency",
+                "value": "",
+                "type": "query",
+                "description": "Urgency (immediate, expected, future, past, unknown)"
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query",
+                "description": "Severity (extreme, severe, moderate, minor, unknown)"
+              },
+              {
+                "name": "certainty",
+                "value": "",
+                "type": "query",
+                "description": "Certainty (observed, likely, possible, unlikely, unknown)"
+              }
+            ]
+          },
+          "docs": "Returns all currently active alerts"
+        },
+        {
+          "info": {
+            "name": "alerts_active_count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/alerts/active/count"
+          },
+          "docs": "Returns info on the number of active alerts"
+        },
+        {
+          "info": {
+            "name": "alerts_active_zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/alerts/active/zone/:zoneId",
+            "params": [
+              {
+                "name": "zoneId",
+                "value": "",
+                "type": "path",
+                "description": "NWS public zone/county identifier"
+              }
+            ]
+          },
+          "docs": "Returns active alerts for the given NWS public zone or county"
+        },
+        {
+          "info": {
+            "name": "alerts_active_area",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/alerts/active/area/:area",
+            "params": [
+              {
+                "name": "area",
+                "value": "",
+                "type": "path",
+                "description": "State/area ID"
+              }
+            ]
+          },
+          "docs": "Returns active alerts for the given area (state or marine area)"
+        },
+        {
+          "info": {
+            "name": "alerts_active_region",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/alerts/active/region/:region",
+            "params": [
+              {
+                "name": "region",
+                "value": "",
+                "type": "path",
+                "description": "Marine region ID"
+              }
+            ]
+          },
+          "docs": "Returns active alerts for the given marine region"
+        },
+        {
+          "info": {
+            "name": "alerts_types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/alerts/types"
+          },
+          "docs": "Returns a list of alert types"
+        },
+        {
+          "info": {
+            "name": "alerts_single",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/alerts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Alert identifier"
+              }
+            ]
+          },
+          "docs": "Returns a specific alert"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

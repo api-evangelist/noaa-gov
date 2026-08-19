@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "weather.gov Alerts Radio API",
+    "version": "3.9.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "User-Agent",
+      "value": "{{User-Agent}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Radio",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "area_radio",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/radio/:callSign/broadcast",
+            "params": [
+              {
+                "name": "callSign",
+                "value": "",
+                "type": "path",
+                "description": "The call sign identifier for a NOAA transmitter station."
+              }
+            ]
+          },
+          "docs": "Returns NOAA Weather Radio broadcast script for a transmitter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

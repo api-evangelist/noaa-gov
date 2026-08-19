@@ -1,0 +1,1512 @@
+{
+  "item": [
+    {
+      "id": "30f4728b-023d-4b2f-afdd-7dba12f39304",
+      "name": "Zones",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "baa35bf6-87db-40ea-a05f-bad85f51e97f",
+          "name": "zone list",
+          "request": {
+            "name": "zone list",
+            "description": {
+              "content": "Returns a list of zones",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "zones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>,<string>",
+                  "description": "Zone ID (forecast or county)"
+                },
+                {
+                  "disabled": false,
+                  "key": "area",
+                  "value": "<string>,<string>",
+                  "description": "State/marine area code"
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>,<string>",
+                  "description": "Region code"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>,<string>",
+                  "description": "Zone type"
+                },
+                {
+                  "disabled": false,
+                  "key": "point",
+                  "value": "<string>",
+                  "description": "Point (latitude,longitude)"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_geometry",
+                  "value": "<boolean>",
+                  "description": "Include geometry in results (true/false)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Limit"
+                },
+                {
+                  "disabled": false,
+                  "key": "effective",
+                  "value": "<dateTime>",
+                  "description": "Effective date/time"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/geo+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40734939-a188-404a-8dd8-bf020c7d03e0",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "FLC430,IAC307"
+                    },
+                    {
+                      "key": "area",
+                      "value": "MD,MN"
+                    },
+                    {
+                      "key": "region",
+                      "value": "PR,PR"
+                    },
+                    {
+                      "key": "type",
+                      "value": "public,fire"
+                    },
+                    {
+                      "key": "point",
+                      "value": "0.40813929916,66.6987600"
+                    },
+                    {
+                      "key": "include_geometry",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "effective",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "User-Agent",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/geo+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Correlation-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Server-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/geo+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bbox\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"properties\": {\n        \"geometry\": \"string\",\n        \"@id\": \"https://yBcjgdnZvBNbtEItBG.kouRpbiHdyyjiopGGhHuMmy7cZvlz1x\",\n        \"@type\": \"wx:Zone\",\n        \"id\": \"WYC444\",\n        \"type\": \"forecast\",\n        \"name\": \"string\",\n        \"effectiveDate\": \"1951-06-08T04:18:36.453Z\",\n        \"expirationDate\": \"2005-05-21T07:56:00.860Z\",\n        \"state\": \"MO\",\n        \"forecastOffice\": \"http://ZvVrWKQUBhubWuydv.vyExY08PrWA9URdjBD5md0NSqDPGRVDWLGT5KsJsZuoD,QExjCUT\",\n        \"gridIdentifier\": \"string\",\n        \"awipsLocationIdentifier\": \"string\",\n        \"cwa\": [\n          \"NH2\",\n          \"TOP\"\n        ],\n        \"forecastOffices\": [\n          \"http://QSTnjN.jloCJYeYD6ndgDpdT0c0YtaV7SX,MSNE\",\n          \"http://UDQiHAgtoPmJvVWnhPVJttTx.tidj4yzPVbVHP+yG,EVnQLaeIpfd57TeNkzzaSReKNewLFgJehfEBB1TnEZ9m4zS2KnGhhdXr\"\n        ],\n        \"timeZone\": [\n          \"string\",\n          \"string\"\n        ],\n        \"observationStations\": [\n          \"http://pRJNqAHkURPXZWM.uyysDw8bVUhnTIykCq-+75uap3vRClm\",\n          \"http://vpJbdBpjiy.lqvO+uWZg26WCjPZ,Nv3ORBotA.3sG18t9PKjbp.W1ERk71SxtkIs\"\n        ],\n        \"radarStation\": \"string\"\n      },\n      \"id\": \"http://zcmHcuenWAxeediHlVrBGCzcI.gsFQhwvbW+19bF3VMrEC,GLglQBK3pzHtgWLR\"\n    },\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bbox\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"properties\": {\n        \"geometry\": \"string\",\n        \"@id\": \"http://SUAXdXArBwYeZHCYVcod.edipeGOmNsBdUk+HNytNQrdskIsdHqEHepewUERdGBHPsa1qO4K6dalMlHWZuBvA,vl1cngEr\",\n        \"@type\": \"wx:Zone\",\n        \"id\": \"GMZ775\",\n        \"type\": \"public\",\n        \"name\": \"string\",\n        \"effectiveDate\": \"1977-10-20T20:18:24.713Z\",\n        \"expirationDate\": \"1968-06-01T19:28:18.168Z\",\n        \"state\": \"UT\",\n        \"forecastOffice\": \"http://OZaqNEijtuXAEadwpJJf.ppvhDy\",\n        \"gridIdentifier\": \"string\",\n        \"awipsLocationIdentifier\": \"string\",\n        \"cwa\": [\n          \"PIH\",\n          \"OTX\"\n        ],\n        \"forecastOffices\": [\n          \"https://nzny.ubkuDM5-SKqv71Xu\",\n          \"http://nYvAWkpEoc.hmwjPh8igRzFgdGgYCsaxiUEZ5X6uYmtg5OhchM\"\n        ],\n        \"timeZone\": [\n          \"string\",\n          \"string\"\n        ],\n        \"observationStations\": [\n          \"http://doRbhypHtSvGFbBVkyyeQ.wmdoUo1p+ARvoxKreZSB7Mp1npP8psu1\",\n          \"https://QEQVBclaJTjcsSM.syecOSO7FKUYLkIK4MgHWy0xlvBnf\"\n        ],\n        \"radarStation\": \"string\"\n      },\n      \"id\": \"http://IohOmaR.zngFzYm,hDnpShjAm-LUy4n7ob\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d64a9630-a686-48f8-b3a8-371cf1f12e04",
+              "name": "An error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "FLC430,IAC307"
+                    },
+                    {
+                      "key": "area",
+                      "value": "MD,MN"
+                    },
+                    {
+                      "key": "region",
+                      "value": "PR,PR"
+                    },
+                    {
+                      "key": "type",
+                      "value": "public,fire"
+                    },
+                    {
+                      "key": "point",
+                      "value": "0.40813929916,66.6987600"
+                    },
+                    {
+                      "key": "include_geometry",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "effective",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "User-Agent",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Correlation-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Server-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"urn:noaa:nws:api:UnexpectedProblem\",\n  \"title\": \"Unexpected Problem\",\n  \"status\": 500,\n  \"detail\": \"An unexpected problem has occurred.\",\n  \"instance\": \"urn:noaa:nws:api:request:493c3a1d-f87e-407f-ae2c-24483f5aab63\",\n  \"correlationId\": \"493c3a1d-f87e-407f-ae2c-24483f5aab63\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0efd998d-590e-4254-b696-820b8489e7af",
+          "name": "zone list type",
+          "request": {
+            "name": "zone list type",
+            "description": {
+              "content": "Returns a list of zones of a given type",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "zones",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>,<string>",
+                  "description": "Zone ID (forecast or county)"
+                },
+                {
+                  "disabled": false,
+                  "key": "area",
+                  "value": "<string>,<string>",
+                  "description": "State/marine area code"
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>,<string>",
+                  "description": "Region code"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>,<string>",
+                  "description": "Zone type"
+                },
+                {
+                  "disabled": false,
+                  "key": "point",
+                  "value": "<string>",
+                  "description": "Point (latitude,longitude)"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_geometry",
+                  "value": "<boolean>",
+                  "description": "Include geometry in results (true/false)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Limit"
+                },
+                {
+                  "disabled": false,
+                  "key": "effective",
+                  "value": "<dateTime>",
+                  "description": "Effective date/time"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Zone type"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/geo+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0eca5ee-5dd5-4653-8fd8-e98f52a6211b",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zones",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "FLC430,IAC307"
+                    },
+                    {
+                      "key": "area",
+                      "value": "MD,MN"
+                    },
+                    {
+                      "key": "region",
+                      "value": "PR,PR"
+                    },
+                    {
+                      "key": "type",
+                      "value": "public,fire"
+                    },
+                    {
+                      "key": "point",
+                      "value": "0.40813929916,66.6987600"
+                    },
+                    {
+                      "key": "include_geometry",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "effective",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Zone type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "User-Agent",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/geo+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Correlation-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Server-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/geo+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bbox\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"properties\": {\n        \"geometry\": \"string\",\n        \"@id\": \"https://yBcjgdnZvBNbtEItBG.kouRpbiHdyyjiopGGhHuMmy7cZvlz1x\",\n        \"@type\": \"wx:Zone\",\n        \"id\": \"WYC444\",\n        \"type\": \"forecast\",\n        \"name\": \"string\",\n        \"effectiveDate\": \"1951-06-08T04:18:36.453Z\",\n        \"expirationDate\": \"2005-05-21T07:56:00.860Z\",\n        \"state\": \"MO\",\n        \"forecastOffice\": \"http://ZvVrWKQUBhubWuydv.vyExY08PrWA9URdjBD5md0NSqDPGRVDWLGT5KsJsZuoD,QExjCUT\",\n        \"gridIdentifier\": \"string\",\n        \"awipsLocationIdentifier\": \"string\",\n        \"cwa\": [\n          \"NH2\",\n          \"TOP\"\n        ],\n        \"forecastOffices\": [\n          \"http://QSTnjN.jloCJYeYD6ndgDpdT0c0YtaV7SX,MSNE\",\n          \"http://UDQiHAgtoPmJvVWnhPVJttTx.tidj4yzPVbVHP+yG,EVnQLaeIpfd57TeNkzzaSReKNewLFgJehfEBB1TnEZ9m4zS2KnGhhdXr\"\n        ],\n        \"timeZone\": [\n          \"string\",\n          \"string\"\n        ],\n        \"observationStations\": [\n          \"http://pRJNqAHkURPXZWM.uyysDw8bVUhnTIykCq-+75uap3vRClm\",\n          \"http://vpJbdBpjiy.lqvO+uWZg26WCjPZ,Nv3ORBotA.3sG18t9PKjbp.W1ERk71SxtkIs\"\n        ],\n        \"radarStation\": \"string\"\n      },\n      \"id\": \"http://zcmHcuenWAxeediHlVrBGCzcI.gsFQhwvbW+19bF3VMrEC,GLglQBK3pzHtgWLR\"\n    },\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bbox\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"properties\": {\n        \"geometry\": \"string\",\n        \"@id\": \"http://SUAXdXArBwYeZHCYVcod.edipeGOmNsBdUk+HNytNQrdskIsdHqEHepewUERdGBHPsa1qO4K6dalMlHWZuBvA,vl1cngEr\",\n        \"@type\": \"wx:Zone\",\n        \"id\": \"GMZ775\",\n        \"type\": \"public\",\n        \"name\": \"string\",\n        \"effectiveDate\": \"1977-10-20T20:18:24.713Z\",\n        \"expirationDate\": \"1968-06-01T19:28:18.168Z\",\n        \"state\": \"UT\",\n        \"forecastOffice\": \"http://OZaqNEijtuXAEadwpJJf.ppvhDy\",\n        \"gridIdentifier\": \"string\",\n        \"awipsLocationIdentifier\": \"string\",\n        \"cwa\": [\n          \"PIH\",\n          \"OTX\"\n        ],\n        \"forecastOffices\": [\n          \"https://nzny.ubkuDM5-SKqv71Xu\",\n          \"http://nYvAWkpEoc.hmwjPh8igRzFgdGgYCsaxiUEZ5X6uYmtg5OhchM\"\n        ],\n        \"timeZone\": [\n          \"string\",\n          \"string\"\n        ],\n        \"observationStations\": [\n          \"http://doRbhypHtSvGFbBVkyyeQ.wmdoUo1p+ARvoxKreZSB7Mp1npP8psu1\",\n          \"https://QEQVBclaJTjcsSM.syecOSO7FKUYLkIK4MgHWy0xlvBnf\"\n        ],\n        \"radarStation\": \"string\"\n      },\n      \"id\": \"http://IohOmaR.zngFzYm,hDnpShjAm-LUy4n7ob\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28fc5b33-8b42-4051-a4aa-1205c78a1830",
+              "name": "An error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zones",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "FLC430,IAC307"
+                    },
+                    {
+                      "key": "area",
+                      "value": "MD,MN"
+                    },
+                    {
+                      "key": "region",
+                      "value": "PR,PR"
+                    },
+                    {
+                      "key": "type",
+                      "value": "public,fire"
+                    },
+                    {
+                      "key": "point",
+                      "value": "0.40813929916,66.6987600"
+                    },
+                    {
+                      "key": "include_geometry",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "effective",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Zone type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "User-Agent",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Correlation-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Server-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"urn:noaa:nws:api:UnexpectedProblem\",\n  \"title\": \"Unexpected Problem\",\n  \"status\": 500,\n  \"detail\": \"An unexpected problem has occurred.\",\n  \"instance\": \"urn:noaa:nws:api:request:493c3a1d-f87e-407f-ae2c-24483f5aab63\",\n  \"correlationId\": \"493c3a1d-f87e-407f-ae2c-24483f5aab63\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "005fc117-1a7b-4087-b848-91c2ac188494",
+          "name": "zone",
+          "request": {
+            "name": "zone",
+            "description": {
+              "content": "Returns metadata about a given zone",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "zones",
+                ":type",
+                ":zoneId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "effective",
+                  "value": "<dateTime>",
+                  "description": "Effective date/time"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Zone type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "zoneId",
+                  "description": "(Required) NWS public zone/county identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/geo+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2094ebeb-fc45-423e-8726-08d7d96106c1",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zones",
+                    ":type",
+                    ":zoneId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "effective",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Zone type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "zoneId",
+                      "description": "(Required) NWS public zone/county identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "User-Agent",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/geo+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Correlation-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Server-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/geo+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      8620.506117426872,\n      66.4538037856366\n    ],\n    \"bbox\": [\n      9486.248635789647,\n      4630.660995430251,\n      9140.062818030841,\n      7265.753238793727\n    ]\n  },\n  \"properties\": {\n    \"geometry\": \"string\",\n    \"@id\": \"https://OfdFugGmdZQEsCqLVpjSJKISLpD.dnkB9tTlyvLO,WUt4P6Vqsgg0IWpKSx\",\n    \"@type\": \"wx:Zone\",\n    \"id\": \"ILZ221\",\n    \"type\": \"land\",\n    \"name\": \"string\",\n    \"effectiveDate\": \"1977-12-12T13:35:01.417Z\",\n    \"expirationDate\": \"2008-10-11T21:03:04.661Z\",\n    \"state\": \"MT\",\n    \"forecastOffice\": \"https://ZBzxhDUgnlrqM.nuhCL\",\n    \"gridIdentifier\": \"string\",\n    \"awipsLocationIdentifier\": \"string\",\n    \"cwa\": [\n      \"JAN\",\n      \"GSP\"\n    ],\n    \"forecastOffices\": [\n      \"http://lMoqt.mshwQ9-uLDzqkbtm32Ym2DsG7Yl-HghdGg0bcHCij32C+bvQxgG4zEK37Ne1Q4P\",\n      \"http://tyEmI.ucuKsp.YMJRBFpXumyZt.FDSYawOlZLkfQ71kY.EwUy\"\n    ],\n    \"timeZone\": [\n      \"string\",\n      \"string\"\n    ],\n    \"observationStations\": [\n      \"https://CPNdHEAEaHCXbndgS.wwpZ24XN8DiDFRvBI5DD86Xyz\",\n      \"http://qnHdSJNkzdAABiyO.vlcoUlS5Xy\"\n    ],\n    \"radarStation\": \"string\"\n  },\n  \"id\": \"https://OVjsohSyQa.eqyxZDqGwFyLLGeSUC5gag6iS+AECLOryLvV6sUIJjBESoCYxTLJ-6ElG\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3adfd8d3-2355-45f2-a911-1074871d2aa0",
+              "name": "An error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zones",
+                    ":type",
+                    ":zoneId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "effective",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Zone type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "zoneId",
+                      "description": "(Required) NWS public zone/county identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "User-Agent",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Correlation-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Server-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"urn:noaa:nws:api:UnexpectedProblem\",\n  \"title\": \"Unexpected Problem\",\n  \"status\": 500,\n  \"detail\": \"An unexpected problem has occurred.\",\n  \"instance\": \"urn:noaa:nws:api:request:493c3a1d-f87e-407f-ae2c-24483f5aab63\",\n  \"correlationId\": \"493c3a1d-f87e-407f-ae2c-24483f5aab63\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "040a8bca-4d55-4dd1-9032-e0a5d10a1d1d",
+          "name": "zone forecast",
+          "request": {
+            "name": "zone forecast",
+            "description": {
+              "content": "Returns the current zone forecast for a given zone",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "zones",
+                ":type",
+                ":zoneId",
+                "forecast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Zone type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "zoneId",
+                  "description": "(Required) NWS public zone/county identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/geo+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc8b78df-26b8-402d-81c4-7b7f46bba40d",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zones",
+                    ":type",
+                    ":zoneId",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Zone type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "zoneId",
+                      "description": "(Required) NWS public zone/county identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "User-Agent",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/geo+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Correlation-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Server-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/geo+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      9394.4182288301,\n      388.557017173794\n    ],\n    \"bbox\": [\n      7617.084037599585,\n      4723.811417624974,\n      7269.438325931772,\n      2891.652728918618\n    ]\n  },\n  \"properties\": {\n    \"geometry\": \"string\",\n    \"zone\": \"http://xDpWjFBEEPEDbKAInoPQ.baOxXq3aR1rUgG39QMeMR.R\",\n    \"updated\": \"2002-05-06T11:38:10.924Z\",\n    \"periods\": [\n      {\n        \"number\": 9166,\n        \"name\": \"This Afternoon\",\n        \"detailedForecast\": \"string\"\n      },\n      {\n        \"number\": 7170,\n        \"name\": \"This Afternoon\",\n        \"detailedForecast\": \"string\"\n      }\n    ]\n  },\n  \"id\": \"https://TYajoWGvKkKXqAa.vnjjO-JQkLbbRp5.HVpGWz17HM9dII8hafoz\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3120fb3d-4bdf-4ec0-9274-628c4ab3bbb9",
+              "name": "An error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zones",
+                    ":type",
+                    ":zoneId",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Zone type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "zoneId",
+                      "description": "(Required) NWS public zone/county identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "User-Agent",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Correlation-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Server-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"urn:noaa:nws:api:UnexpectedProblem\",\n  \"title\": \"Unexpected Problem\",\n  \"status\": 500,\n  \"detail\": \"An unexpected problem has occurred.\",\n  \"instance\": \"urn:noaa:nws:api:request:493c3a1d-f87e-407f-ae2c-24483f5aab63\",\n  \"correlationId\": \"493c3a1d-f87e-407f-ae2c-24483f5aab63\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a83b92f-e2d9-492e-9e7f-8ac44115c3b4",
+          "name": "zone obs",
+          "request": {
+            "name": "zone obs",
+            "description": {
+              "content": "Returns a list of observations for a given zone",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "zones",
+                "forecast",
+                ":zoneId",
+                "observations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>",
+                  "description": "Start date/time"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>",
+                  "description": "End date/time"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Limit"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "zoneId",
+                  "description": "(Required) NWS public zone/county identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/geo+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8605bec7-2f33-45f7-a818-3728759de90f",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zones",
+                    "forecast",
+                    ":zoneId",
+                    "observations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "zoneId",
+                      "description": "(Required) NWS public zone/county identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "User-Agent",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/geo+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Correlation-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Server-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/geo+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bbox\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"properties\": {\n        \"geometry\": \"string\",\n        \"@id\": \"http://xksjRCUWsTCAgQKTNhhTnnjKgKpjcXag.reFFSQgO3PMC-taPC-IhVhGmFTAPpsyp7Dq,0oca3lxn6MpNLP+Ws2lxwBEwiSv01d7W3efU7fNy.E\",\n        \"@type\": \"wx:ObservationStation\",\n        \"elevation\": {\n          \"value\": 4382.933395512659,\n          \"maxValue\": 9417.46483357967,\n          \"minValue\": 6284.247415112256,\n          \"unitCode\": \"K4A\",\n          \"qualityControl\": \"V\"\n        },\n        \"station\": \"https://LeqXyBBbjNrbHdKpwC.huevHrk1rtBmngP+adwCOyOj9Vp-d4GY0t28gw64s8obAjW\",\n        \"stationId\": \"string\",\n        \"stationName\": \"string\",\n        \"timestamp\": \"1984-06-05T03:58:44.394Z\",\n        \"rawMessage\": \"string\",\n        \"textDescription\": \"string\",\n        \"icon\": \"http://YSLuolKoZupvaISmwCw.vmrxU2cCzV,\",\n        \"presentWeather\": [\n          {\n            \"intensity\": \"heavy\",\n            \"modifier\": \"freezing\",\n            \"weather\": \"thunderstorms\",\n            \"rawString\": \"string\",\n            \"inVicinity\": false\n          },\n          {\n            \"intensity\": \"heavy\",\n            \"modifier\": \"blowing\",\n            \"weather\": \"ice_crystals\",\n            \"rawString\": \"string\",\n            \"inVicinity\": false\n          }\n        ],\n        \"temperature\": {\n          \"value\": 978.3229795798499,\n          \"maxValue\": 9930.870066221933,\n          \"minValue\": 7920.034299061337,\n          \"unitCode\": \"wmo:BSK8\",\n          \"qualityControl\": \"B\"\n        },\n        \"dewpoint\": {\n          \"value\": 1740.8780344437646,\n          \"maxValue\": 9292.21139803404,\n          \"minValue\": 4749.946885256595,\n          \"unitCode\": \"g43}W\",\n          \"qualityControl\": \"T\"\n        },\n        \"windDirection\": {\n          \"value\": 6941.921950125074,\n          \"maxValue\": 3203.8655878786417,\n          \"minValue\": 3249.891746714153,\n          \"unitCode\": \"RyN~Rsr6\",\n          \"qualityControl\": \"Q\"\n        },\n        \"windSpeed\": {\n          \"value\": 3111.7960304933545,\n          \"maxValue\": 9452.851797451838,\n          \"minValue\": 5116.418084557466,\n          \"unitCode\": \"{SM9x@s\",\n          \"qualityControl\": \"C\"\n        },\n        \"windGust\": {\n          \"value\": 2659.9561208574873,\n          \"maxValue\": 7023.30828338061,\n          \"minValue\": 8202.150693788906,\n          \"unitCode\": \"6GN!eO$%\",\n          \"qualityControl\": \"X\"\n        },\n        \"barometricPressure\": {\n          \"value\": 6743.416830288369,\n          \"maxValue\": 1682.4234399425297,\n          \"minValue\": 5075.319808070742,\n          \"unitCode\": \"uc:x{e5%L>8!\",\n          \"qualityControl\": \"S\"\n        },\n        \"seaLevelPressure\": {\n          \"value\": 9668.161299323077,\n          \"maxValue\": 5744.780718651286,\n          \"minValue\": 3395.780216802213,\n          \"unitCode\": \")9OV\",\n          \"qualityControl\": \"X\"\n        },\n        \"visibility\": {\n          \"value\": 893.9824383524319,\n          \"maxValue\": 1021.2418728663797,\n          \"minValue\": 6690.172118327921,\n          \"unitCode\": \"uc:!]\",\n          \"qualityControl\": \"V\"\n        },\n        \"maxTemperatureLast24Hours\": {\n          \"value\": 9152.955387119406,\n          \"maxValue\": 3572.0230456328995,\n          \"minValue\": 5766.995699314603,\n          \"unitCode\": \"d~!#eHP\",\n          \"qualityControl\": \"V\"\n        },\n        \"minTemperatureLast24Hours\": {\n          \"value\": 2428.0777483885195,\n          \"maxValue\": 6720.721940451754,\n          \"minValue\": 6417.588861496113,\n          \"unitCode\": \"uc:l9wU~Oq\",\n          \"qualityControl\": \"T\"\n        },\n        \"precipitationLastHour\": {\n          \"value\": 487.48220076005435,\n          \"maxValue\": 3745.3258241573294,\n          \"minValue\": 8459.634101679289,\n          \"unitCode\": \"|{UAPJqm\",\n          \"qualityControl\": \"G\"\n        },\n        \"precipitationLast3Hours\": {\n          \"value\": 4526.296251988498,\n          \"maxValue\": 5878.277270199176,\n          \"minValue\": 4276.537453728162,\n          \"unitCode\": \"nwsUnit:5^c;:vtd5\",\n          \"qualityControl\": \"C\"\n        },\n        \"precipitationLast6Hours\": {\n          \"value\": 9594.389353486915,\n          \"maxValue\": 278.5059193021511,\n          \"minValue\": 1827.3908730380206,\n          \"unitCode\": \"wmoUnit:j-8e/\",\n          \"qualityControl\": \"T\"\n        },\n        \"relativeHumidity\": {\n          \"value\": 727.2383592425713,\n          \"maxValue\": 8072.32158093566,\n          \"minValue\": 4509.912334686508,\n          \"unitCode\": \"uc:.x-*`Gh3o\",\n          \"qualityControl\": \"B\"\n        },\n        \"windChill\": {\n          \"value\": 1820.3176940557287,\n          \"maxValue\": 8728.566551494867,\n          \"minValue\": 1088.0260130185736,\n          \"unitCode\": \")N\",\n          \"qualityControl\": \"C\"\n        },\n        \"heatIndex\": {\n          \"value\": 3138.5919383597793,\n          \"maxValue\": 8915.65928565579,\n          \"minValue\": 3370.686040073243,\n          \"unitCode\": \")Nyq \",\n          \"qualityControl\": \"Q\"\n        },\n        \"cloudLayers\": [\n          {\n            \"base\": {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maxValue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minValue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unitCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"qualityControl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"amount\": \"SKC\"\n          },\n          {\n            \"base\": {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maxValue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minValue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unitCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"qualityControl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"amount\": \"VV\"\n          }\n        ]\n      },\n      \"id\": \"https://MBgaoALfUBfmLrbMudShf.vjNfDZHSyUc4XXyR7WJ\"\n    },\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bbox\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"properties\": {\n        \"geometry\": \"string\",\n        \"@id\": \"http://xRMjBBVSXIQIdWWMhJUBwnWk.jgcA8GELioPBs5PZj6ZF3gpX1MH2dWkOZj.dRbhRT+BQjs5ohRCU\",\n        \"@type\": \"wx:ObservationStation\",\n        \"elevation\": {\n          \"value\": 9522.661804156105,\n          \"maxValue\": 2511.5532269642827,\n          \"minValue\": 9117.668294933921,\n          \"unitCode\": \"wmoUnit:;Hi\",\n          \"qualityControl\": \"C\"\n        },\n        \"station\": \"https://LXDrDGldyccDpo.zxnkNJcAiZbymObHH-ecdDMkKm+8wfUSTqgvI6ccN-J+mETV3bP\",\n        \"stationId\": \"string\",\n        \"stationName\": \"string\",\n        \"timestamp\": \"2012-02-06T20:43:20.618Z\",\n        \"rawMessage\": \"string\",\n        \"textDescription\": \"string\",\n        \"icon\": \"http://CATYbBFQzfyDasqzNlYSDt.oavhlTUgNUwAi9N51z2FvWqWDx50cCI\",\n        \"presentWeather\": [\n          {\n            \"intensity\": \"heavy\",\n            \"modifier\": \"freezing\",\n            \"weather\": \"unknown\",\n            \"rawString\": \"string\",\n            \"inVicinity\": true\n          },\n          {\n            \"intensity\": \"light\",\n            \"modifier\": \"blowing\",\n            \"weather\": \"hail\",\n            \"rawString\": \"string\",\n            \"inVicinity\": false\n          }\n        ],\n        \"temperature\": {\n          \"value\": 510.59341688137414,\n          \"maxValue\": 9193.642914811324,\n          \"minValue\": 7611.601621289733,\n          \"unitCode\": \"}dI3G,_&\",\n          \"qualityControl\": \"G\"\n        },\n        \"dewpoint\": {\n          \"value\": 8296.36205831683,\n          \"maxValue\": 9668.50250722037,\n          \"minValue\": 584.1834891866205,\n          \"unitCode\": \"6UM<\",\n          \"qualityControl\": \"S\"\n        },\n        \"windDirection\": {\n          \"value\": 5640.362444478848,\n          \"maxValue\": 8523.96033738779,\n          \"minValue\": 5268.777207263483,\n          \"unitCode\": \":tS\",\n          \"qualityControl\": \"T\"\n        },\n        \"windSpeed\": {\n          \"value\": 857.2547016401777,\n          \"maxValue\": 7909.5355040776185,\n          \"minValue\": 6659.041481222331,\n          \"unitCode\": \"wmo:u}\",\n          \"qualityControl\": \"Q\"\n        },\n        \"windGust\": {\n          \"value\": 9573.251372290102,\n          \"maxValue\": 4036.2292195216055,\n          \"minValue\": 1213.710580514782,\n          \"unitCode\": \"YB:,fWT}y_\",\n          \"qualityControl\": \"B\"\n        },\n        \"barometricPressure\": {\n          \"value\": 4679.294535812849,\n          \"maxValue\": 956.1252453470281,\n          \"minValue\": 8722.28515056479,\n          \"unitCode\": \"wmoUnit:v2gIJu*wM\",\n          \"qualityControl\": \"C\"\n        },\n        \"seaLevelPressure\": {\n          \"value\": 7447.6191545748825,\n          \"maxValue\": 7806.666629619042,\n          \"minValue\": 3379.3371872505895,\n          \"unitCode\": \"uc:*&A\",\n          \"qualityControl\": \"B\"\n        },\n        \"visibility\": {\n          \"value\": 5001.491030715576,\n          \"maxValue\": 441.40041095945827,\n          \"minValue\": 2600.4966442646014,\n          \"unitCode\": \"\",\n          \"qualityControl\": \"X\"\n        },\n        \"maxTemperatureLast24Hours\": {\n          \"value\": 3097.029215748255,\n          \"maxValue\": 9054.35597888329,\n          \"minValue\": 9336.18156703214,\n          \"unitCode\": \"wmoUnit:K<Il=aS@o\",\n          \"qualityControl\": \"S\"\n        },\n        \"minTemperatureLast24Hours\": {\n          \"value\": 7829.792284221036,\n          \"maxValue\": 4338.204112476093,\n          \"minValue\": 482.4137100567982,\n          \"unitCode\": \"wmoUnit:hm<j=aB* \",\n          \"qualityControl\": \"G\"\n        },\n        \"precipitationLastHour\": {\n          \"value\": 1414.138361741204,\n          \"maxValue\": 9078.286597227654,\n          \"minValue\": 6303.738479538992,\n          \"unitCode\": \"wmo:Sy\",\n          \"qualityControl\": \"Q\"\n        },\n        \"precipitationLast3Hours\": {\n          \"value\": 967.7586073590261,\n          \"maxValue\": 5115.647921373503,\n          \"minValue\": 3434.656205918547,\n          \"unitCode\": \"wmoUnit:M$>,s_(36#\",\n          \"qualityControl\": \"C\"\n        },\n        \"precipitationLast6Hours\": {\n          \"value\": 1554.9200798563102,\n          \"maxValue\": 5665.534078358239,\n          \"minValue\": 189.36009620337367,\n          \"unitCode\": \"nwsUnit:_.J\\\"\",\n          \"qualityControl\": \"S\"\n        },\n        \"relativeHumidity\": {\n          \"value\": 1204.2948075548566,\n          \"maxValue\": 2426.3822271120107,\n          \"minValue\": 7172.402146500656,\n          \"unitCode\": \"wmoUnit:`hcz'boFx}\",\n          \"qualityControl\": \"G\"\n        },\n        \"windChill\": {\n          \"value\": 1540.9912332634613,\n          \"maxValue\": 9474.679045924468,\n          \"minValue\": 2656.899838013291,\n          \"unitCode\": \"wmo:y\",\n          \"qualityControl\": \"C\"\n        },\n        \"heatIndex\": {\n          \"value\": 2797.8276764625953,\n          \"maxValue\": 1786.0518772605726,\n          \"minValue\": 5310.032655180722,\n          \"unitCode\": \"XKve+LSw\\\"f\",\n          \"qualityControl\": \"T\"\n        },\n        \"cloudLayers\": [\n          {\n            \"base\": {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maxValue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minValue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unitCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"qualityControl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"amount\": \"SKC\"\n          },\n          {\n            \"base\": {\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maxValue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minValue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unitCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"qualityControl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"amount\": \"SCT\"\n          }\n        ]\n      },\n      \"id\": \"https://rMvIciJWWiSfUzlXxvezZQNYZPmVP.xgrZEuW92wg-8Lm7ONipicAEjlGfBwnzsMDRC2PV-MEvGKDA3SYEeGU3G0\"\n    }\n  ],\n  \"pagination\": {\n    \"next\": \"http://cXrnszuXZLGkZl.prfDcQ4.RvX+vxJsdfa7td\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2af6461-0c7e-4164-b8ac-7a4430cf99c8",
+              "name": "An error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zones",
+                    "forecast",
+                    ":zoneId",
+                    "observations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "zoneId",
+                      "description": "(Required) NWS public zone/county identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "User-Agent",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Correlation-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Server-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"urn:noaa:nws:api:UnexpectedProblem\",\n  \"title\": \"Unexpected Problem\",\n  \"status\": 500,\n  \"detail\": \"An unexpected problem has occurred.\",\n  \"instance\": \"urn:noaa:nws:api:request:493c3a1d-f87e-407f-ae2c-24483f5aab63\",\n  \"correlationId\": \"493c3a1d-f87e-407f-ae2c-24483f5aab63\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1b7f630-adf3-46e2-9f25-0471305b8989",
+          "name": "zone stations",
+          "request": {
+            "name": "zone stations",
+            "description": {
+              "content": "Returns a list of observation stations for a given zone",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "zones",
+                "forecast",
+                ":zoneId",
+                "stations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "500",
+                  "description": "Limit"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "zoneId",
+                  "description": "(Required) NWS public zone/county identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/geo+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80c9e339-83d3-44ea-8dd6-19e34141e4a2",
+              "name": "A collection of observation stations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zones",
+                    "forecast",
+                    ":zoneId",
+                    "stations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "zoneId",
+                      "description": "(Required) NWS public zone/county identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "User-Agent",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/geo+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Correlation-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Server-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/geo+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bbox\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"properties\": {\n        \"geometry\": \"string\",\n        \"@id\": \"https://sXqwJYUgibSCndoXcIdYsjzewWdaW.akooW.7V+furplMeq1fyRyIG86eGRNK,PsY3FutknbN-60iBQZSaZkn\",\n        \"@type\": \"wx:ObservationStation\",\n        \"elevation\": {\n          \"value\": 5881.449915691936,\n          \"maxValue\": 4098.380100247237,\n          \"minValue\": 9081.051051030467,\n          \"unitCode\": \"wmoUnit:=W4@Pt/}5Z\",\n          \"qualityControl\": \"S\"\n        },\n        \"stationIdentifier\": \"string\",\n        \"name\": \"string\",\n        \"timeZone\": \"string\",\n        \"provider\": \"string\",\n        \"subProvider\": \"string\",\n        \"forecast\": \"http://BFRwxUBLWchzQvgxULaODMqQFHsMU.qdecgIJr4k4Ok4pdvljPEs9Dx.,ZL.7GVk1oC\",\n        \"county\": \"https://jq.nsSBlMuALLY4UObDsZlX,FdhcPr4DOT4In9Hj+keC8c\",\n        \"fireWeatherZone\": \"http://mQqMvIdyRInuQBMOAixYzbIGbxhrGCLMO.kyrRgZmyLvHF+5OByV-sKuLcTCtyBganww+oD3fLPZBhWjrXbzosShttZj82s3I+YuzFcIL7U9p+f.\",\n        \"distance\": {\n          \"value\": 6298.030675848096,\n          \"maxValue\": 7534.750227631398,\n          \"minValue\": 2596.172743751081,\n          \"unitCode\": \"nwsUnit:J3?\",\n          \"qualityControl\": \"C\"\n        },\n        \"bearing\": {\n          \"value\": 6831.14271303901,\n          \"maxValue\": 998.9242212477145,\n          \"minValue\": 1583.787937793042,\n          \"unitCode\": \"3%$Ho\",\n          \"qualityControl\": \"V\"\n        }\n      },\n      \"id\": \"https://pbCRHCUUgTfMuMdZEWfTrFIRtfZVFDYn.kdfcllbWq0tvpM86BbY4D1UYwhGaPF4OFC9kHy9uhqiBDYzwXY2HSiJkeA+NPFK1H.\"\n    },\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"bbox\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"properties\": {\n        \"geometry\": \"string\",\n        \"@id\": \"https://tFJoZd.eksOnltl7QbJZTePDF7H-1zs0TndL6.-C0H6wU.yYUNGZStUVJNHJKs\",\n        \"@type\": \"wx:ObservationStation\",\n        \"elevation\": {\n          \"value\": 3155.0660376059645,\n          \"maxValue\": 2323.8355893912044,\n          \"minValue\": 2657.721630568195,\n          \"unitCode\": \"uc:,oc\",\n          \"qualityControl\": \"X\"\n        },\n        \"stationIdentifier\": \"string\",\n        \"name\": \"string\",\n        \"timeZone\": \"string\",\n        \"provider\": \"string\",\n        \"subProvider\": \"string\",\n        \"forecast\": \"http://UeHXXwefpaLLXzGCDwGchtWQf.coyfguE.h1oLrRG89Bcl7khwehwnE813fdf3EHePBo38HR9uPymx6OE.nCUvn.TxM+KZn\",\n        \"county\": \"https://LVPxInXCTkGPtzLZGalNVjBFm.ixcm3vnurqDVJZbPy0qZCzQW+UF-92fLKs+Qf5v1DcyOguqkZWzle8sN\",\n        \"fireWeatherZone\": \"http://itCaaRYPo.hxglmoUEYKjk6ICNjYQ5RmxvEfU+4HDZdbunpil,Kc,DDi8z+sWyDYa\",\n        \"distance\": {\n          \"value\": 2132.0494097226606,\n          \"maxValue\": 6528.938438554629,\n          \"minValue\": 8402.426833202724,\n          \"unitCode\": \"o.&;v<\",\n          \"qualityControl\": \"V\"\n        },\n        \"bearing\": {\n          \"value\": 8505.659914283387,\n          \"maxValue\": 5300.703897765498,\n          \"minValue\": 2551.897024866756,\n          \"unitCode\": \"wmoUnit:rk\",\n          \"qualityControl\": \"B\"\n        }\n      },\n      \"id\": \"http://UCOnYSAfFZswuymWKieWSafzeRRae.xnxpSJV9kA+3XDR-Mdw\"\n    }\n  ],\n  \"observationStations\": [\n    \"http://w.eijgTfPrDzCtB850-7lhYL\",\n    \"https://kawnrEEuZFxcomCaVaebflN.zuCVrQhA82Jw1W0hmHD0qiLPAM5.vjC-wMalKNy.Xbj2GiRiE\"\n  ],\n  \"pagination\": {\n    \"next\": \"http://dmF.qocaCeRXW64DzU+01on4Fu\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "359adce5-86ec-4a26-82f5-166dd9e1a699",
+              "name": "An error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zones",
+                    "forecast",
+                    ":zoneId",
+                    "stations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "zoneId",
+                      "description": "(Required) NWS public zone/county identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "User-Agent",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Correlation-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.\n",
+                  "key": "X-Server-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"urn:noaa:nws:api:UnexpectedProblem\",\n  \"title\": \"Unexpected Problem\",\n  \"status\": 500,\n  \"detail\": \"An unexpected problem has occurred.\",\n  \"instance\": \"urn:noaa:nws:api:request:493c3a1d-f87e-407f-ae2c-24483f5aab63\",\n  \"correlationId\": \"493c3a1d-f87e-407f-ae2c-24483f5aab63\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.weather.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "User-Agent"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "479d6774-c602-4fa4-a644-5007e8d36c00",
+    "name": "weather.gov Alerts Zones API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "weather.gov API",
+      "type": "text/plain"
+    }
+  }
+}

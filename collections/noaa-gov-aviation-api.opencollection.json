@@ -1,0 +1,213 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "weather.gov Alerts Aviation API",
+    "version": "3.9.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "User-Agent",
+      "value": "{{User-Agent}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Aviation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "cwsu",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/aviation/cwsus/:cwsuId",
+            "params": [
+              {
+                "name": "cwsuId",
+                "value": "",
+                "type": "path",
+                "description": "NWS CWSU ID"
+              }
+            ]
+          },
+          "docs": "Returns metadata about a Center Weather Service Unit"
+        },
+        {
+          "info": {
+            "name": "cwas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/aviation/cwsus/:cwsuId/cwas",
+            "params": [
+              {
+                "name": "cwsuId",
+                "value": "",
+                "type": "path",
+                "description": "NWS CWSU ID"
+              }
+            ]
+          },
+          "docs": "Returns a list of Center Weather Advisories from a CWSU"
+        },
+        {
+          "info": {
+            "name": "cwa",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/aviation/cwsus/:cwsuId/cwas/:date/:sequence",
+            "params": [
+              {
+                "name": "cwsuId",
+                "value": "",
+                "type": "path",
+                "description": "NWS CWSU ID"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "Date (YYYY-MM-DD format)"
+              },
+              {
+                "name": "sequence",
+                "value": "",
+                "type": "path",
+                "description": "Sequence number"
+              }
+            ]
+          },
+          "docs": "Returns a list of Center Weather Advisories from a CWSU"
+        },
+        {
+          "info": {
+            "name": "sigmetQuery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/aviation/sigmets",
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start time"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End time"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Date (YYYY-MM-DD format)"
+              },
+              {
+                "name": "atsu",
+                "value": "",
+                "type": "query",
+                "description": "ATSU identifier"
+              },
+              {
+                "name": "sequence",
+                "value": "",
+                "type": "query",
+                "description": "SIGMET sequence number"
+              }
+            ]
+          },
+          "docs": "Returns a list of SIGMET/AIRMETs"
+        },
+        {
+          "info": {
+            "name": "sigmetsByATSU",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/aviation/sigmets/:atsu",
+            "params": [
+              {
+                "name": "atsu",
+                "value": "",
+                "type": "path",
+                "description": "ATSU identifier"
+              }
+            ]
+          },
+          "docs": "Returns a list of SIGMET/AIRMETs for the specified ATSU"
+        },
+        {
+          "info": {
+            "name": "sigmetsByATSUByDate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/aviation/sigmets/:atsu/:date",
+            "params": [
+              {
+                "name": "atsu",
+                "value": "",
+                "type": "path",
+                "description": "ATSU identifier"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "Date (YYYY-MM-DD format)"
+              }
+            ]
+          },
+          "docs": "Returns a list of SIGMET/AIRMETs for the specified ATSU for the specified date"
+        },
+        {
+          "info": {
+            "name": "sigmet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/aviation/sigmets/:atsu/:date/:time",
+            "params": [
+              {
+                "name": "atsu",
+                "value": "",
+                "type": "path",
+                "description": "ATSU identifier"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "Date (YYYY-MM-DD format)"
+              },
+              {
+                "name": "time",
+                "value": "",
+                "type": "path",
+                "description": "Time (HHMM format). This time is always specified in UTC (Zulu) time."
+              }
+            ]
+          },
+          "docs": "Returns a specific SIGMET/AIRMET"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

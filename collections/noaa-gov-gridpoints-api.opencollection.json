@@ -1,0 +1,180 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "weather.gov Alerts Gridpoints API",
+    "version": "3.9.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "User-Agent",
+      "value": "{{User-Agent}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Gridpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "gridpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/gridpoints/:wfo/:x,:y",
+            "params": [
+              {
+                "name": "wfo",
+                "value": "",
+                "type": "path",
+                "description": "Forecast office ID"
+              },
+              {
+                "name": "x",
+                "value": "",
+                "type": "path",
+                "description": "Forecast grid X coordinate"
+              },
+              {
+                "name": "y",
+                "value": "",
+                "type": "path",
+                "description": "Forecast grid Y coordinate"
+              }
+            ]
+          },
+          "docs": "Returns raw numerical forecast data for a 2.5km grid area"
+        },
+        {
+          "info": {
+            "name": "gridpoint_forecast",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/gridpoints/:wfo/:x,:y/forecast",
+            "headers": [
+              {
+                "name": "Feature-Flags",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "wfo",
+                "value": "",
+                "type": "path",
+                "description": "Forecast office ID"
+              },
+              {
+                "name": "x",
+                "value": "",
+                "type": "path",
+                "description": "Forecast grid X coordinate"
+              },
+              {
+                "name": "y",
+                "value": "",
+                "type": "path",
+                "description": "Forecast grid Y coordinate"
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Use US customary or SI (metric) units in textual output"
+              }
+            ]
+          },
+          "docs": "Returns a textual forecast for a 2.5km grid area"
+        },
+        {
+          "info": {
+            "name": "gridpoint_forecast_hourly",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/gridpoints/:wfo/:x,:y/forecast/hourly",
+            "headers": [
+              {
+                "name": "Feature-Flags",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "wfo",
+                "value": "",
+                "type": "path",
+                "description": "Forecast office ID"
+              },
+              {
+                "name": "x",
+                "value": "",
+                "type": "path",
+                "description": "Forecast grid X coordinate"
+              },
+              {
+                "name": "y",
+                "value": "",
+                "type": "path",
+                "description": "Forecast grid Y coordinate"
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Use US customary or SI (metric) units in textual output"
+              }
+            ]
+          },
+          "docs": "Returns a textual hourly forecast for a 2.5km grid area"
+        },
+        {
+          "info": {
+            "name": "gridpoint_stations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/gridpoints/:wfo/:x,:y/stations",
+            "params": [
+              {
+                "name": "wfo",
+                "value": "",
+                "type": "path",
+                "description": "Forecast office ID"
+              },
+              {
+                "name": "x",
+                "value": "",
+                "type": "path",
+                "description": "Forecast grid X coordinate"
+              },
+              {
+                "name": "y",
+                "value": "",
+                "type": "path",
+                "description": "Forecast grid Y coordinate"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit"
+              }
+            ]
+          },
+          "docs": "Returns a list of observation stations usable for a given 2.5km grid area"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

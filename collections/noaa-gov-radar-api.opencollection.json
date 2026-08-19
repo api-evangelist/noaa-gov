@@ -1,0 +1,268 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "weather.gov Alerts Radar API",
+    "version": "3.9.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "User-Agent",
+      "value": "{{User-Agent}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Radar",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "radar_servers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/radar/servers",
+            "params": [
+              {
+                "name": "reportingHost",
+                "value": "",
+                "type": "query",
+                "description": "Show records from specific reporting host"
+              }
+            ]
+          },
+          "docs": "Returns a list of radar servers"
+        },
+        {
+          "info": {
+            "name": "radar_server",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/radar/servers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Server ID"
+              },
+              {
+                "name": "reportingHost",
+                "value": "",
+                "type": "query",
+                "description": "Show records from specific reporting host"
+              }
+            ]
+          },
+          "docs": "Returns metadata about a given radar server"
+        },
+        {
+          "info": {
+            "name": "radar_spgds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/radar/spgds",
+            "params": [
+              {
+                "name": "published",
+                "value": "",
+                "type": "query",
+                "description": "Range for publish time"
+              }
+            ]
+          },
+          "docs": "Returns a list of radar spgds"
+        },
+        {
+          "info": {
+            "name": "radar_stations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/radar/stations",
+            "params": [
+              {
+                "name": "stationType",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to a specific station type or types"
+              },
+              {
+                "name": "reportingHost",
+                "value": "",
+                "type": "query",
+                "description": "Show RDA and latency info from specific reporting host"
+              },
+              {
+                "name": "host",
+                "value": "",
+                "type": "query",
+                "description": "Show latency info from specific LDM host"
+              }
+            ]
+          },
+          "docs": "Returns a list of radar stations"
+        },
+        {
+          "info": {
+            "name": "radar_station",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/radar/stations/:stationId",
+            "params": [
+              {
+                "name": "stationId",
+                "value": "",
+                "type": "path",
+                "description": "Radar station ID"
+              },
+              {
+                "name": "reportingHost",
+                "value": "",
+                "type": "query",
+                "description": "Show RDA and latency info from specific reporting host"
+              },
+              {
+                "name": "host",
+                "value": "",
+                "type": "query",
+                "description": "Show latency info from specific LDM host"
+              }
+            ]
+          },
+          "docs": "Returns metadata about a given radar station"
+        },
+        {
+          "info": {
+            "name": "radar_station_alarms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/radar/stations/:stationId/alarms",
+            "params": [
+              {
+                "name": "stationId",
+                "value": "",
+                "type": "path",
+                "description": "Radar station ID"
+              }
+            ]
+          },
+          "docs": "Returns metadata about a given radar station alarms"
+        },
+        {
+          "info": {
+            "name": "radar_queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/radar/queues/:host",
+            "params": [
+              {
+                "name": "host",
+                "value": "",
+                "type": "path",
+                "description": "LDM host"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Record limit"
+              },
+              {
+                "name": "arrived",
+                "value": "",
+                "type": "query",
+                "description": "Range for arrival time"
+              },
+              {
+                "name": "created",
+                "value": "",
+                "type": "query",
+                "description": "Range for creation time"
+              },
+              {
+                "name": "published",
+                "value": "",
+                "type": "query",
+                "description": "Range for publish time"
+              },
+              {
+                "name": "station",
+                "value": "",
+                "type": "query",
+                "description": "Station identifier"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Record type"
+              },
+              {
+                "name": "feed",
+                "value": "",
+                "type": "query",
+                "description": "Originating product feed"
+              },
+              {
+                "name": "resolution",
+                "value": "",
+                "type": "query",
+                "description": "Resolution version"
+              }
+            ]
+          },
+          "docs": "Returns metadata about a given radar queue"
+        },
+        {
+          "info": {
+            "name": "radar_profiler",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/radar/profilers/:stationId",
+            "params": [
+              {
+                "name": "stationId",
+                "value": "",
+                "type": "path",
+                "description": "Profiler station ID"
+              },
+              {
+                "name": "time",
+                "value": "",
+                "type": "query",
+                "description": "Time interval"
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "Averaging interval"
+              }
+            ]
+          },
+          "docs": "Returns metadata about a given radar wind profiler"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

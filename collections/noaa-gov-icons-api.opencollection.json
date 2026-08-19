@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "weather.gov Alerts Icons API",
+    "version": "3.9.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "User-Agent",
+      "value": "{{User-Agent}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Icons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "icons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/icons/:set/:timeOfDay/:first",
+            "params": [
+              {
+                "name": "set",
+                "value": "",
+                "type": "path",
+                "description": "."
+              },
+              {
+                "name": "timeOfDay",
+                "value": "",
+                "type": "path",
+                "description": "."
+              },
+              {
+                "name": "first",
+                "value": "",
+                "type": "path",
+                "description": "."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Font size"
+              },
+              {
+                "name": "fontsize",
+                "value": "",
+                "type": "query",
+                "description": "Font size"
+              }
+            ]
+          },
+          "docs": "Returns a forecast icon. Icon services in API are deprecated."
+        },
+        {
+          "info": {
+            "name": "iconsDualCondition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/icons/:set/:timeOfDay/:first/:second",
+            "params": [
+              {
+                "name": "set",
+                "value": "",
+                "type": "path",
+                "description": "."
+              },
+              {
+                "name": "timeOfDay",
+                "value": "",
+                "type": "path",
+                "description": "."
+              },
+              {
+                "name": "first",
+                "value": "",
+                "type": "path",
+                "description": "."
+              },
+              {
+                "name": "second",
+                "value": "",
+                "type": "path",
+                "description": "."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Font size"
+              },
+              {
+                "name": "fontsize",
+                "value": "",
+                "type": "query",
+                "description": "Font size"
+              }
+            ]
+          },
+          "docs": "Returns a forecast icon. Icon services in API are deprecated."
+        },
+        {
+          "info": {
+            "name": "icons_summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/icons"
+          },
+          "docs": "Returns a list of icon codes and textual descriptions. Icon services in API are deprecated."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "weather.gov Alerts Points API",
+    "version": "3.9.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "User-Agent",
+      "value": "{{User-Agent}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Points",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "point",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/points/:latitude,:longitude",
+            "params": [
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "path",
+                "description": "Latitude"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "path",
+                "description": "Longitude"
+              }
+            ]
+          },
+          "docs": "Returns metadata about a given latitude/longitude point"
+        },
+        {
+          "info": {
+            "name": "point_radio",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/points/:latitude,:longitude/radio",
+            "params": [
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "path",
+                "description": "Latitude"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "path",
+                "description": "Longitude"
+              }
+            ]
+          },
+          "docs": "Returns NOAA Weather Radio broadcast script for a latitude/longitude point"
+        },
+        {
+          "info": {
+            "name": "point_stations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weather.gov/points/:latitude,:longitude/stations",
+            "params": [
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "path",
+                "description": "Latitude"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "path",
+                "description": "Longitude"
+              }
+            ]
+          },
+          "docs": "Returns a list of observation stations for a given point"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
