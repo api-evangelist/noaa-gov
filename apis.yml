@@ -569,6 +569,8 @@ apis:
   - type: ChangeLog
     url: https://www.weather.gov/documentation/services-web-api#/changelog
 common:
+  - type: Website
+    url: https://www.noaa.gov/
   - type: AgenticAccess
     url: agentic-access/noaa-gov-agentic-access.yml
   - type: DomainSecurity
