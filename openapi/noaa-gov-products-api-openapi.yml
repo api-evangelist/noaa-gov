@@ -1,6 +1,6 @@
-openapi: 3.1.2
+openapi: 3.2.0
 info:
-  title: weather.gov Alerts Products API
+  title: weather.gov Products API
   description: weather.gov API
   version: 3.9.2
 servers:
@@ -93,6 +93,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Products
+      summary: Products query
+      x-summary-source: derived
   /products/locations:
     get:
       description: Returns a list of valid text product issuance locations
@@ -116,6 +118,8 @@ paths:
       parameters: []
       tags:
       - Products
+      summary: Product locations
+      x-summary-source: derived
   /products/types:
     get:
       description: Returns a list of valid text product types and codes
@@ -139,6 +143,8 @@ paths:
       parameters: []
       tags:
       - Products
+      summary: Product types
+      x-summary-source: derived
   /products/{productId}:
     parameters:
     - name: productId
@@ -169,6 +175,8 @@ paths:
       parameters: []
       tags:
       - Products
+      summary: Product
+      x-summary-source: derived
   /products/types/{typeId}:
     parameters:
     - name: typeId
@@ -199,6 +207,8 @@ paths:
       parameters: []
       tags:
       - Products
+      summary: Products type
+      x-summary-source: derived
   /products/types/{typeId}/locations:
     parameters:
     - name: typeId
@@ -229,6 +239,8 @@ paths:
       parameters: []
       tags:
       - Products
+      summary: Products type locations
+      x-summary-source: derived
   /products/locations/{locationId}/types:
     parameters:
     - name: locationId
@@ -259,6 +271,8 @@ paths:
       parameters: []
       tags:
       - Products
+      summary: Location products
+      x-summary-source: derived
   /products/types/{typeId}/locations/{locationId}:
     parameters:
     - name: typeId
@@ -295,6 +309,8 @@ paths:
       parameters: []
       tags:
       - Products
+      summary: Products type location
+      x-summary-source: derived
   /products/types/{typeId}/locations/{locationId}/latest:
     parameters:
     - name: typeId
@@ -331,19 +347,28 @@ paths:
       parameters: []
       tags:
       - Products
+      summary: Latest product type location
+      x-summary-source: derived
 components:
   schemas:
-    TextProductLocationCollection:
+    TextProductTypeCollection:
       type: object
       properties:
         '@context':
           $ref: '#/components/schemas/JsonLdContext'
-        locations:
-          type: object
-          additionalProperties:
-            type:
-            - string
-            - 'null'
+        '@graph':
+          type: array
+          items:
+            required:
+            - productCode
+            - productName
+            type: object
+            properties:
+              productCode:
+                type: string
+              productName:
+                type: string
+            additionalProperties: false
       additionalProperties: false
     TextProduct:
       type: object
@@ -369,24 +394,17 @@ components:
         productText:
           type: string
       additionalProperties: false
-    TextProductTypeCollection:
+    TextProductLocationCollection:
       type: object
       properties:
         '@context':
           $ref: '#/components/schemas/JsonLdContext'
-        '@graph':
-          type: array
-          items:
-            required:
-            - productCode
-            - productName
-            type: object
-            properties:
-              productCode:
-                type: string
-              productName:
-                type: string
-            additionalProperties: false
+        locations:
+          type: object
+          additionalProperties:
+            type:
+            - string
+            - 'null'
       additionalProperties: false
     ProblemDetail:
       required:
@@ -459,6 +477,12 @@ components:
         items: {}
       - type: object
   headers:
+    RequestId:
+      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+
+        '
+      schema:
+        type: string
     CorrelationId:
       description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
 
@@ -467,12 +491,6 @@ components:
         type: string
     ServerId:
       description: 'The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
-
-        '
-      schema:
-        type: string
-    RequestId:
-      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
 
         '
       schema:

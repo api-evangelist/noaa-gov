@@ -1,6 +1,6 @@
-openapi: 3.1.2
+openapi: 3.2.0
 info:
-  title: weather.gov Alerts Icons API
+  title: weather.gov Icons API
   description: weather.gov API
   version: 3.9.2
 servers:
@@ -75,6 +75,8 @@ paths:
       parameters: []
       tags:
       - Icons
+      summary: Icons
+      x-summary-source: derived
   /icons/{set}/{timeOfDay}/{first}/{second}:
     parameters:
     - name: set
@@ -144,6 +146,8 @@ paths:
       parameters: []
       tags:
       - Icons
+      summary: Icons dual condition
+      x-summary-source: derived
   /icons:
     get:
       description: Returns a list of icon codes and textual descriptions. Icon services in API are deprecated.
@@ -184,8 +188,16 @@ paths:
       parameters: []
       tags:
       - Icons
+      summary: Icons summary
+      x-summary-source: derived
 components:
   headers:
+    RequestId:
+      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+
+        '
+      schema:
+        type: string
     CorrelationId:
       description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
 
@@ -198,16 +210,15 @@ components:
         '
       schema:
         type: string
-    RequestId:
-      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
-
-        '
-      schema:
-        type: string
   schemas:
     BinaryFile:
       type: string
       format: binary
+    JsonLdContext:
+      anyOf:
+      - type: array
+        items: {}
+      - type: object
     ProblemDetail:
       required:
       - type
@@ -263,11 +274,6 @@ components:
           - 493c3a1d-f87e-407f-ae2c-24483f5aab63
       description: Detail about an error. This document conforms to RFC 7807 (Problem Details for HTTP APIs).
       additionalProperties: true
-    JsonLdContext:
-      anyOf:
-      - type: array
-        items: {}
-      - type: object
   responses:
     Error:
       description: An error response.
