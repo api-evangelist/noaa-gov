@@ -351,61 +351,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TextProductTypeCollection:
-      type: object
-      properties:
-        '@context':
-          $ref: '#/components/schemas/JsonLdContext'
-        '@graph':
-          type: array
-          items:
-            required:
-            - productCode
-            - productName
-            type: object
-            properties:
-              productCode:
-                type: string
-              productName:
-                type: string
-            additionalProperties: false
-      additionalProperties: false
-    TextProduct:
-      type: object
-      properties:
-        '@context':
-          $ref: '#/components/schemas/JsonLdContext'
-        '@id':
-          type: string
-          format: uri
-        id:
-          type: string
-        wmoCollectiveId:
-          type: string
-        issuingOffice:
-          type: string
-        issuanceTime:
-          type: string
-          format: date-time
-        productCode:
-          type: string
-        productName:
-          type: string
-        productText:
-          type: string
-      additionalProperties: false
-    TextProductLocationCollection:
-      type: object
-      properties:
-        '@context':
-          $ref: '#/components/schemas/JsonLdContext'
-        locations:
-          type: object
-          additionalProperties:
-            type:
-            - string
-            - 'null'
-      additionalProperties: false
     ProblemDetail:
       required:
       - type
@@ -461,6 +406,42 @@ components:
           - 493c3a1d-f87e-407f-ae2c-24483f5aab63
       description: Detail about an error. This document conforms to RFC 7807 (Problem Details for HTTP APIs).
       additionalProperties: true
+    JsonLdContext:
+      anyOf:
+      - type: array
+        items: {}
+      - type: object
+    TextProductTypeCollection:
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/JsonLdContext'
+        '@graph':
+          type: array
+          items:
+            required:
+            - productCode
+            - productName
+            type: object
+            properties:
+              productCode:
+                type: string
+              productName:
+                type: string
+            additionalProperties: false
+      additionalProperties: false
+    TextProductLocationCollection:
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/JsonLdContext'
+        locations:
+          type: object
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+      additionalProperties: false
     TextProductCollection:
       type: object
       properties:
@@ -471,11 +452,30 @@ components:
           items:
             $ref: '#/components/schemas/TextProduct'
       additionalProperties: false
-    JsonLdContext:
-      anyOf:
-      - type: array
-        items: {}
-      - type: object
+    TextProduct:
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/JsonLdContext'
+        '@id':
+          type: string
+          format: uri
+        id:
+          type: string
+        wmoCollectiveId:
+          type: string
+        issuingOffice:
+          type: string
+        issuanceTime:
+          type: string
+          format: date-time
+        productCode:
+          type: string
+        productName:
+          type: string
+        productText:
+          type: string
+      additionalProperties: false
   headers:
     RequestId:
       description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
@@ -483,14 +483,14 @@ components:
         '
       schema:
         type: string
-    CorrelationId:
-      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+    ServerId:
+      description: 'The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
 
         '
       schema:
         type: string
-    ServerId:
-      description: 'The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+    CorrelationId:
+      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
 
         '
       schema:
