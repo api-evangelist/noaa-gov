@@ -266,27 +266,13 @@ paths:
       x-summary-source: derived
 components:
   parameters:
-    QueryStartTime:
-      name: start
+    QueryEndTime:
+      name: end
       in: query
-      description: Start time
+      description: End time
       schema:
         type: string
         format: date-time
-    AlertRegion:
-      name: region
-      in: query
-      description: 'Marine region code
-
-        This parameter is incompatible with the following parameters: area, point, region_type, zone
-
-        '
-      style: form
-      explode: false
-      schema:
-        type: array
-        items:
-          $ref: '#/components/schemas/MarineRegionCode'
     AlertPoint:
       name: point
       in: query
@@ -297,25 +283,52 @@ components:
         '
       schema:
         $ref: '#/components/schemas/PointString'
-    AlertCertainty:
-      name: certainty
+    AlertCode:
+      name: code
       in: query
-      description: Certainty (observed, likely, possible, unlikely, unknown)
+      description: Event code
       style: form
       explode: false
       schema:
         type: array
         items:
-          $ref: '#/components/schemas/AlertCertainty'
-    Limit:
-      name: limit
+          pattern: ^\w{3}$
+          type: string
+    AlertSeverity:
+      name: severity
       in: query
-      description: Limit
+      description: Severity (extreme, severe, moderate, minor, unknown)
+      style: form
+      explode: false
       schema:
-        maximum: 500
-        minimum: 1
-        type: integer
-        default: 500
+        type: array
+        items:
+          $ref: '#/components/schemas/AlertSeverity'
+    AlertArea:
+      name: area
+      in: query
+      description: 'State/territory code or marine area code
+
+        This parameter is incompatible with the following parameters: point, region, region_type, zone
+
+        '
+      style: form
+      explode: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/AreaCode'
+    AlertEventName:
+      name: event
+      in: query
+      description: Event name
+      style: form
+      explode: false
+      schema:
+        type: array
+        items:
+          pattern: ^[A-Za-z0-9 ]+$
+          type: string
     AlertRegionType:
       name: region_type
       in: query
@@ -329,79 +342,6 @@ components:
         - land
         - marine
         type: string
-    AlertEventName:
-      name: event
-      in: query
-      description: Event name
-      style: form
-      explode: false
-      schema:
-        type: array
-        items:
-          pattern: ^[A-Za-z0-9 ]+$
-          type: string
-    AlertSeverity:
-      name: severity
-      in: query
-      description: Severity (extreme, severe, moderate, minor, unknown)
-      style: form
-      explode: false
-      schema:
-        type: array
-        items:
-          $ref: '#/components/schemas/AlertSeverity'
-    QueryEndTime:
-      name: end
-      in: query
-      description: End time
-      schema:
-        type: string
-        format: date-time
-    AlertCode:
-      name: code
-      in: query
-      description: Event code
-      style: form
-      explode: false
-      schema:
-        type: array
-        items:
-          pattern: ^\w{3}$
-          type: string
-    AlertZone:
-      name: zone
-      in: query
-      description: 'Zone ID (forecast or county)
-
-        This parameter is incompatible with the following parameters: area, point, region, region_type
-
-        '
-      style: form
-      explode: false
-      schema:
-        type: array
-        items:
-          $ref: '#/components/schemas/NWSZoneID'
-    PaginationCursor:
-      name: cursor
-      in: query
-      description: Pagination cursor
-      schema:
-        type: string
-    AlertMessageType:
-      name: message_type
-      in: query
-      description: Message type (alert, update, cancel)
-      style: form
-      explode: false
-      schema:
-        type: array
-        items:
-          enum:
-          - alert
-          - update
-          - cancel
-          type: string
     AlertStatus:
       name: status
       in: query
@@ -418,27 +358,6 @@ components:
           - test
           - draft
           type: string
-    AlertArea:
-      name: area
-      in: query
-      description: 'State/territory code or marine area code
-
-        This parameter is incompatible with the following parameters: point, region, region_type, zone
-
-        '
-      style: form
-      explode: false
-      schema:
-        type: array
-        items:
-          $ref: '#/components/schemas/AreaCode'
-    NWSZoneId:
-      name: zoneId
-      in: path
-      description: NWS public zone/county identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/NWSZoneID'
     AlertUrgency:
       name: urgency
       in: query
@@ -449,7 +368,207 @@ components:
         type: array
         items:
           $ref: '#/components/schemas/AlertUrgency'
+    NWSZoneId:
+      name: zoneId
+      in: path
+      description: NWS public zone/county identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/NWSZoneID'
+    AlertRegion:
+      name: region
+      in: query
+      description: 'Marine region code
+
+        This parameter is incompatible with the following parameters: area, point, region_type, zone
+
+        '
+      style: form
+      explode: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/MarineRegionCode'
+    Limit:
+      name: limit
+      in: query
+      description: Limit
+      schema:
+        maximum: 500
+        minimum: 1
+        type: integer
+        default: 500
+    AlertMessageType:
+      name: message_type
+      in: query
+      description: Message type (alert, update, cancel)
+      style: form
+      explode: false
+      schema:
+        type: array
+        items:
+          enum:
+          - alert
+          - update
+          - cancel
+          type: string
+    AlertCertainty:
+      name: certainty
+      in: query
+      description: Certainty (observed, likely, possible, unlikely, unknown)
+      style: form
+      explode: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/AlertCertainty'
+    PaginationCursor:
+      name: cursor
+      in: query
+      description: Pagination cursor
+      schema:
+        type: string
+    AlertZone:
+      name: zone
+      in: query
+      description: 'Zone ID (forecast or county)
+
+        This parameter is incompatible with the following parameters: area, point, region, region_type
+
+        '
+      style: form
+      explode: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/NWSZoneID'
+    QueryStartTime:
+      name: start
+      in: query
+      description: Start time
+      schema:
+        type: string
+        format: date-time
   schemas:
+    GeoJsonLineString:
+      minItems: 2
+      type: array
+      items:
+        $ref: '#/components/schemas/GeoJsonCoordinate'
+      description: A GeoJSON line string. Please refer to IETF RFC 7946 for information on the GeoJSON format.
+    AlertMessageType:
+      enum:
+      - Alert
+      - Update
+      - Cancel
+      - Ack
+      - Error
+      type: string
+    AlertId:
+      type: string
+      description: The identifier of the alert message.
+    MarineRegionCode:
+      enum:
+      - AL
+      - AT
+      - GL
+      - GM
+      - PA
+      - PI
+      type: string
+      description: 'Marine region code. These are groups of marine areas combined.
+
+        * AL: Alaska waters (PK)
+
+        * AT: Atlantic Ocean (AM, AN)
+
+        * GL: Great Lakes (LC, LE, LH, LM, LO, LS, SL)
+
+        * GM: Gulf of Mexico (GM)
+
+        * PA: Eastern Pacific Ocean and U.S. West Coast (PZ)
+
+        * PI: Central and Western Pacific (PH, PM, PS)
+
+        '
+    PaginationInfo:
+      required:
+      - next
+      type: object
+      properties:
+        next:
+          type: string
+          description: A link to the next page of records
+          format: uri
+      description: Links for retrieving more data from paged data sets
+      additionalProperties: false
+    JsonLdContext:
+      anyOf:
+      - type: array
+        items: {}
+      - type: object
+    AlertCap:
+      type: object
+    AlertAtomFeed:
+      type: object
+      properties:
+        id:
+          type: string
+          xml:
+            namespace: http://www.w3.org/2005/Atom
+        generator:
+          type: string
+          xml:
+            namespace: http://www.w3.org/2005/Atom
+        updated:
+          type: string
+          xml:
+            namespace: http://www.w3.org/2005/Atom
+        author:
+          type: object
+          properties:
+            name:
+              type: string
+              xml:
+                namespace: http://www.w3.org/2005/Atom
+          xml:
+            namespace: http://www.w3.org/2005/Atom
+        title:
+          type: string
+          xml:
+            namespace: http://www.w3.org/2005/Atom
+        entry:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertAtomEntry'
+          xml:
+            namespace: http://www.w3.org/2005/Atom
+      description: An alert feed in Atom format
+      xml:
+        name: feed
+        namespace: http://www.w3.org/2005/Atom
+    GeoJsonFeature:
+      required:
+      - type
+      - geometry
+      - properties
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/JsonLdContext'
+        id:
+          type: string
+          format: uri
+        type:
+          enum:
+          - Feature
+          type: string
+        geometry:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+        properties:
+          type: object
+      description: A GeoJSON feature. Please refer to IETF RFC 7946 for information on the GeoJSON format.
+      additionalProperties: false
     AlertCertainty:
       enum:
       - Observed
@@ -458,6 +577,43 @@ components:
       - Unlikely
       - Unknown
       type: string
+    AlertJsonLd:
+      type: object
+      properties:
+        '@graph':
+          type: array
+          items:
+            $ref: '#/components/schemas/Alert'
+    AlertCollection:
+      type: object
+      properties:
+        title:
+          type: string
+          description: A title describing the alert collection
+        updated:
+          type: string
+          description: The last time a change occurred to this collection
+          format: date-time
+        pagination:
+          $ref: '#/components/schemas/PaginationInfo'
+    NWSZoneID:
+      pattern: ^(A[KLMNRSZ]|C[AOT]|D[CE]|F[LM]|G[AMU]|I[ADLN]|K[SY]|L[ACEHMOS]|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[AHKMRSWZ]|S[CDL]|T[NX]|UT|V[AIT]|W[AIVY]|[HR]I)[CZ]\d{3}$
+      type: string
+      description: 'UGC identifier for a NWS forecast zone or county.
+
+        The first two letters will correspond to either a state code or marine area code (see #/components/schemas/StateTerritoryCode and #/components/schemas/MarineAreaCode for lists of valid letter combinations).
+
+        The third letter will be Z for public/fire zone or C for county.
+
+        '
+    GeoJsonPolygon:
+      type: array
+      items:
+        minItems: 4
+        type: array
+        items:
+          $ref: '#/components/schemas/GeoJsonCoordinate'
+      description: A GeoJSON polygon. Please refer to IETF RFC 7946 for information on the GeoJSON format.
     ProblemDetail:
       required:
       - type
@@ -513,209 +669,19 @@ components:
           - 493c3a1d-f87e-407f-ae2c-24483f5aab63
       description: Detail about an error. This document conforms to RFC 7807 (Problem Details for HTTP APIs).
       additionalProperties: true
-    MarineAreaCode:
+    AreaCode:
+      oneOf:
+      - $ref: '#/components/schemas/StateTerritoryCode'
+      - $ref: '#/components/schemas/MarineAreaCode'
+      description: State/territory codes and marine area codes
+    AlertUrgency:
       enum:
-      - AM
-      - AN
-      - GM
-      - LC
-      - LE
-      - LH
-      - LM
-      - LO
-      - LS
-      - PH
-      - PK
-      - PM
-      - PS
-      - PZ
-      - SL
+      - Immediate
+      - Expected
+      - Future
+      - Past
+      - Unknown
       type: string
-      description: 'Marine area code as defined in NWS Directive 10-302:
-
-        * AM: Western North Atlantic Ocean and along U.S. East Coast south of Currituck Beach Light NC following the coastline into Gulf of Mexico to Ocean Reef FL including the Caribbean
-
-        * AN: Western North Atlantic Ocean and along U.S. East Coast from Canadian border south to Currituck Beach Light NC
-
-        * GM: Gulf of Mexico and along the U.S. Gulf Coast from the Mexican border to Ocean Reef FL
-
-        * LC: Lake St. Clair
-
-        * LE: Lake Erie
-
-        * LH: Lake Huron
-
-        * LM: Lake Michigan
-
-        * LO: Lake Ontario
-
-        * LS: Lake Superior
-
-        * PH: Central Pacific Ocean including Hawaiian waters
-
-        * PK: North Pacific Ocean near Alaska and along Alaska coastline including the Bering Sea and the Gulf of Alaska
-
-        * PM: Western Pacific Ocean including Mariana Island waters
-
-        * PS: South Central Pacific Ocean including American Samoa waters
-
-        * PZ: Eastern North Pacific Ocean and along U.S. West Coast from Canadian border to Mexican border
-
-        * SL: St. Lawrence River above St. Regis
-
-        '
-    GeoJsonCoordinate:
-      minItems: 2
-      type: array
-      items:
-        type: number
-      description: A GeoJSON coordinate. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-    AlertJsonLd:
-      type: object
-      properties:
-        '@graph':
-          type: array
-          items:
-            $ref: '#/components/schemas/Alert'
-    AlertAtomFeed:
-      type: object
-      properties:
-        id:
-          type: string
-          xml:
-            namespace: http://www.w3.org/2005/Atom
-        generator:
-          type: string
-          xml:
-            namespace: http://www.w3.org/2005/Atom
-        updated:
-          type: string
-          xml:
-            namespace: http://www.w3.org/2005/Atom
-        author:
-          type: object
-          properties:
-            name:
-              type: string
-              xml:
-                namespace: http://www.w3.org/2005/Atom
-          xml:
-            namespace: http://www.w3.org/2005/Atom
-        title:
-          type: string
-          xml:
-            namespace: http://www.w3.org/2005/Atom
-        entry:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertAtomEntry'
-          xml:
-            namespace: http://www.w3.org/2005/Atom
-      description: An alert feed in Atom format
-      xml:
-        name: feed
-        namespace: http://www.w3.org/2005/Atom
-    AlertMessageType:
-      enum:
-      - Alert
-      - Update
-      - Cancel
-      - Ack
-      - Error
-      type: string
-    PointString:
-      pattern: ^(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$
-      type: string
-    AlertAtomEntry:
-      type: object
-      properties:
-        id:
-          type: string
-          xml:
-            namespace: http://www.w3.org/2005/Atom
-        updated:
-          type: string
-          xml:
-            namespace: http://www.w3.org/2005/Atom
-        published:
-          type: string
-          xml:
-            namespace: http://www.w3.org/2005/Atom
-        author:
-          type: object
-          properties:
-            name:
-              type: string
-          xml:
-            namespace: http://www.w3.org/2005/Atom
-        summary:
-          type: string
-          xml:
-            namespace: http://www.w3.org/2005/Atom
-        event:
-          type: string
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-        sent:
-          type: string
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-        effective:
-          type: string
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-        expires:
-          type: string
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-        status:
-          type: string
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-        msgType:
-          type: string
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-        category:
-          type: string
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-        urgency:
-          type: string
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-        severity:
-          type: string
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-        certainty:
-          type: string
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-        areaDesc:
-          type: string
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-        polygon:
-          type: string
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-        geocode:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertXMLParameter'
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-        parameter:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertXMLParameter'
-          xml:
-            namespace: urn:oasis:names:tc:emergency:cap:1.2
-      description: An alert entry in an Atom feed
-      xml:
-        name: entry
-        namespace: http://www.w3.org/2005/Atom
     AlertXMLParameter:
       type: object
       properties:
@@ -723,57 +689,6 @@ components:
           type: string
         value:
           type: string
-    AlertCap:
-      type: object
-    GeoJsonFeature:
-      required:
-      - type
-      - geometry
-      - properties
-      type: object
-      properties:
-        '@context':
-          $ref: '#/components/schemas/JsonLdContext'
-        id:
-          type: string
-          format: uri
-        type:
-          enum:
-          - Feature
-          type: string
-        geometry:
-          $ref: '#/components/schemas/GeoJsonGeometry'
-        properties:
-          type: object
-      description: A GeoJSON feature. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-      additionalProperties: false
-    GeoJsonLineString:
-      minItems: 2
-      type: array
-      items:
-        $ref: '#/components/schemas/GeoJsonCoordinate'
-      description: A GeoJSON line string. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-    GeoJsonPolygon:
-      type: array
-      items:
-        minItems: 4
-        type: array
-        items:
-          $ref: '#/components/schemas/GeoJsonCoordinate'
-      description: A GeoJSON polygon. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-    GeoJsonBoundingBox:
-      minItems: 4
-      type: array
-      items:
-        type: number
-      description: A GeoJSON bounding box. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-    AlertGeoJson:
-      allOf:
-      - $ref: '#/components/schemas/GeoJsonFeature'
-      - type: object
-        properties:
-          properties:
-            $ref: '#/components/schemas/Alert'
     Alert:
       type: object
       properties:
@@ -963,17 +878,75 @@ components:
         http://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html http://docs.oasis-open.org/emergency/cap/v1.2/ipaws-profile/v1.0/cs01/cap-v1.2-ipaws-profile-cs01.html https://vlab.noaa.gov/web/nws-common-alerting-protocol/cap-documentation
 
         '
-    PaginationInfo:
-      required:
-      - next
-      type: object
-      properties:
-        next:
-          type: string
-          description: A link to the next page of records
-          format: uri
-      description: Links for retrieving more data from paged data sets
-      additionalProperties: false
+    PointString:
+      pattern: ^(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$
+      type: string
+    AlertSeverity:
+      enum:
+      - Extreme
+      - Severe
+      - Moderate
+      - Minor
+      - Unknown
+      type: string
+    MarineAreaCode:
+      enum:
+      - AM
+      - AN
+      - GM
+      - LC
+      - LE
+      - LH
+      - LM
+      - LO
+      - LS
+      - PH
+      - PK
+      - PM
+      - PS
+      - PZ
+      - SL
+      type: string
+      description: 'Marine area code as defined in NWS Directive 10-302:
+
+        * AM: Western North Atlantic Ocean and along U.S. East Coast south of Currituck Beach Light NC following the coastline into Gulf of Mexico to Ocean Reef FL including the Caribbean
+
+        * AN: Western North Atlantic Ocean and along U.S. East Coast from Canadian border south to Currituck Beach Light NC
+
+        * GM: Gulf of Mexico and along the U.S. Gulf Coast from the Mexican border to Ocean Reef FL
+
+        * LC: Lake St. Clair
+
+        * LE: Lake Erie
+
+        * LH: Lake Huron
+
+        * LM: Lake Michigan
+
+        * LO: Lake Ontario
+
+        * LS: Lake Superior
+
+        * PH: Central Pacific Ocean including Hawaiian waters
+
+        * PK: North Pacific Ocean near Alaska and along Alaska coastline including the Bering Sea and the Gulf of Alaska
+
+        * PM: Western Pacific Ocean including Mariana Island waters
+
+        * PS: South Central Pacific Ocean including American Samoa waters
+
+        * PZ: Eastern North Pacific Ocean and along U.S. West Coast from Canadian border to Mexican border
+
+        * SL: St. Lawrence River above St. Regis
+
+        '
+    AlertGeoJson:
+      allOf:
+      - $ref: '#/components/schemas/GeoJsonFeature'
+      - type: object
+        properties:
+          properties:
+            $ref: '#/components/schemas/Alert'
     AlertStatus:
       enum:
       - Actual
@@ -982,23 +955,113 @@ components:
       - Test
       - Draft
       type: string
-    AreaCode:
-      oneOf:
-      - $ref: '#/components/schemas/StateTerritoryCode'
-      - $ref: '#/components/schemas/MarineAreaCode'
-      description: State/territory codes and marine area codes
-    AlertCollection:
+    AlertCollectionJsonLd:
+      allOf:
+      - $ref: '#/components/schemas/AlertCollection'
+      - type: object
+        properties:
+          '@context':
+            $ref: '#/components/schemas/JsonLdContext'
+          '@graph':
+            type: array
+            items:
+              $ref: '#/components/schemas/Alert'
+    AlertAtomEntry:
       type: object
       properties:
-        title:
+        id:
           type: string
-          description: A title describing the alert collection
+          xml:
+            namespace: http://www.w3.org/2005/Atom
         updated:
           type: string
-          description: The last time a change occurred to this collection
-          format: date-time
-        pagination:
-          $ref: '#/components/schemas/PaginationInfo'
+          xml:
+            namespace: http://www.w3.org/2005/Atom
+        published:
+          type: string
+          xml:
+            namespace: http://www.w3.org/2005/Atom
+        author:
+          type: object
+          properties:
+            name:
+              type: string
+          xml:
+            namespace: http://www.w3.org/2005/Atom
+        summary:
+          type: string
+          xml:
+            namespace: http://www.w3.org/2005/Atom
+        event:
+          type: string
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+        sent:
+          type: string
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+        effective:
+          type: string
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+        expires:
+          type: string
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+        status:
+          type: string
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+        msgType:
+          type: string
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+        category:
+          type: string
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+        urgency:
+          type: string
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+        severity:
+          type: string
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+        certainty:
+          type: string
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+        areaDesc:
+          type: string
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+        polygon:
+          type: string
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+        geocode:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertXMLParameter'
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+        parameter:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertXMLParameter'
+          xml:
+            namespace: urn:oasis:names:tc:emergency:cap:1.2
+      description: An alert entry in an Atom feed
+      xml:
+        name: entry
+        namespace: http://www.w3.org/2005/Atom
+    GeoJsonBoundingBox:
+      minItems: 4
+      type: array
+      items:
+        type: number
+      description: A GeoJSON bounding box. Please refer to IETF RFC 7946 for information on the GeoJSON format.
     StateTerritoryCode:
       enum:
       - AL
@@ -1061,25 +1124,12 @@ components:
       - FM
       - MH
       type: string
-    AlertSeverity:
-      enum:
-      - Extreme
-      - Severe
-      - Moderate
-      - Minor
-      - Unknown
-      type: string
-    AlertCollectionJsonLd:
-      allOf:
-      - $ref: '#/components/schemas/AlertCollection'
-      - type: object
-        properties:
-          '@context':
-            $ref: '#/components/schemas/JsonLdContext'
-          '@graph':
-            type: array
-            items:
-              $ref: '#/components/schemas/Alert'
+    GeoJsonCoordinate:
+      minItems: 2
+      type: array
+      items:
+        type: number
+      description: A GeoJSON coordinate. Please refer to IETF RFC 7946 for information on the GeoJSON format.
     AlertCollectionGeoJson:
       allOf:
       - $ref: '#/components/schemas/GeoJsonFeatureCollection'
@@ -1110,35 +1160,6 @@ components:
           items:
             $ref: '#/components/schemas/GeoJsonFeature'
       description: A GeoJSON feature collection. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-    MarineRegionCode:
-      enum:
-      - AL
-      - AT
-      - GL
-      - GM
-      - PA
-      - PI
-      type: string
-      description: 'Marine region code. These are groups of marine areas combined.
-
-        * AL: Alaska waters (PK)
-
-        * AT: Atlantic Ocean (AM, AN)
-
-        * GL: Great Lakes (LC, LE, LH, LM, LO, LS, SL)
-
-        * GM: Gulf of Mexico (GM)
-
-        * PA: Eastern Pacific Ocean and U.S. West Coast (PZ)
-
-        * PI: Central and Western Pacific (PH, PM, PS)
-
-        '
-    JsonLdContext:
-      anyOf:
-      - type: array
-        items: {}
-      - type: object
     GeoJsonGeometry:
       oneOf:
       - title: GeoJSON Point
@@ -1233,36 +1254,9 @@ components:
             $ref: '#/components/schemas/GeoJsonBoundingBox'
       - type: 'null'
       description: A GeoJSON geometry object. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-    AlertUrgency:
-      enum:
-      - Immediate
-      - Expected
-      - Future
-      - Past
-      - Unknown
-      type: string
-    NWSZoneID:
-      pattern: ^(A[KLMNRSZ]|C[AOT]|D[CE]|F[LM]|G[AMU]|I[ADLN]|K[SY]|L[ACEHMOS]|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[AHKMRSWZ]|S[CDL]|T[NX]|UT|V[AIT]|W[AIVY]|[HR]I)[CZ]\d{3}$
-      type: string
-      description: 'UGC identifier for a NWS forecast zone or county.
-
-        The first two letters will correspond to either a state code or marine area code (see #/components/schemas/StateTerritoryCode and #/components/schemas/MarineAreaCode for lists of valid letter combinations).
-
-        The third letter will be Z for public/fire zone or C for county.
-
-        '
-    AlertId:
-      type: string
-      description: The identifier of the alert message.
   headers:
     ServerId:
       description: 'The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
-
-        '
-      schema:
-        type: string
-    CorrelationId:
-      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
 
         '
       schema:
@@ -1273,7 +1267,26 @@ components:
         '
       schema:
         type: string
+    CorrelationId:
+      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+
+        '
+      schema:
+        type: string
   responses:
+    Error:
+      description: An error response.
+      headers:
+        X-Correlation-Id:
+          $ref: '#/components/headers/CorrelationId'
+        X-Request-Id:
+          $ref: '#/components/headers/RequestId'
+        X-Server-Id:
+          $ref: '#/components/headers/ServerId'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
     AlertCollection:
       description: A collection of alerts.
       headers:
@@ -1296,19 +1309,6 @@ components:
       x-url-content-negotiation-extensions:
         json: application/geo+json
         atom: application/atom+xml
-    Error:
-      description: An error response.
-      headers:
-        X-Correlation-Id:
-          $ref: '#/components/headers/CorrelationId'
-        X-Request-Id:
-          $ref: '#/components/headers/RequestId'
-        X-Server-Id:
-          $ref: '#/components/headers/ServerId'
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ProblemDetail'
   securitySchemes:
     userAgent:
       type: apiKey

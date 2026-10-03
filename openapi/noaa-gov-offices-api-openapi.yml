@@ -244,9 +244,60 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    BinaryFile:
-      type: string
-      format: binary
+    OfficeHeadline:
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/JsonLdContext'
+        '@id':
+          type: string
+          format: uri
+        id:
+          type: string
+        office:
+          type: string
+          format: uri
+        important:
+          type: boolean
+        issuanceTime:
+          type: string
+          format: date-time
+        link:
+          type: string
+          format: uri
+        name:
+          type: string
+        title:
+          type: string
+        summary:
+          type:
+          - string
+          - 'null'
+        content:
+          type: string
+    JsonLdContext:
+      anyOf:
+      - type: array
+        items: {}
+      - type: object
+    NWSOfficeId:
+      oneOf:
+      - $ref: '#/components/schemas/NWSForecastOfficeId'
+      - $ref: '#/components/schemas/NWSRegionalHQId'
+      - $ref: '#/components/schemas/NWSNationalHQId'
+    OfficeHeadlineCollection:
+      required:
+      - '@context'
+      - '@graph'
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/JsonLdContext'
+        '@graph':
+          type: array
+          items:
+            $ref: '#/components/schemas/OfficeHeadline'
+      additionalProperties: false
     ProblemDetail:
       required:
       - type
@@ -302,21 +353,143 @@ components:
           - 493c3a1d-f87e-407f-ae2c-24483f5aab63
       description: Detail about an error. This document conforms to RFC 7807 (Problem Details for HTTP APIs).
       additionalProperties: true
-    OfficeHeadlineCollection:
+    OfficeBriefing:
+      $ref: '#/components/schemas/NWSConnectDocumentMetadata'
+    OfficeWeatherStory:
       required:
-      - '@context'
-      - '@graph'
+      - startTime
+      - endTime
+      - updateTime
+      - title
+      - description
+      - altText
+      - priority
+      - order
+      - download
+      allOf:
+      - $ref: '#/components/schemas/NWSConnectDocumentMetadata'
+      - type: object
+        properties:
+          altText:
+            type: string
+            description: Alternative text description of the content of the image for assistive technology.
+          order:
+            maximum: 7
+            minimum: 1
+            type: integer
+            description: The order in which a weather story should be displayed. Unique for each object.
+    NWSNationalHQId:
+      enum:
+      - NWS
+      type: string
+      description: Three-letter identifier for NWS National HQ.
+    Office:
       type: object
       properties:
         '@context':
           $ref: '#/components/schemas/JsonLdContext'
-        '@graph':
+        '@type':
+          enum:
+          - GovernmentOrganization
+          type: string
+        '@id':
+          type: string
+          format: uri
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          type: object
+          properties:
+            '@type':
+              enum:
+              - PostalAddress
+              type: string
+            streetAddress:
+              type: string
+            addressLocality:
+              type: string
+            addressRegion:
+              type: string
+            postalCode:
+              type: string
+          additionalProperties: false
+        telephone:
+          type: string
+        faxNumber:
+          type: string
+        email:
+          type: string
+        sameAs:
+          type: string
+          format: uri
+        nwsRegion:
+          type: string
+        parentOrganization:
+          type: string
+          format: uri
+        responsibleCounties:
           type: array
           items:
-            $ref: '#/components/schemas/OfficeHeadline'
+            type: string
+            format: uri
+        responsibleForecastZones:
+          type: array
+          items:
+            type: string
+            format: uri
+        responsibleFireZones:
+          type: array
+          items:
+            type: string
+            format: uri
+        approvedObservationStations:
+          type: array
+          items:
+            type: string
+            format: uri
       additionalProperties: false
-    OfficeBriefing:
-      $ref: '#/components/schemas/NWSConnectDocumentMetadata'
+    BinaryFile:
+      type: string
+      format: binary
+    OfficeWeatherStoryCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/OfficeWeatherStory'
+    NWSConnectDocumentMetadata:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        startTime:
+          type: string
+          description: The time when the document becomes active. ISO8601 datetime.
+          format: date-time
+        endTime:
+          type: string
+          description: The time when the document becomes inactive. ISO8601 datetime.
+          format: date-time
+        updateTime:
+          type: string
+          description: When the document was last updated. ISO8601 datetime.
+          format: date-time
+        title:
+          maxLength: 50
+          type: string
+          description: A short title.
+        description:
+          type: string
+          description: A longer description and/or caption.
+        priority:
+          type: boolean
+          description: An indicator that a weather story should be emphasized.
+        download:
+          type: string
+          description: The URL of the media content for the weather story.
+          format: uri
+      description: Metadata for an NWS Connect document.
     NWSRegionalHQId:
       enum:
       - ARH
@@ -464,188 +637,9 @@ components:
       - ONP
       type: string
       description: Three-letter identifier for a NWS office.
-    NWSConnectDocumentMetadata:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        startTime:
-          type: string
-          description: The time when the document becomes active. ISO8601 datetime.
-          format: date-time
-        endTime:
-          type: string
-          description: The time when the document becomes inactive. ISO8601 datetime.
-          format: date-time
-        updateTime:
-          type: string
-          description: When the document was last updated. ISO8601 datetime.
-          format: date-time
-        title:
-          maxLength: 50
-          type: string
-          description: A short title.
-        description:
-          type: string
-          description: A longer description and/or caption.
-        priority:
-          type: boolean
-          description: An indicator that a weather story should be emphasized.
-        download:
-          type: string
-          description: The URL of the media content for the weather story.
-          format: uri
-      description: Metadata for an NWS Connect document.
-    NWSOfficeId:
-      oneOf:
-      - $ref: '#/components/schemas/NWSForecastOfficeId'
-      - $ref: '#/components/schemas/NWSRegionalHQId'
-      - $ref: '#/components/schemas/NWSNationalHQId'
-    OfficeHeadline:
-      type: object
-      properties:
-        '@context':
-          $ref: '#/components/schemas/JsonLdContext'
-        '@id':
-          type: string
-          format: uri
-        id:
-          type: string
-        office:
-          type: string
-          format: uri
-        important:
-          type: boolean
-        issuanceTime:
-          type: string
-          format: date-time
-        link:
-          type: string
-          format: uri
-        name:
-          type: string
-        title:
-          type: string
-        summary:
-          type:
-          - string
-          - 'null'
-        content:
-          type: string
-    JsonLdContext:
-      anyOf:
-      - type: array
-        items: {}
-      - type: object
-    OfficeWeatherStoryCollection:
-      type: array
-      items:
-        $ref: '#/components/schemas/OfficeWeatherStory'
-    OfficeWeatherStory:
-      required:
-      - startTime
-      - endTime
-      - updateTime
-      - title
-      - description
-      - altText
-      - priority
-      - order
-      - download
-      allOf:
-      - $ref: '#/components/schemas/NWSConnectDocumentMetadata'
-      - type: object
-        properties:
-          altText:
-            type: string
-            description: Alternative text description of the content of the image for assistive technology.
-          order:
-            maximum: 7
-            minimum: 1
-            type: integer
-            description: The order in which a weather story should be displayed. Unique for each object.
-    NWSNationalHQId:
-      enum:
-      - NWS
-      type: string
-      description: Three-letter identifier for NWS National HQ.
-    Office:
-      type: object
-      properties:
-        '@context':
-          $ref: '#/components/schemas/JsonLdContext'
-        '@type':
-          enum:
-          - GovernmentOrganization
-          type: string
-        '@id':
-          type: string
-          format: uri
-        id:
-          type: string
-        name:
-          type: string
-        address:
-          type: object
-          properties:
-            '@type':
-              enum:
-              - PostalAddress
-              type: string
-            streetAddress:
-              type: string
-            addressLocality:
-              type: string
-            addressRegion:
-              type: string
-            postalCode:
-              type: string
-          additionalProperties: false
-        telephone:
-          type: string
-        faxNumber:
-          type: string
-        email:
-          type: string
-        sameAs:
-          type: string
-          format: uri
-        nwsRegion:
-          type: string
-        parentOrganization:
-          type: string
-          format: uri
-        responsibleCounties:
-          type: array
-          items:
-            type: string
-            format: uri
-        responsibleForecastZones:
-          type: array
-          items:
-            type: string
-            format: uri
-        responsibleFireZones:
-          type: array
-          items:
-            type: string
-            format: uri
-        approvedObservationStations:
-          type: array
-          items:
-            type: string
-            format: uri
-      additionalProperties: false
   headers:
     ServerId:
       description: 'The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
-
-        '
-      schema:
-        type: string
-    CorrelationId:
-      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
 
         '
       schema:
@@ -656,6 +650,20 @@ components:
         '
       schema:
         type: string
+    CorrelationId:
+      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+
+        '
+      schema:
+        type: string
+  parameters:
+    NWSOfficeId:
+      name: officeId
+      in: path
+      description: NWS office ID
+      required: true
+      schema:
+        $ref: '#/components/schemas/NWSOfficeId'
   responses:
     Error:
       description: An error response.
@@ -670,14 +678,6 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/ProblemDetail'
-  parameters:
-    NWSOfficeId:
-      name: officeId
-      in: path
-      description: NWS office ID
-      required: true
-      schema:
-        $ref: '#/components/schemas/NWSOfficeId'
   securitySchemes:
     userAgent:
       type: apiKey

@@ -174,27 +174,13 @@ paths:
       x-summary-source: derived
 components:
   parameters:
-    QueryStartTime:
-      name: start
+    QueryEndTime:
+      name: end
       in: query
-      description: Start time
+      description: End time
       schema:
         type: string
         format: date-time
-    Time:
-      name: time
-      in: path
-      description: Time (HHMM format). This time is always specified in UTC (Zulu) time.
-      required: true
-      schema:
-        $ref: '#/components/schemas/Time'
-    ATSUIdentifier:
-      name: atsu
-      in: path
-      description: ATSU identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/ATSUIdentifier'
     Date:
       name: date
       in: path
@@ -208,6 +194,13 @@ components:
       description: Date (YYYY-MM-DD format)
       schema:
         $ref: '#/components/schemas/Date'
+    Time:
+      name: time
+      in: path
+      description: Time (HHMM format). This time is always specified in UTC (Zulu) time.
+      required: true
+      schema:
+        $ref: '#/components/schemas/Time'
     NWSCenterWeatherServiceUnitId:
       name: cwsuId
       in: path
@@ -215,14 +208,95 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/NWSCenterWeatherServiceUnitId'
-    QueryEndTime:
-      name: end
+    ATSUIdentifier:
+      name: atsu
+      in: path
+      description: ATSU identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/ATSUIdentifier'
+    QueryStartTime:
+      name: start
       in: query
-      description: End time
+      description: Start time
       schema:
         type: string
         format: date-time
   schemas:
+    CenterWeatherAdvisory:
+      type: object
+      properties:
+        id:
+          type: string
+        issueTime:
+          type: string
+          format: date-time
+        cwsu:
+          $ref: '#/components/schemas/NWSCenterWeatherServiceUnitId'
+        sequence:
+          minimum: 101
+          type: integer
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        observedProperty:
+          type: string
+        text:
+          type: string
+      additionalProperties: false
+    GeoJsonLineString:
+      minItems: 2
+      type: array
+      items:
+        $ref: '#/components/schemas/GeoJsonCoordinate'
+      description: A GeoJSON line string. Please refer to IETF RFC 7946 for information on the GeoJSON format.
+    SigmetCollectionGeoJson:
+      allOf:
+      - $ref: '#/components/schemas/GeoJsonFeatureCollection'
+      - type: object
+        properties:
+          features:
+            type: array
+            items:
+              $ref: '#/components/schemas/SigmetGeoJson'
+    JsonLdContext:
+      anyOf:
+      - type: array
+        items: {}
+      - type: object
+    GeoJsonFeature:
+      required:
+      - type
+      - geometry
+      - properties
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/JsonLdContext'
+        id:
+          type: string
+          format: uri
+        type:
+          enum:
+          - Feature
+          type: string
+        geometry:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+        properties:
+          type: object
+      description: A GeoJSON feature. Please refer to IETF RFC 7946 for information on the GeoJSON format.
+      additionalProperties: false
+    GeoJsonPolygon:
+      type: array
+      items:
+        minItems: 4
+        type: array
+        items:
+          $ref: '#/components/schemas/GeoJsonCoordinate'
+      description: A GeoJSON polygon. Please refer to IETF RFC 7946 for information on the GeoJSON format.
     ProblemDetail:
       required:
       - type
@@ -278,12 +352,13 @@ components:
           - 493c3a1d-f87e-407f-ae2c-24483f5aab63
       description: Detail about an error. This document conforms to RFC 7807 (Problem Details for HTTP APIs).
       additionalProperties: true
-    GeoJsonCoordinate:
-      minItems: 2
-      type: array
-      items:
-        type: number
-      description: A GeoJSON coordinate. Please refer to IETF RFC 7946 for information on the GeoJSON format.
+    SigmetGeoJson:
+      allOf:
+      - $ref: '#/components/schemas/GeoJsonFeature'
+      - type: object
+        properties:
+          properties:
+            $ref: '#/components/schemas/Sigmet'
     CenterWeatherAdvisoryCollectionGeoJson:
       allOf:
       - $ref: '#/components/schemas/GeoJsonFeatureCollection'
@@ -296,114 +371,12 @@ components:
               properties:
                 properties:
                   $ref: '#/components/schemas/CenterWeatherAdvisory'
-    SigmetCollectionGeoJson:
-      allOf:
-      - $ref: '#/components/schemas/GeoJsonFeatureCollection'
-      - type: object
-        properties:
-          features:
-            type: array
-            items:
-              $ref: '#/components/schemas/SigmetGeoJson'
-    CenterWeatherAdvisory:
-      type: object
-      properties:
-        id:
-          type: string
-        issueTime:
-          type: string
-          format: date-time
-        cwsu:
-          $ref: '#/components/schemas/NWSCenterWeatherServiceUnitId'
-        sequence:
-          minimum: 101
-          type: integer
-        start:
-          type: string
-          format: date-time
-        end:
-          type: string
-          format: date-time
-        observedProperty:
-          type: string
-        text:
-          type: string
-      additionalProperties: false
-    GeoJsonFeature:
-      required:
-      - type
-      - geometry
-      - properties
-      type: object
-      properties:
-        '@context':
-          $ref: '#/components/schemas/JsonLdContext'
-        id:
-          type: string
-          format: uri
-        type:
-          enum:
-          - Feature
-          type: string
-        geometry:
-          $ref: '#/components/schemas/GeoJsonGeometry'
-        properties:
-          type: object
-      description: A GeoJSON feature. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-      additionalProperties: false
-    NWSCenterWeatherServiceUnitId:
-      enum:
-      - ZAB
-      - ZAN
-      - ZAU
-      - ZBW
-      - ZDC
-      - ZDV
-      - ZFA
-      - ZFW
-      - ZHU
-      - ZID
-      - ZJX
-      - ZKC
-      - ZLA
-      - ZLC
-      - ZMA
-      - ZME
-      - ZMP
-      - ZNY
-      - ZOA
-      - ZOB
-      - ZSE
-      - ZTL
+    Date:
       type: string
-      description: Three-letter identifier for a Center Weather Service Unit (CWSU).
-    GeoJsonLineString:
-      minItems: 2
-      type: array
-      items:
-        $ref: '#/components/schemas/GeoJsonCoordinate'
-      description: A GeoJSON line string. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-    GeoJsonPolygon:
-      type: array
-      items:
-        minItems: 4
-        type: array
-        items:
-          $ref: '#/components/schemas/GeoJsonCoordinate'
-      description: A GeoJSON polygon. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-    CenterWeatherAdvisoryGeoJson:
-      allOf:
-      - $ref: '#/components/schemas/GeoJsonFeature'
-      - type: object
-        properties:
-          properties:
-            $ref: '#/components/schemas/CenterWeatherAdvisory'
-    GeoJsonBoundingBox:
-      minItems: 4
-      type: array
-      items:
-        type: number
-      description: A GeoJSON bounding box. Please refer to IETF RFC 7946 for information on the GeoJSON format.
+      description: Date (in YYYY-MM-DD format).
+      format: date
+    SigmetSequenceNumber:
+      type: string
     Time:
       pattern: ^([01][0-9]|2[0-3])[0-5][0-9]$
       type: string
@@ -412,6 +385,75 @@ components:
       pattern: ^[A-Z]{3,4}$
       type: string
       description: ATSU Identifier
+    Office:
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/JsonLdContext'
+        '@type':
+          enum:
+          - GovernmentOrganization
+          type: string
+        '@id':
+          type: string
+          format: uri
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          type: object
+          properties:
+            '@type':
+              enum:
+              - PostalAddress
+              type: string
+            streetAddress:
+              type: string
+            addressLocality:
+              type: string
+            addressRegion:
+              type: string
+            postalCode:
+              type: string
+          additionalProperties: false
+        telephone:
+          type: string
+        faxNumber:
+          type: string
+        email:
+          type: string
+        sameAs:
+          type: string
+          format: uri
+        nwsRegion:
+          type: string
+        parentOrganization:
+          type: string
+          format: uri
+        responsibleCounties:
+          type: array
+          items:
+            type: string
+            format: uri
+        responsibleForecastZones:
+          type: array
+          items:
+            type: string
+            format: uri
+        responsibleFireZones:
+          type: array
+          items:
+            type: string
+            format: uri
+        approvedObservationStations:
+          type: array
+          items:
+            type: string
+            format: uri
+      additionalProperties: false
+    CenterWeatherServiceUnitJsonLd:
+      $ref: '#/components/schemas/Office'
     Sigmet:
       type: object
       properties:
@@ -443,10 +485,51 @@ components:
           type: string
           format: date-time
       additionalProperties: false
-    SigmetSequenceNumber:
+    CenterWeatherAdvisoryGeoJson:
+      allOf:
+      - $ref: '#/components/schemas/GeoJsonFeature'
+      - type: object
+        properties:
+          properties:
+            $ref: '#/components/schemas/CenterWeatherAdvisory'
+    GeoJsonBoundingBox:
+      minItems: 4
+      type: array
+      items:
+        type: number
+      description: A GeoJSON bounding box. Please refer to IETF RFC 7946 for information on the GeoJSON format.
+    NWSCenterWeatherServiceUnitId:
+      enum:
+      - ZAB
+      - ZAN
+      - ZAU
+      - ZBW
+      - ZDC
+      - ZDV
+      - ZFA
+      - ZFW
+      - ZHU
+      - ZID
+      - ZJX
+      - ZKC
+      - ZLA
+      - ZLC
+      - ZMA
+      - ZME
+      - ZMP
+      - ZNY
+      - ZOA
+      - ZOB
+      - ZSE
+      - ZTL
       type: string
-    CenterWeatherServiceUnitJsonLd:
-      $ref: '#/components/schemas/Office'
+      description: Three-letter identifier for a Center Weather Service Unit (CWSU).
+    GeoJsonCoordinate:
+      minItems: 2
+      type: array
+      items:
+        type: number
+      description: A GeoJSON coordinate. Please refer to IETF RFC 7946 for information on the GeoJSON format.
     GeoJsonFeatureCollection:
       required:
       - type
@@ -464,11 +547,6 @@ components:
           items:
             $ref: '#/components/schemas/GeoJsonFeature'
       description: A GeoJSON feature collection. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-    JsonLdContext:
-      anyOf:
-      - type: array
-        items: {}
-      - type: object
     GeoJsonGeometry:
       oneOf:
       - title: GeoJSON Point
@@ -563,84 +641,6 @@ components:
             $ref: '#/components/schemas/GeoJsonBoundingBox'
       - type: 'null'
       description: A GeoJSON geometry object. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-    Date:
-      type: string
-      description: Date (in YYYY-MM-DD format).
-      format: date
-    Office:
-      type: object
-      properties:
-        '@context':
-          $ref: '#/components/schemas/JsonLdContext'
-        '@type':
-          enum:
-          - GovernmentOrganization
-          type: string
-        '@id':
-          type: string
-          format: uri
-        id:
-          type: string
-        name:
-          type: string
-        address:
-          type: object
-          properties:
-            '@type':
-              enum:
-              - PostalAddress
-              type: string
-            streetAddress:
-              type: string
-            addressLocality:
-              type: string
-            addressRegion:
-              type: string
-            postalCode:
-              type: string
-          additionalProperties: false
-        telephone:
-          type: string
-        faxNumber:
-          type: string
-        email:
-          type: string
-        sameAs:
-          type: string
-          format: uri
-        nwsRegion:
-          type: string
-        parentOrganization:
-          type: string
-          format: uri
-        responsibleCounties:
-          type: array
-          items:
-            type: string
-            format: uri
-        responsibleForecastZones:
-          type: array
-          items:
-            type: string
-            format: uri
-        responsibleFireZones:
-          type: array
-          items:
-            type: string
-            format: uri
-        approvedObservationStations:
-          type: array
-          items:
-            type: string
-            format: uri
-      additionalProperties: false
-    SigmetGeoJson:
-      allOf:
-      - $ref: '#/components/schemas/GeoJsonFeature'
-      - type: object
-        properties:
-          properties:
-            $ref: '#/components/schemas/Sigmet'
   headers:
     ServerId:
       description: 'The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
@@ -648,13 +648,13 @@ components:
         '
       schema:
         type: string
-    CorrelationId:
+    RequestId:
       description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
 
         '
       schema:
         type: string
-    RequestId:
+    CorrelationId:
       description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
 
         '
