@@ -242,18 +242,17 @@ apis:
     type: Documentation
   - url: https://www.fisheries.noaa.gov/inport/release-notes
     type: ChangeLog
-- aid: noaa-gov:aviationweather-data-api
-  name: AviationWeather.gov Weather Data API
-  description: 'Decoded aviation weather from NOAA''s Aviation Weather Center: METARs, TAFs, PIREPs, SIGMETs,
-    G-AIRMETs, CWAs, winds aloft, area forecasts and forecast discussions.'
-  humanURL: https://aviationweather.gov/data/api/
-  baseURL: https://aviationweather.gov
+- aid: noaa-gov:noaa-gov-alerts-api
+  name: NOAA — National Oceanic and Atmospheric Administration Alerts API
+  description: >-
+    The Alerts API from NOAA — National Oceanic and Atmospheric Administration — 8 operation(s) for alerts.
+  humanURL: https://www.swpc.noaa.gov/content/data-access
+  baseURL: https://services.swpc.noaa.gov
   tags:
-  - Aviation Weather
-  - Weather Data
+  - Alerts
   properties:
   - type: OpenAPI
-    url: openapi/noaa-gov-aviationweather-data-api-openapi.yml
+    url: openapi/noaa-gov-alerts-api-openapi.yml
   - type: Documentation
     url: https://aviationweather.gov/data/api/
   - type: JSONSchema
@@ -266,20 +265,288 @@ apis:
     url: json-schema/noaa-aviation-airsigmetjson.json
   - type: Examples
     url: examples/noaa-aviation-metar-example.json
-- aid: noaa-gov:aviationweather-navigational-data-api
-  name: AviationWeather.gov Navigational Data API
-  description: 'Decoded navigational information from NOAA''s Aviation Weather Center: station info, airports,
-    navaids, fixes, features and obstacles.'
-  humanURL: https://aviationweather.gov/data/api/
-  baseURL: https://aviationweather.gov
+- aid: noaa-gov:noaa-gov-aviation-api
+  name: NOAA — National Oceanic and Atmospheric Administration Aviation API
+  description: >-
+    The Aviation API from NOAA — National Oceanic and Atmospheric Administration — 7 operation(s) for
+    aviation.
+  humanURL: https://www.swpc.noaa.gov/content/data-access
+  baseURL: https://services.swpc.noaa.gov
   tags:
-  - Aviation Weather
-  - Navigational Data
+  - Aviation
   properties:
   - type: OpenAPI
-    url: openapi/noaa-gov-aviationweather-navigational-data-api-openapi.yml
+    url: openapi/noaa-gov-aviation-api-openapi.yml
   - type: Documentation
     url: https://aviationweather.gov/data/api/
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-metarjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-tafjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-pireptext.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-airsigmetjson.json
+  - type: Examples
+    url: examples/noaa-aviation-metar-example.json
+- aid: noaa-gov:noaa-gov-glossary-api
+  name: NOAA — National Oceanic and Atmospheric Administration Glossary API
+  description: >-
+    The Glossary API from NOAA — National Oceanic and Atmospheric Administration — 1 operation(s) for
+    glossary.
+  humanURL: https://www.swpc.noaa.gov/content/data-access
+  baseURL: https://services.swpc.noaa.gov
+  tags:
+  - Glossary
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-gov-glossary-api-openapi.yml
+  - type: Documentation
+    url: https://aviationweather.gov/data/api/
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-metarjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-tafjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-pireptext.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-airsigmetjson.json
+  - type: Examples
+    url: examples/noaa-aviation-metar-example.json
+- aid: noaa-gov:noaa-gov-gridpoints-api
+  name: NOAA — National Oceanic and Atmospheric Administration Gridpoints API
+  description: >-
+    The Gridpoints API from NOAA — National Oceanic and Atmospheric Administration — 4 operation(s) for
+    gridpoints.
+  humanURL: https://www.swpc.noaa.gov/content/data-access
+  baseURL: https://services.swpc.noaa.gov
+  tags:
+  - Gridpoints
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-gov-gridpoints-api-openapi.yml
+  - type: Documentation
+    url: https://aviationweather.gov/data/api/
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-metarjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-tafjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-pireptext.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-airsigmetjson.json
+  - type: Examples
+    url: examples/noaa-aviation-metar-example.json
+- aid: noaa-gov:noaa-gov-icons-api
+  name: NOAA — National Oceanic and Atmospheric Administration Icons API
+  description: >-
+    The Icons API from NOAA — National Oceanic and Atmospheric Administration — 3 operation(s) for icons.
+  humanURL: https://www.swpc.noaa.gov/content/data-access
+  baseURL: https://services.swpc.noaa.gov
+  tags:
+  - Icons
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-gov-icons-api-openapi.yml
+  - type: Documentation
+    url: https://aviationweather.gov/data/api/
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-metarjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-tafjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-pireptext.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-airsigmetjson.json
+  - type: Examples
+    url: examples/noaa-aviation-metar-example.json
+- aid: noaa-gov:noaa-gov-offices-api
+  name: NOAA — National Oceanic and Atmospheric Administration Offices API
+  description: >-
+    The Offices API from NOAA — National Oceanic and Atmospheric Administration — 8 operation(s) for offices.
+  humanURL: https://www.swpc.noaa.gov/content/data-access
+  baseURL: https://services.swpc.noaa.gov
+  tags:
+  - Offices
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-gov-offices-api-openapi.yml
+  - type: Documentation
+    url: https://aviationweather.gov/data/api/
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-metarjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-tafjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-pireptext.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-airsigmetjson.json
+  - type: Examples
+    url: examples/noaa-aviation-metar-example.json
+- aid: noaa-gov:noaa-gov-points-api
+  name: NOAA — National Oceanic and Atmospheric Administration Points API
+  description: >-
+    The Points API from NOAA — National Oceanic and Atmospheric Administration — 3 operation(s) for points.
+  humanURL: https://www.swpc.noaa.gov/content/data-access
+  baseURL: https://services.swpc.noaa.gov
+  tags:
+  - Points
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-gov-points-api-openapi.yml
+  - type: Documentation
+    url: https://aviationweather.gov/data/api/
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-metarjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-tafjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-pireptext.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-airsigmetjson.json
+  - type: Examples
+    url: examples/noaa-aviation-metar-example.json
+- aid: noaa-gov:noaa-gov-products-api
+  name: NOAA — National Oceanic and Atmospheric Administration Products API
+  description: >-
+    The Products API from NOAA — National Oceanic and Atmospheric Administration — 9 operation(s) for
+    products.
+  humanURL: https://www.swpc.noaa.gov/content/data-access
+  baseURL: https://services.swpc.noaa.gov
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-gov-products-api-openapi.yml
+  - type: Documentation
+    url: https://aviationweather.gov/data/api/
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-metarjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-tafjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-pireptext.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-airsigmetjson.json
+  - type: Examples
+    url: examples/noaa-aviation-metar-example.json
+- aid: noaa-gov:noaa-gov-radar-api
+  name: NOAA — National Oceanic and Atmospheric Administration Radar API
+  description: >-
+    The Radar API from NOAA — National Oceanic and Atmospheric Administration — 8 operation(s) for radar.
+  humanURL: https://www.swpc.noaa.gov/content/data-access
+  baseURL: https://services.swpc.noaa.gov
+  tags:
+  - Radar
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-gov-radar-api-openapi.yml
+  - type: Documentation
+    url: https://aviationweather.gov/data/api/
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-metarjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-tafjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-pireptext.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-airsigmetjson.json
+  - type: Examples
+    url: examples/noaa-aviation-metar-example.json
+- aid: noaa-gov:noaa-gov-radio-api
+  name: NOAA — National Oceanic and Atmospheric Administration Radio API
+  description: >-
+    The Radio API from NOAA — National Oceanic and Atmospheric Administration — 1 operation(s) for radio.
+  humanURL: https://www.swpc.noaa.gov/content/data-access
+  baseURL: https://services.swpc.noaa.gov
+  tags:
+  - Radio
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-gov-radio-api-openapi.yml
+  - type: Documentation
+    url: https://aviationweather.gov/data/api/
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-metarjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-tafjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-pireptext.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-airsigmetjson.json
+  - type: Examples
+    url: examples/noaa-aviation-metar-example.json
+- aid: noaa-gov:noaa-gov-stations-api
+  name: NOAA — National Oceanic and Atmospheric Administration Stations API
+  description: >-
+    The Stations API from NOAA — National Oceanic and Atmospheric Administration — 7 operation(s) for
+    stations.
+  humanURL: https://www.swpc.noaa.gov/content/data-access
+  baseURL: https://services.swpc.noaa.gov
+  tags:
+  - Stations
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-gov-stations-api-openapi.yml
+  - type: Documentation
+    url: https://aviationweather.gov/data/api/
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-metarjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-tafjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-pireptext.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-airsigmetjson.json
+  - type: Examples
+    url: examples/noaa-aviation-metar-example.json
+- aid: noaa-gov:noaa-gov-thumbnails-api
+  name: NOAA — National Oceanic and Atmospheric Administration Thumbnails API
+  description: >-
+    The Thumbnails API from NOAA — National Oceanic and Atmospheric Administration — 1 operation(s) for
+    thumbnails.
+  humanURL: https://www.swpc.noaa.gov/content/data-access
+  baseURL: https://services.swpc.noaa.gov
+  tags:
+  - Thumbnails
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-gov-thumbnails-api-openapi.yml
+  - type: Documentation
+    url: https://aviationweather.gov/data/api/
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-metarjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-tafjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-pireptext.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-airsigmetjson.json
+  - type: Examples
+    url: examples/noaa-aviation-metar-example.json
+- aid: noaa-gov:noaa-gov-zones-api
+  name: NOAA — National Oceanic and Atmospheric Administration Zones API
+  description: >-
+    The Zones API from NOAA — National Oceanic and Atmospheric Administration — 6 operation(s) for zones.
+  humanURL: https://www.swpc.noaa.gov/content/data-access
+  baseURL: https://services.swpc.noaa.gov
+  tags:
+  - Zones
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-gov-zones-api-openapi.yml
+  - type: Documentation
+    url: https://aviationweather.gov/data/api/
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-metarjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-tafjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-pireptext.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-airsigmetjson.json
+  - type: Examples
+    url: examples/noaa-aviation-metar-example.json
 common:
   - type: Website
     url: https://www.noaa.gov/

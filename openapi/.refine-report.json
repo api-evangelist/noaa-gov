@@ -103,7 +103,7 @@
     "weather-gov-api-openapi.json: declared missing tag: Stations",
     "weather-gov-api-openapi.json: declared missing tag: Thumbnails",
     "weather-gov-api-openapi.json: declared missing tag: Zones",
-    "apis.yml register: already-registered"
+    "apis.yml register: written (+13 apis, 20 total)"
   ],
   "skipped": [
     "noaa-gov-alerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",

@@ -92,154 +92,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    GeoJsonLineString:
-      minItems: 2
-      type: array
-      items:
-        $ref: '#/components/schemas/GeoJsonCoordinate'
-      description: A GeoJSON line string. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-    AstronomicalData:
-      type: object
-      properties:
-        sunrise:
-          type: string
-          description: 'The timestamp of sunrise, defined as when the sun angle is 90°35'' from vertical.
-
-            '
-          format: date-time
-          nullable: true
-        sunset:
-          type: string
-          description: 'The timestamp of sunset, defined as when the sun angle is 90°35'' from vertical.
-
-            '
-          format: date-time
-          nullable: true
-        transit:
-          type: string
-          description: 'The timestamp when the sun reaches its zenith.
-
-            '
-          format: date-time
-          nullable: true
-        civilTwilightBegin:
-          type: string
-          description: 'The timestamp of the onset of civil twilight, defined as when the sun angle is 96° from vertical. This is the beginning of civil dawn and lasts until sunrise.
-
-            '
-          format: date-time
-          nullable: true
-        civilTwilightEnd:
-          type: string
-          description: 'The timestamp of the end of civil twilight, defined as when the sun angle is 96° from vertical. This is the end of civil dusk, which begins at sunset.
-
-            '
-          format: date-time
-          nullable: true
-        nauticalTwilightBegin:
-          type: string
-          description: 'The timestamp of the onset of nautical twilight, defined as when the sun angle is 102° from vertical. This is the beginning of nautical dawn and lasts until the civil dawn.
-
-            '
-          format: date-time
-          nullable: true
-        nauticalTwilightEnd:
-          type: string
-          description: 'The timestamp of the end of nautical twilight, defined as when the sun angle is 102° from vertical. This is the end of nautical dusk, which begins at the end of civil twilight.
-
-            '
-          format: date-time
-          nullable: true
-        astronomicalTwilightBegin:
-          type: string
-          description: 'The timestamp of the onset of astronomical twilight, defined as when the sun angle is 108° from vertical. This is the beginning of astronomical dawn and lasts until the nautical dawn.
-
-            '
-          format: date-time
-          nullable: true
-        astronomicalTwilightEnd:
-          type: string
-          description: 'The timestamp of the end of astronomical twilight, defined as when the sun angle is 108° from vertical. This is the end of astronomical dusk, which begins at the end of nautical twilight.
-
-            '
-          format: date-time
-          nullable: true
-      description: 'An object representing sunrise, sunset, and twilight information for a location.
-
-        '
-    RelativeLocation:
-      type: object
-      properties:
-        city:
-          type: string
-        state:
-          type: string
-        distance:
-          $ref: '#/components/schemas/QuantitativeValue'
-        bearing:
-          $ref: '#/components/schemas/QuantitativeValue'
-    JsonLdContext:
-      anyOf:
-      - type: array
-        items: {}
-      - type: object
-    QuantitativeValue:
-      type: object
-      properties:
-        value:
-          type:
-          - number
-          - 'null'
-          description: A measured value
-        maxValue:
-          type: number
-          description: The maximum value of a range of measured values
-        minValue:
-          type: number
-          description: The minimum value of a range of measured values
-        unitCode:
-          $ref: '#/components/schemas/UnitOfMeasure'
-        qualityControl:
-          enum:
-          - Z
-          - C
-          - S
-          - V
-          - X
-          - Q
-          - G
-          - B
-          - T
-          type: string
-          description: 'For values in observation records, the quality control flag from the MADIS system. The definitions of these flags can be found at https://madis.ncep.noaa.gov/madis_sfc_qc_notes.shtml
-
-            '
-      description: 'A structured value representing a measurement and its unit of measure. This object is a slightly modified version of the schema.org definition at https://schema.org/QuantitativeValue
-
-        '
-      additionalProperties: false
-    GeoJsonFeature:
-      required:
-      - type
-      - geometry
-      - properties
-      type: object
-      properties:
-        '@context':
-          $ref: '#/components/schemas/JsonLdContext'
-        id:
-          type: string
-          format: uri
-        type:
-          enum:
-          - Feature
-          type: string
-        geometry:
-          $ref: '#/components/schemas/GeoJsonGeometry'
-        properties:
-          type: object
-      description: A GeoJSON feature. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-      additionalProperties: false
     GeoJsonPolygon:
       type: array
       items:
@@ -248,6 +100,29 @@ components:
         items:
           $ref: '#/components/schemas/GeoJsonCoordinate'
       description: A GeoJSON polygon. Please refer to IETF RFC 7946 for information on the GeoJSON format.
+    PointJsonLd:
+      allOf:
+      - $ref: '#/components/schemas/Point'
+      - required:
+        - '@context'
+        - geometry
+        type: object
+        properties:
+          '@context':
+            $ref: '#/components/schemas/JsonLdContext'
+          geometry:
+            $ref: '#/components/schemas/GeometryString'
+    JsonLdContext:
+      anyOf:
+      - type: array
+        items: {}
+      - type: object
+    GeoJsonLineString:
+      minItems: 2
+      type: array
+      items:
+        $ref: '#/components/schemas/GeoJsonCoordinate'
+      description: A GeoJSON line string. Please refer to IETF RFC 7946 for information on the GeoJSON format.
     ProblemDetail:
       required:
       - type
@@ -303,26 +178,6 @@ components:
           - 493c3a1d-f87e-407f-ae2c-24483f5aab63
       description: Detail about an error. This document conforms to RFC 7807 (Problem Details for HTTP APIs).
       additionalProperties: true
-    GeometryString:
-      type:
-      - string
-      - 'null'
-      description: A geometry represented in Well-Known Text (WKT) format.
-      format: wkt
-    UnitOfMeasure:
-      pattern: ^((wmo|uc|wmoUnit|nwsUnit):)?.*$
-      type: string
-      description: 'A string denoting a unit of measure, expressed in the format "{unit}" or "{namespace}:{unit}".
-
-        Units with the namespace "wmo" or "wmoUnit" are defined in the World Meteorological Organization Codes Registry at http://codes.wmo.int/common/unit and should be canonically resolvable to http://codes.wmo.int/common/unit/{unit}.
-
-        Units with the namespace "nwsUnit" are currently custom and do not align to any standard.
-
-        Units with no namespace or the namespace "uc" are compliant with the Unified Code for Units of Measure syntax defined at https://unitsofmeasure.org/. This also aligns with recent versions of the Geographic Markup Language (GML) standard, the IWXXM standard, and OGC Observations and Measurements v2.0 (ISO/DIS 19156).
-
-        Namespaced units are considered deprecated. We will be aligning API to use the same standards as GML/IWXXM in the future.
-
-        '
     RelativeLocationJsonLd:
       allOf:
       - $ref: '#/components/schemas/RelativeLocation'
@@ -332,101 +187,100 @@ components:
         properties:
           geometry:
             $ref: '#/components/schemas/GeometryString'
-    Point:
-      type: object
-      properties:
-        '@context':
-          $ref: '#/components/schemas/JsonLdContext'
-        geometry:
-          $ref: '#/components/schemas/GeometryString'
-        '@id':
-          type: string
-          format: uri
-        '@type':
-          enum:
-          - wx:Point
-          type: string
-        cwa:
-          $ref: '#/components/schemas/NWSForecastOfficeId'
-        type:
-          enum:
-          - land
-          - marine
-          type: string
-          description: Whether the specific point is on land or marine
-        forecastOffice:
-          type: string
-          format: uri
-        gridId:
-          $ref: '#/components/schemas/NWSForecastOfficeId'
-        gridX:
-          minimum: 0
-          type: integer
-        gridY:
-          minimum: 0
-          type: integer
-        forecast:
-          type: string
-          format: uri
-        forecastHourly:
-          type: string
-          format: uri
-        forecastGridData:
-          type: string
-          format: uri
-        observationStations:
-          type: string
-          format: uri
-        relativeLocation:
-          oneOf:
-          - $ref: '#/components/schemas/RelativeLocationGeoJson'
-          - $ref: '#/components/schemas/RelativeLocationJsonLd'
-        forecastZone:
-          type: string
-          format: uri
-        county:
-          type: string
-          format: uri
-        fireWeatherZone:
-          type: string
-          format: uri
-        timeZone:
-          type: string
-        radarStation:
-          type: string
-        astronomicalData:
-          $ref: '#/components/schemas/AstronomicalData'
-        nwr:
-          type: object
-          properties:
-            transmitter:
-              type:
-              - string
-              - 'null'
-              description: Transmitter callsign
-            sameCode:
-              type: string
-              description: The SAME code of this point's county
-            areaBroadcast:
-              type:
-              - string
-              - 'null'
-              description: A link to the area NWR broadcast from this transmitter
-              format: uri
-            pointBroadcast:
-              type:
-              - string
-              - 'null'
-              description: A link to the local NWR broadcast for this point
-              format: uri
-          description: NOAA Weather Radio metadata for this point
-    PointGeoJson:
-      allOf:
-      - $ref: '#/components/schemas/GeoJsonFeature'
-      - type: object
+    GeoJsonGeometry:
+      oneOf:
+      - title: GeoJSON Point
+        required:
+        - type
+        - coordinates
+        type: object
         properties:
-          properties:
-            $ref: '#/components/schemas/Point'
+          type:
+            enum:
+            - Point
+            type: string
+          coordinates:
+            $ref: '#/components/schemas/GeoJsonCoordinate'
+          bbox:
+            $ref: '#/components/schemas/GeoJsonBoundingBox'
+      - title: GeoJSON LineString
+        required:
+        - type
+        - coordinates
+        type: object
+        properties:
+          type:
+            enum:
+            - LineString
+            type: string
+          coordinates:
+            $ref: '#/components/schemas/GeoJsonLineString'
+          bbox:
+            $ref: '#/components/schemas/GeoJsonBoundingBox'
+      - title: GeoJSON Polygon
+        required:
+        - type
+        - coordinates
+        type: object
+        properties:
+          type:
+            enum:
+            - Polygon
+            type: string
+          coordinates:
+            $ref: '#/components/schemas/GeoJsonPolygon'
+          bbox:
+            $ref: '#/components/schemas/GeoJsonBoundingBox'
+      - title: GeoJSON MultiPoint
+        required:
+        - type
+        - coordinates
+        type: object
+        properties:
+          type:
+            enum:
+            - MultiPoint
+            type: string
+          coordinates:
+            type: array
+            items:
+              $ref: '#/components/schemas/GeoJsonCoordinate'
+          bbox:
+            $ref: '#/components/schemas/GeoJsonBoundingBox'
+      - title: GeoJSON MultiLineString
+        required:
+        - type
+        - coordinates
+        type: object
+        properties:
+          type:
+            enum:
+            - MultiLineString
+            type: string
+          coordinates:
+            type: array
+            items:
+              $ref: '#/components/schemas/GeoJsonLineString'
+          bbox:
+            $ref: '#/components/schemas/GeoJsonBoundingBox'
+      - title: GeoJSON MultiPolygon
+        required:
+        - type
+        - coordinates
+        type: object
+        properties:
+          type:
+            enum:
+            - MultiPolygon
+            type: string
+          coordinates:
+            type: array
+            items:
+              $ref: '#/components/schemas/GeoJsonPolygon'
+          bbox:
+            $ref: '#/components/schemas/GeoJsonBoundingBox'
+      - type: 'null'
+      description: A GeoJSON geometry object. Please refer to IETF RFC 7946 for information on the GeoJSON format.
     NWSForecastOfficeId:
       enum:
       - AKQ
@@ -564,6 +418,270 @@ components:
       - ONP
       type: string
       description: Three-letter identifier for a NWS office.
+    AstronomicalData:
+      type: object
+      properties:
+        sunrise:
+          type: string
+          description: 'The timestamp of sunrise, defined as when the sun angle is 90°35'' from vertical.
+
+            '
+          format: date-time
+          nullable: true
+        sunset:
+          type: string
+          description: 'The timestamp of sunset, defined as when the sun angle is 90°35'' from vertical.
+
+            '
+          format: date-time
+          nullable: true
+        transit:
+          type: string
+          description: 'The timestamp when the sun reaches its zenith.
+
+            '
+          format: date-time
+          nullable: true
+        civilTwilightBegin:
+          type: string
+          description: 'The timestamp of the onset of civil twilight, defined as when the sun angle is 96° from vertical. This is the beginning of civil dawn and lasts until sunrise.
+
+            '
+          format: date-time
+          nullable: true
+        civilTwilightEnd:
+          type: string
+          description: 'The timestamp of the end of civil twilight, defined as when the sun angle is 96° from vertical. This is the end of civil dusk, which begins at sunset.
+
+            '
+          format: date-time
+          nullable: true
+        nauticalTwilightBegin:
+          type: string
+          description: 'The timestamp of the onset of nautical twilight, defined as when the sun angle is 102° from vertical. This is the beginning of nautical dawn and lasts until the civil dawn.
+
+            '
+          format: date-time
+          nullable: true
+        nauticalTwilightEnd:
+          type: string
+          description: 'The timestamp of the end of nautical twilight, defined as when the sun angle is 102° from vertical. This is the end of nautical dusk, which begins at the end of civil twilight.
+
+            '
+          format: date-time
+          nullable: true
+        astronomicalTwilightBegin:
+          type: string
+          description: 'The timestamp of the onset of astronomical twilight, defined as when the sun angle is 108° from vertical. This is the beginning of astronomical dawn and lasts until the nautical dawn.
+
+            '
+          format: date-time
+          nullable: true
+        astronomicalTwilightEnd:
+          type: string
+          description: 'The timestamp of the end of astronomical twilight, defined as when the sun angle is 108° from vertical. This is the end of astronomical dusk, which begins at the end of nautical twilight.
+
+            '
+          format: date-time
+          nullable: true
+      description: 'An object representing sunrise, sunset, and twilight information for a location.
+
+        '
+    GeometryString:
+      type:
+      - string
+      - 'null'
+      description: A geometry represented in Well-Known Text (WKT) format.
+      format: wkt
+    RelativeLocation:
+      type: object
+      properties:
+        city:
+          type: string
+        state:
+          type: string
+        distance:
+          $ref: '#/components/schemas/QuantitativeValue'
+        bearing:
+          $ref: '#/components/schemas/QuantitativeValue'
+    UnitOfMeasure:
+      pattern: ^((wmo|uc|wmoUnit|nwsUnit):)?.*$
+      type: string
+      description: 'A string denoting a unit of measure, expressed in the format "{unit}" or "{namespace}:{unit}".
+
+        Units with the namespace "wmo" or "wmoUnit" are defined in the World Meteorological Organization Codes Registry at http://codes.wmo.int/common/unit and should be canonically resolvable to http://codes.wmo.int/common/unit/{unit}.
+
+        Units with the namespace "nwsUnit" are currently custom and do not align to any standard.
+
+        Units with no namespace or the namespace "uc" are compliant with the Unified Code for Units of Measure syntax defined at https://unitsofmeasure.org/. This also aligns with recent versions of the Geographic Markup Language (GML) standard, the IWXXM standard, and OGC Observations and Measurements v2.0 (ISO/DIS 19156).
+
+        Namespaced units are considered deprecated. We will be aligning API to use the same standards as GML/IWXXM in the future.
+
+        '
+    GeoJsonBoundingBox:
+      minItems: 4
+      type: array
+      items:
+        type: number
+      description: A GeoJSON bounding box. Please refer to IETF RFC 7946 for information on the GeoJSON format.
+    PointGeoJson:
+      allOf:
+      - $ref: '#/components/schemas/GeoJsonFeature'
+      - type: object
+        properties:
+          properties:
+            $ref: '#/components/schemas/Point'
+    GeoJsonCoordinate:
+      minItems: 2
+      type: array
+      items:
+        type: number
+      description: A GeoJSON coordinate. Please refer to IETF RFC 7946 for information on the GeoJSON format.
+    GeoJsonFeature:
+      required:
+      - type
+      - geometry
+      - properties
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/JsonLdContext'
+        id:
+          type: string
+          format: uri
+        type:
+          enum:
+          - Feature
+          type: string
+        geometry:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+        properties:
+          type: object
+      description: A GeoJSON feature. Please refer to IETF RFC 7946 for information on the GeoJSON format.
+      additionalProperties: false
+    QuantitativeValue:
+      type: object
+      properties:
+        value:
+          type:
+          - number
+          - 'null'
+          description: A measured value
+        maxValue:
+          type: number
+          description: The maximum value of a range of measured values
+        minValue:
+          type: number
+          description: The minimum value of a range of measured values
+        unitCode:
+          $ref: '#/components/schemas/UnitOfMeasure'
+        qualityControl:
+          enum:
+          - Z
+          - C
+          - S
+          - V
+          - X
+          - Q
+          - G
+          - B
+          - T
+          type: string
+          description: 'For values in observation records, the quality control flag from the MADIS system. The definitions of these flags can be found at https://madis.ncep.noaa.gov/madis_sfc_qc_notes.shtml
+
+            '
+      description: 'A structured value representing a measurement and its unit of measure. This object is a slightly modified version of the schema.org definition at https://schema.org/QuantitativeValue
+
+        '
+      additionalProperties: false
+    Point:
+      type: object
+      properties:
+        '@context':
+          $ref: '#/components/schemas/JsonLdContext'
+        geometry:
+          $ref: '#/components/schemas/GeometryString'
+        '@id':
+          type: string
+          format: uri
+        '@type':
+          enum:
+          - wx:Point
+          type: string
+        cwa:
+          $ref: '#/components/schemas/NWSForecastOfficeId'
+        type:
+          enum:
+          - land
+          - marine
+          type: string
+          description: Whether the specific point is on land or marine
+        forecastOffice:
+          type: string
+          format: uri
+        gridId:
+          $ref: '#/components/schemas/NWSForecastOfficeId'
+        gridX:
+          minimum: 0
+          type: integer
+        gridY:
+          minimum: 0
+          type: integer
+        forecast:
+          type: string
+          format: uri
+        forecastHourly:
+          type: string
+          format: uri
+        forecastGridData:
+          type: string
+          format: uri
+        observationStations:
+          type: string
+          format: uri
+        relativeLocation:
+          oneOf:
+          - $ref: '#/components/schemas/RelativeLocationGeoJson'
+          - $ref: '#/components/schemas/RelativeLocationJsonLd'
+        forecastZone:
+          type: string
+          format: uri
+        county:
+          type: string
+          format: uri
+        fireWeatherZone:
+          type: string
+          format: uri
+        timeZone:
+          type: string
+        radarStation:
+          type: string
+        astronomicalData:
+          $ref: '#/components/schemas/AstronomicalData'
+        nwr:
+          type: object
+          properties:
+            transmitter:
+              type:
+              - string
+              - 'null'
+              description: Transmitter callsign
+            sameCode:
+              type: string
+              description: The SAME code of this point's county
+            areaBroadcast:
+              type:
+              - string
+              - 'null'
+              description: A link to the area NWR broadcast from this transmitter
+              format: uri
+            pointBroadcast:
+              type:
+              - string
+              - 'null'
+              description: A link to the local NWR broadcast for this point
+              format: uri
+          description: NOAA Weather Radio metadata for this point
     RelativeLocationGeoJson:
       allOf:
       - $ref: '#/components/schemas/GeoJsonFeature'
@@ -571,135 +689,7 @@ components:
         properties:
           properties:
             $ref: '#/components/schemas/RelativeLocation'
-    GeoJsonBoundingBox:
-      minItems: 4
-      type: array
-      items:
-        type: number
-      description: A GeoJSON bounding box. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-    PointJsonLd:
-      allOf:
-      - $ref: '#/components/schemas/Point'
-      - required:
-        - '@context'
-        - geometry
-        type: object
-        properties:
-          '@context':
-            $ref: '#/components/schemas/JsonLdContext'
-          geometry:
-            $ref: '#/components/schemas/GeometryString'
-    GeoJsonCoordinate:
-      minItems: 2
-      type: array
-      items:
-        type: number
-      description: A GeoJSON coordinate. Please refer to IETF RFC 7946 for information on the GeoJSON format.
-    GeoJsonGeometry:
-      oneOf:
-      - title: GeoJSON Point
-        required:
-        - type
-        - coordinates
-        type: object
-        properties:
-          type:
-            enum:
-            - Point
-            type: string
-          coordinates:
-            $ref: '#/components/schemas/GeoJsonCoordinate'
-          bbox:
-            $ref: '#/components/schemas/GeoJsonBoundingBox'
-      - title: GeoJSON LineString
-        required:
-        - type
-        - coordinates
-        type: object
-        properties:
-          type:
-            enum:
-            - LineString
-            type: string
-          coordinates:
-            $ref: '#/components/schemas/GeoJsonLineString'
-          bbox:
-            $ref: '#/components/schemas/GeoJsonBoundingBox'
-      - title: GeoJSON Polygon
-        required:
-        - type
-        - coordinates
-        type: object
-        properties:
-          type:
-            enum:
-            - Polygon
-            type: string
-          coordinates:
-            $ref: '#/components/schemas/GeoJsonPolygon'
-          bbox:
-            $ref: '#/components/schemas/GeoJsonBoundingBox'
-      - title: GeoJSON MultiPoint
-        required:
-        - type
-        - coordinates
-        type: object
-        properties:
-          type:
-            enum:
-            - MultiPoint
-            type: string
-          coordinates:
-            type: array
-            items:
-              $ref: '#/components/schemas/GeoJsonCoordinate'
-          bbox:
-            $ref: '#/components/schemas/GeoJsonBoundingBox'
-      - title: GeoJSON MultiLineString
-        required:
-        - type
-        - coordinates
-        type: object
-        properties:
-          type:
-            enum:
-            - MultiLineString
-            type: string
-          coordinates:
-            type: array
-            items:
-              $ref: '#/components/schemas/GeoJsonLineString'
-          bbox:
-            $ref: '#/components/schemas/GeoJsonBoundingBox'
-      - title: GeoJSON MultiPolygon
-        required:
-        - type
-        - coordinates
-        type: object
-        properties:
-          type:
-            enum:
-            - MultiPolygon
-            type: string
-          coordinates:
-            type: array
-            items:
-              $ref: '#/components/schemas/GeoJsonPolygon'
-          bbox:
-            $ref: '#/components/schemas/GeoJsonBoundingBox'
-      - type: 'null'
-      description: A GeoJSON geometry object. Please refer to IETF RFC 7946 for information on the GeoJSON format.
   parameters:
-    Latitude:
-      name: latitude
-      in: path
-      description: Latitude
-      required: true
-      schema:
-        multipleOf: 0.0001
-        maximum: 90
-        minimum: -90
-        type: number
     Longitude:
       name: longitude
       in: path
@@ -710,15 +700,25 @@ components:
         maximum: 180
         minimum: -180
         type: number
+    Latitude:
+      name: latitude
+      in: path
+      description: Latitude
+      required: true
+      schema:
+        multipleOf: 0.0001
+        maximum: 90
+        minimum: -90
+        type: number
   headers:
-    ServerId:
-      description: 'The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+    RequestId:
+      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
 
         '
       schema:
         type: string
-    RequestId:
-      description: 'A unique identifier for the request, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
+    ServerId:
+      description: 'The identifier of the server that generated the response, used for NWS debugging purposes. Please include this identifier with any correspondence to help us investigate your issue.
 
         '
       schema:
