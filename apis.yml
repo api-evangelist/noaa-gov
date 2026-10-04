@@ -64,6 +64,13 @@ tags:
   - Fisheries
   - Aviation
   - Emergency Management
+  - Alerts
+  - Tides
+  - Aviation Weather
+  - Environmental
+  - Government Data
+  - Atmosphere
+  - Federal Government
 apis:
 - aid: noaa-gov:swpc-data-service
   name: Space Weather Prediction Center (SWPC) Data Service
@@ -94,67 +101,6 @@ apis:
     type: BaseURL
   - url: https://www.swpc.noaa.gov/news/scn-upcoming-json-modifications-and-changes
     type: ChangeLog
-- aid: noaa-gov:co-ops-data-api
-  name: CO-OPS Data Retrieval API (Tides & Currents)
-  description: >-
-    The Center for Operational Oceanographic Products and Services (CO-OPS) Data API returns water-level
-    observations, tide predictions, currents, meteorological observations, and operational forecast model
-    output (NOS OFS nowcasts) for over 200 stations along US coasts, the Great Lakes, and US territories.
-    Supports XML, JSON, and CSV with selectable datums (MLLW, MHHW, MSL, plus Great Lakes datums), units,
-    and time zones. Free, no key required. Stable endpoint at api.tidesandcurrents.noaa.gov.
-  humanURL: https://api.tidesandcurrents.noaa.gov/api/prod/
-  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod
-  tags:
-  - Ocean
-  - Tides
-  - Currents
-  - Water Level
-  - Marine
-  properties:
-  - url: https://api.tidesandcurrents.noaa.gov/api/prod/
-    type: Documentation
-  - url: https://tidesandcurrents.noaa.gov/api-helper/url-generator.html
-    type: Sandbox
-  - url: https://tidesandcurrents.noaa.gov/products.html
-    type: Documentation
-- aid: noaa-gov:co-ops-metadata-api
-  name: CO-OPS Metadata API (MDAPI v1)
-  description: >-
-    The CO-OPS Metadata API exposes station inventory, harmonic constituents, NOS PORTS station lists,
-    flood thresholds, and high/low water station catalogs. Supports radius and bounding-box station discovery
-    and returns JSON or XML. Stable endpoint at api.tidesandcurrents.noaa.gov/mdapi/prod.
-  humanURL: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
-  baseURL: https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi
-  tags:
-  - Ocean
-  - Metadata
-  - Stations
-  - Ports
-  tags_raw:
-  - Ocean
-  - Metadata
-  - Stations
-  - PORTS
-  properties:
-  - url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
-    type: Documentation
-  - url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/releasenotes.html
-    type: ChangeLog
-- aid: noaa-gov:co-ops-derived-product-api
-  name: CO-OPS Derived Product API (DPAPI v0.1)
-  description: >-
-    Derived products computed from historical CO-OPS water-level records — sea level trends, annual mean
-    sea level reports, top-10 water levels, and extreme event summaries — exposed as a machine-readable
-    companion to the data and metadata APIs.
-  humanURL: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
-  baseURL: https://api.tidesandcurrents.noaa.gov/dpapi/prod
-  tags:
-  - Ocean
-  - Sea Level
-  - Climate
-  properties:
-  - url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
-    type: Documentation
 - aid: noaa-gov:ncei-access-data-service
   name: NCEI Access Data Service (v1)
   description: >-
@@ -195,29 +141,6 @@ apis:
     type: Authentication
   - url: rate-limits/noaa-gov-rate-limits.yml
     type: RateLimits
-- aid: noaa-gov:ndbc-data-service
-  name: National Data Buoy Center (NDBC) Web Data Service
-  description: >-
-    NDBC publishes real-time meteorological and oceanographic observations (the last 45 days) and historical
-    archives from a global network of over 900 moored buoys, drifting buoys, C-MAN coastal stations, and
-    partner stations. Data is exposed via HTTP file URLs, a THREDDS Data Server, and an OGC API Features
-    collection. Observations include wave height, period, direction, sea surface temperature, wind, air
-    pressure, salinity, and visibility.
-  humanURL: https://www.ndbc.noaa.gov/docs/ndbc_web_data_guide.pdf
-  baseURL: https://www.ndbc.noaa.gov/data
-  tags:
-  - Ocean
-  - Marine
-  - Buoys
-  - Waves
-  - Observations
-  properties:
-  - url: https://www.ndbc.noaa.gov/docs/ndbc_web_data_guide.pdf
-    type: Documentation
-  - url: https://www.ndbc.noaa.gov/faq/rt_data_access.shtml
-    type: Documentation
-  - url: https://www.ndbc.noaa.gov/thredds/catalog.html
-    type: Documentation
 - aid: noaa-gov:erddap-coastwatch
   name: NOAA CoastWatch ERDDAP Server
   description: >-
@@ -319,261 +242,44 @@ apis:
     type: Documentation
   - url: https://www.fisheries.noaa.gov/inport/release-notes
     type: ChangeLog
-- aid: noaa-gov:noaa-gov-alerts-api
-  name: NOAA — National Oceanic and Atmospheric Administration Alerts API
-  description: >-
-    The Alerts API from NOAA — National Oceanic and Atmospheric Administration — 8 operation(s) for alerts.
-  humanURL: https://www.weather.gov/documentation/services-web-api
-  baseURL: https://api.weather.gov
+- aid: noaa-gov:aviationweather-data-api
+  name: AviationWeather.gov Weather Data API
+  description: 'Decoded aviation weather from NOAA''s Aviation Weather Center: METARs, TAFs, PIREPs, SIGMETs,
+    G-AIRMETs, CWAs, winds aloft, area forecasts and forecast discussions.'
+  humanURL: https://aviationweather.gov/data/api/
+  baseURL: https://aviationweather.gov
   tags:
-  - Alerts
+  - Aviation Weather
+  - Weather Data
   properties:
   - type: OpenAPI
-    url: openapi/noaa-gov-alerts-api-openapi.yml
+    url: openapi/noaa-gov-aviationweather-data-api-openapi.yml
   - type: Documentation
-    url: https://www.weather.gov/documentation/services-web-api
-  - type: GitHubRepository
-    url: https://github.com/weather-gov/api
-  - type: BaseURL
-    url: https://api.weather.gov
-  - type: ChangeLog
-    url: https://www.weather.gov/documentation/services-web-api#/changelog
-- aid: noaa-gov:noaa-gov-aviation-api
-  name: NOAA — National Oceanic and Atmospheric Administration Aviation API
-  description: >-
-    The Aviation API from NOAA — National Oceanic and Atmospheric Administration — 7 operation(s) for
-    aviation.
-  humanURL: https://www.weather.gov/documentation/services-web-api
-  baseURL: https://api.weather.gov
+    url: https://aviationweather.gov/data/api/
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-metarjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-tafjson.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-pireptext.json
+  - type: JSONSchema
+    url: json-schema/noaa-aviation-airsigmetjson.json
+  - type: Examples
+    url: examples/noaa-aviation-metar-example.json
+- aid: noaa-gov:aviationweather-navigational-data-api
+  name: AviationWeather.gov Navigational Data API
+  description: 'Decoded navigational information from NOAA''s Aviation Weather Center: station info, airports,
+    navaids, fixes, features and obstacles.'
+  humanURL: https://aviationweather.gov/data/api/
+  baseURL: https://aviationweather.gov
   tags:
-  - Aviation
+  - Aviation Weather
+  - Navigational Data
   properties:
   - type: OpenAPI
-    url: openapi/noaa-gov-aviation-api-openapi.yml
+    url: openapi/noaa-gov-aviationweather-navigational-data-api-openapi.yml
   - type: Documentation
-    url: https://www.weather.gov/documentation/services-web-api
-  - type: GitHubRepository
-    url: https://github.com/weather-gov/api
-  - type: BaseURL
-    url: https://api.weather.gov
-  - type: ChangeLog
-    url: https://www.weather.gov/documentation/services-web-api#/changelog
-- aid: noaa-gov:noaa-gov-glossary-api
-  name: NOAA — National Oceanic and Atmospheric Administration Glossary API
-  description: >-
-    The Glossary API from NOAA — National Oceanic and Atmospheric Administration — 1 operation(s) for
-    glossary.
-  humanURL: https://www.weather.gov/documentation/services-web-api
-  baseURL: https://api.weather.gov
-  tags:
-  - Glossary
-  properties:
-  - type: OpenAPI
-    url: openapi/noaa-gov-glossary-api-openapi.yml
-  - type: Documentation
-    url: https://www.weather.gov/documentation/services-web-api
-  - type: GitHubRepository
-    url: https://github.com/weather-gov/api
-  - type: BaseURL
-    url: https://api.weather.gov
-  - type: ChangeLog
-    url: https://www.weather.gov/documentation/services-web-api#/changelog
-- aid: noaa-gov:noaa-gov-gridpoints-api
-  name: NOAA — National Oceanic and Atmospheric Administration Gridpoints API
-  description: >-
-    The Gridpoints API from NOAA — National Oceanic and Atmospheric Administration — 4 operation(s) for
-    gridpoints.
-  humanURL: https://www.weather.gov/documentation/services-web-api
-  baseURL: https://api.weather.gov
-  tags:
-  - Gridpoints
-  properties:
-  - type: OpenAPI
-    url: openapi/noaa-gov-gridpoints-api-openapi.yml
-  - type: Documentation
-    url: https://www.weather.gov/documentation/services-web-api
-  - type: GitHubRepository
-    url: https://github.com/weather-gov/api
-  - type: BaseURL
-    url: https://api.weather.gov
-  - type: ChangeLog
-    url: https://www.weather.gov/documentation/services-web-api#/changelog
-- aid: noaa-gov:noaa-gov-icons-api
-  name: NOAA — National Oceanic and Atmospheric Administration Icons API
-  description: >-
-    The Icons API from NOAA — National Oceanic and Atmospheric Administration — 3 operation(s) for icons.
-  humanURL: https://www.weather.gov/documentation/services-web-api
-  baseURL: https://api.weather.gov
-  tags:
-  - Icons
-  properties:
-  - type: OpenAPI
-    url: openapi/noaa-gov-icons-api-openapi.yml
-  - type: Documentation
-    url: https://www.weather.gov/documentation/services-web-api
-  - type: GitHubRepository
-    url: https://github.com/weather-gov/api
-  - type: BaseURL
-    url: https://api.weather.gov
-  - type: ChangeLog
-    url: https://www.weather.gov/documentation/services-web-api#/changelog
-- aid: noaa-gov:noaa-gov-offices-api
-  name: NOAA — National Oceanic and Atmospheric Administration Offices API
-  description: >-
-    The Offices API from NOAA — National Oceanic and Atmospheric Administration — 8 operation(s) for offices.
-  humanURL: https://www.weather.gov/documentation/services-web-api
-  baseURL: https://api.weather.gov
-  tags:
-  - Offices
-  properties:
-  - type: OpenAPI
-    url: openapi/noaa-gov-offices-api-openapi.yml
-  - type: Documentation
-    url: https://www.weather.gov/documentation/services-web-api
-  - type: GitHubRepository
-    url: https://github.com/weather-gov/api
-  - type: BaseURL
-    url: https://api.weather.gov
-  - type: ChangeLog
-    url: https://www.weather.gov/documentation/services-web-api#/changelog
-- aid: noaa-gov:noaa-gov-points-api
-  name: NOAA — National Oceanic and Atmospheric Administration Points API
-  description: >-
-    The Points API from NOAA — National Oceanic and Atmospheric Administration — 3 operation(s) for points.
-  humanURL: https://www.weather.gov/documentation/services-web-api
-  baseURL: https://api.weather.gov
-  tags:
-  - Points
-  properties:
-  - type: OpenAPI
-    url: openapi/noaa-gov-points-api-openapi.yml
-  - type: Documentation
-    url: https://www.weather.gov/documentation/services-web-api
-  - type: GitHubRepository
-    url: https://github.com/weather-gov/api
-  - type: BaseURL
-    url: https://api.weather.gov
-  - type: ChangeLog
-    url: https://www.weather.gov/documentation/services-web-api#/changelog
-- aid: noaa-gov:noaa-gov-products-api
-  name: NOAA — National Oceanic and Atmospheric Administration Products API
-  description: >-
-    The Products API from NOAA — National Oceanic and Atmospheric Administration — 9 operation(s) for
-    products.
-  humanURL: https://www.weather.gov/documentation/services-web-api
-  baseURL: https://api.weather.gov
-  tags:
-  - Product
-  tags_raw:
-  - Products
-  properties:
-  - type: OpenAPI
-    url: openapi/noaa-gov-products-api-openapi.yml
-  - type: Documentation
-    url: https://www.weather.gov/documentation/services-web-api
-  - type: GitHubRepository
-    url: https://github.com/weather-gov/api
-  - type: BaseURL
-    url: https://api.weather.gov
-  - type: ChangeLog
-    url: https://www.weather.gov/documentation/services-web-api#/changelog
-- aid: noaa-gov:noaa-gov-radar-api
-  name: NOAA — National Oceanic and Atmospheric Administration Radar API
-  description: >-
-    The Radar API from NOAA — National Oceanic and Atmospheric Administration — 8 operation(s) for radar.
-  humanURL: https://www.weather.gov/documentation/services-web-api
-  baseURL: https://api.weather.gov
-  tags:
-  - Radar
-  properties:
-  - type: OpenAPI
-    url: openapi/noaa-gov-radar-api-openapi.yml
-  - type: Documentation
-    url: https://www.weather.gov/documentation/services-web-api
-  - type: GitHubRepository
-    url: https://github.com/weather-gov/api
-  - type: BaseURL
-    url: https://api.weather.gov
-  - type: ChangeLog
-    url: https://www.weather.gov/documentation/services-web-api#/changelog
-- aid: noaa-gov:noaa-gov-radio-api
-  name: NOAA — National Oceanic and Atmospheric Administration Radio API
-  description: >-
-    The Radio API from NOAA — National Oceanic and Atmospheric Administration — 1 operation(s) for radio.
-  humanURL: https://www.weather.gov/documentation/services-web-api
-  baseURL: https://api.weather.gov
-  tags:
-  - Radio
-  properties:
-  - type: OpenAPI
-    url: openapi/noaa-gov-radio-api-openapi.yml
-  - type: Documentation
-    url: https://www.weather.gov/documentation/services-web-api
-  - type: GitHubRepository
-    url: https://github.com/weather-gov/api
-  - type: BaseURL
-    url: https://api.weather.gov
-  - type: ChangeLog
-    url: https://www.weather.gov/documentation/services-web-api#/changelog
-- aid: noaa-gov:noaa-gov-stations-api
-  name: NOAA — National Oceanic and Atmospheric Administration Stations API
-  description: >-
-    The Stations API from NOAA — National Oceanic and Atmospheric Administration — 7 operation(s) for
-    stations.
-  humanURL: https://www.weather.gov/documentation/services-web-api
-  baseURL: https://api.weather.gov
-  tags:
-  - Stations
-  properties:
-  - type: OpenAPI
-    url: openapi/noaa-gov-stations-api-openapi.yml
-  - type: Documentation
-    url: https://www.weather.gov/documentation/services-web-api
-  - type: GitHubRepository
-    url: https://github.com/weather-gov/api
-  - type: BaseURL
-    url: https://api.weather.gov
-  - type: ChangeLog
-    url: https://www.weather.gov/documentation/services-web-api#/changelog
-- aid: noaa-gov:noaa-gov-thumbnails-api
-  name: NOAA — National Oceanic and Atmospheric Administration Thumbnails API
-  description: >-
-    The Thumbnails API from NOAA — National Oceanic and Atmospheric Administration — 1 operation(s) for
-    thumbnails.
-  humanURL: https://www.weather.gov/documentation/services-web-api
-  baseURL: https://api.weather.gov
-  tags:
-  - Thumbnails
-  properties:
-  - type: OpenAPI
-    url: openapi/noaa-gov-thumbnails-api-openapi.yml
-  - type: Documentation
-    url: https://www.weather.gov/documentation/services-web-api
-  - type: GitHubRepository
-    url: https://github.com/weather-gov/api
-  - type: BaseURL
-    url: https://api.weather.gov
-  - type: ChangeLog
-    url: https://www.weather.gov/documentation/services-web-api#/changelog
-- aid: noaa-gov:noaa-gov-zones-api
-  name: NOAA — National Oceanic and Atmospheric Administration Zones API
-  description: >-
-    The Zones API from NOAA — National Oceanic and Atmospheric Administration — 6 operation(s) for zones.
-  humanURL: https://www.weather.gov/documentation/services-web-api
-  baseURL: https://api.weather.gov
-  tags:
-  - Zones
-  properties:
-  - type: OpenAPI
-    url: openapi/noaa-gov-zones-api-openapi.yml
-  - type: Documentation
-    url: https://www.weather.gov/documentation/services-web-api
-  - type: GitHubRepository
-    url: https://github.com/weather-gov/api
-  - type: BaseURL
-    url: https://api.weather.gov
-  - type: ChangeLog
-    url: https://www.weather.gov/documentation/services-web-api#/changelog
+    url: https://aviationweather.gov/data/api/
 common:
   - type: Website
     url: https://www.noaa.gov/
@@ -698,6 +404,14 @@ common:
       - https://www.noaa.gov/information-technology/open-data-dissemination
       - https://www.fisheries.noaa.gov/foss/f?p=215:35
     updated: '2026-05-25'
+  - type: Documentation
+    url: https://www.weather.gov/documentation
+  - type: GitHubOrganization
+    url: https://github.com/NOAAGov
+  - type: Portal
+    url: https://www.ncdc.noaa.gov/cdo-web/webservices/v2
+  - type: Blog
+    url: https://www.noaa.gov/rss.xml
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
