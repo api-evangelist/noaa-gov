@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/noaa/main/json-schema/noaa-aviation-pireptext.json",
+  "title": "PIREPtext",
+  "description": "NOAA Aviation Weather API schema for PIREPtext",
+  "type": "string",
+  "examples": [
+    "COU UA /OV COU260020/TM 0012/FL140/TP E170/TB LGT-MOD CHOP 140-170/RM DURC /ZKC FDC/CW"
+  ]
+}

@@ -1,0 +1,517 @@
+openapi: 3.2.0
+info:
+  title: AviationWeather.gov Navigational Data API
+  description: Schema for public data API of AviationWeather.gov.
+  termsOfService: /data/api/
+  version: v4.0
+tags:
+- name: Navigational Data
+  description: Decoded navigational information
+servers:
+- url: https://aviationweather.gov
+  description: NOAA Aviation Weather Center data API
+paths:
+  /api/data/stationinfo:
+    get:
+      tags:
+      - Navigational Data
+      summary: Station info
+      description: Station observation location information
+      parameters:
+      - $ref: '#/components/parameters/ids'
+      - $ref: '#/components/parameters/bbox'
+      - $ref: '#/components/parameters/RawJSONGeoXML'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StationInfoJSON'
+            application/geo+json:
+              schema:
+                $ref: '#/components/schemas/StationInfoGeoJSON'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/StationInfoXML'
+        400:
+          $ref: '#/components/responses/400'
+      operationId: getApiDataStationinfo
+      x-operation-id-source: derived
+  /api/data/airport:
+    get:
+      tags:
+      - Navigational Data
+      summary: Airport info
+      description: Information about airports
+      parameters:
+      - $ref: '#/components/parameters/ids'
+      - $ref: '#/components/parameters/bbox'
+      - name: format
+        in: query
+        description: Format
+        required: false
+        explode: true
+        schema:
+          type: string
+          enum:
+          - decoded
+          - json
+          - geojson
+          default: decoded
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    icaoId:
+                      type: string
+                      examples:
+                      - KMCI
+                    iataId:
+                      type: string
+                      examples:
+                      - MCI
+                    faaId:
+                      type: string
+                      examples:
+                      - MCI
+                    name:
+                      type: string
+                      examples:
+                      - KANSAS CITY/KANSAS CITY INTL
+                    state:
+                      type: string
+                      examples:
+                      - MO
+                    country:
+                      type: string
+                      examples:
+                      - US
+                    source:
+                      type: string
+                      examples:
+                      - FAA
+                    type:
+                      type: string
+                      examples:
+                      - ARP
+                    lat:
+                      type: string
+                      examples:
+                      - 39.2976
+                    lon:
+                      type: string
+                      examples:
+                      - -94.7139
+                    elev:
+                      type: string
+                      examples:
+                      - 313
+                    magdec:
+                      type: string
+                      examples:
+                      - 02E
+                    owner:
+                      type: string
+                      examples:
+                      - P
+                    runways:
+                      type: array
+        400:
+          $ref: '#/components/responses/400'
+      operationId: getApiDataAirport
+      x-operation-id-source: derived
+  /api/data/navaid:
+    get:
+      tags:
+      - Navigational Data
+      summary: Navigational aid info
+      description: Navigational aid data
+      parameters:
+      - name: ids
+        in: query
+        description: three character identifier
+        required: false
+        examples:
+          '-':
+            value: ''
+          barbq:
+            summary: MCI
+            value: MCI
+        schema:
+          type: string
+      - $ref: '#/components/parameters/bbox'
+      - $ref: '#/components/parameters/RawJSONGeo'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      examples:
+                      - MCI
+                    type:
+                      type: string
+                      examples:
+                      - VORTAC
+                    name:
+                      type: string
+                      examples:
+                      - Kansas City
+                    state:
+                      type: string
+                      examples:
+                      - MO
+                    country:
+                      type: string
+                      examples:
+                      - US
+                    lat:
+                      type: number
+                      examples:
+                      - 39.2853
+                    lon:
+                      type: number
+                      examples:
+                      - -94.7371
+                    elev:
+                      type: number
+                      examples:
+                      - 310
+                    freq:
+                      type: number
+                      examples:
+                      - 113.25
+                    mag_dec:
+                      type: string
+                      examples:
+                      - 05E
+        400:
+          $ref: '#/components/responses/400'
+      operationId: getApiDataNavaid
+      x-operation-id-source: derived
+  /api/data/fix:
+    get:
+      tags:
+      - Navigational Data
+      summary: Navigational fix/waypoint info
+      description: Navigational fix data
+      parameters:
+      - name: ids
+        in: query
+        description: 5 letter Fix ID(s)
+        required: false
+        examples:
+          '-':
+            value: ''
+          barbq:
+            summary: BARBQ
+            value: BARBQ
+        schema:
+          type: string
+      - $ref: '#/components/parameters/bbox'
+      - $ref: '#/components/parameters/RawJSONGeo'
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      examples:
+                      - BARBQ
+                    type:
+                      type: string
+                      examples:
+                      - I
+                    lat:
+                      type: number
+                      examples:
+                      - 39.0811
+                    lon:
+                      type: number
+                      examples:
+                      - -94.7681
+        400:
+          $ref: '#/components/responses/400'
+      operationId: getApiDataFix
+      x-operation-id-source: derived
+  /api/data/feature:
+    get:
+      tags:
+      - Navigational Data
+      summary: Feature info
+      description: Additional geographic features
+      parameters:
+      - $ref: '#/components/parameters/bbox'
+      - $ref: '#/components/parameters/RawJSONGeo'
+      responses:
+        200:
+          description: successful operation
+        400:
+          $ref: '#/components/responses/400'
+      operationId: getApiDataFeature
+      x-operation-id-source: derived
+  /api/data/obstacle:
+    get:
+      tags:
+      - Navigational Data
+      summary: Obstacle info
+      description: Aviation obstacle information
+      parameters:
+      - $ref: '#/components/parameters/bbox'
+      - $ref: '#/components/parameters/RawJSONGeo'
+      responses:
+        200:
+          description: successful operation
+        400:
+          $ref: '#/components/responses/400'
+      operationId: getApiDataObstacle
+      x-operation-id-source: derived
+components:
+  parameters:
+    ids:
+      name: ids
+      in: query
+      description: Station ID(s)
+      required: false
+      examples:
+        '-':
+          value: ''
+        id:
+          summary: A single ICAO Id
+          value: KMCI
+        ids:
+          summary: A list of ICAO Ids separated by commas
+          value: KMCI,KORD,KBOS
+        states:
+          summary: A 2 letter state abbreviation preceded by a @
+          value: '@WA'
+      schema:
+        type: string
+    RawJSONGeo:
+      name: format
+      in: query
+      description: Format
+      required: false
+      explode: true
+      schema:
+        type: string
+        enum:
+        - raw
+        - json
+        - geojson
+        default: raw
+    RawJSONGeoXML:
+      name: format
+      in: query
+      description: Format
+      required: false
+      explode: true
+      schema:
+        type: string
+        enum:
+        - raw
+        - json
+        - geojson
+        - xml
+        default: raw
+    bbox:
+      name: bbox
+      in: query
+      description: Geographic bounding box (lat0, lon0, lat1, lon1)
+      required: false
+      examples:
+        '-':
+          value: ''
+        box:
+          summary: A small box around Chicago
+          value: 40,-90,45,-85
+      schema:
+        type: string
+  schemas:
+    StationInfoXML:
+      xml:
+        name: response
+      type: object
+      properties:
+        request_index:
+          type: number
+        data_source:
+          properties:
+            name:
+              type: string
+              enum:
+              - aircraftreports
+              xml:
+                attribute: true
+        request:
+          properties:
+            type:
+              type: string
+              enum:
+              - retrieve
+              xml:
+                attribute: true
+        errors: null
+        warnings: null
+        time_taken_ms:
+          type: number
+        data:
+          type: array
+          xml:
+            name: data
+            wrapped: true
+          items:
+            type: object
+            xml:
+              name: Station
+            properties:
+              station_id:
+                type: string
+              iata_id:
+                type: string
+              wmo_id:
+                type: string
+              faa_id:
+                type: string
+              latitude:
+                type: string
+              longitude:
+                type: string
+              elevation_m:
+                type: string
+              site:
+                type: string
+              state:
+                type: string
+              country:
+                type: string
+              site_type:
+                type: object
+                properties:
+                  METAR: null
+                  TAF: null
+    StationInfoJSON:
+      type: array
+      items:
+        type: object
+        properties:
+          icaoId:
+            type: string
+            description: ICAO station identifier
+          iataId:
+            type: string
+            description: IATA station identifier
+          faaId:
+            type: string
+            description: FAA station identifier
+          site:
+            type: string
+            description: Site name
+          lat:
+            type: number
+            description: Latitude
+          lon:
+            type: number
+            description: Longitude
+          elev:
+            type: number
+            description: Elevation
+          state:
+            type: string
+            description: State or region
+          country:
+            type: string
+            description: Country
+          priority:
+            type: number
+            description: Priority display order
+          siteType:
+            type: array
+            description: METAR and/or TAF availability
+            items:
+              type: string
+    StationInfoGeoJSON:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - FeatureCollection
+        features:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - Feature
+              id:
+                type: number
+              properties:
+                type: object
+                properties:
+                  icaoId:
+                    type: string
+                    description: ICAO station identifier
+                  iataId:
+                    type: string
+                    description: IATA station identifier
+                  faaId:
+                    type: string
+                    description: FAA station identifier
+                  site:
+                    type: string
+                    description: Site name
+                  elev:
+                    type: number
+                    description: Elevation
+                  state:
+                    type: string
+                    description: State or region
+                  country:
+                    type: string
+                    description: Country
+                  priority:
+                    type: number
+                    description: Priority display order
+                  siteType:
+                    type: array
+                    description: METAR and/or TAF availability
+                    items:
+                      type: string
+              geometry:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum:
+                    - Point
+                  coordinates:
+                    type: array
+                    minItems: 2
+                    maxItems: 2
+                    items:
+                      type: number
+                    examples:
+                    - - -87.9316
+                      - 41.9602

@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/noaa/main/json-schema/noaa-aviation-airsigmetjson.json",
+  "title": "AirSigmetJSON",
+  "description": "NOAA Aviation Weather API schema for AirSigmetJSON",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "icaoId": {
+        "type": "string",
+        "examples": [
+          "KKCI"
+        ]
+      },
+      "alphaChar": {
+        "type": "string",
+        "examples": [
+          "W"
+        ]
+      },
+      "seriesId": {
+        "type": "string",
+        "examples": [
+          "NOVEMBER 7"
+        ]
+      },
+      "receiptTime": {
+        "type": "string",
+        "description": "Time received by AWC",
+        "examples": [
+          "2025-09-27T11:48:24.974000+00:00"
+        ]
+      },
+      "creationTime": {
+        "type": "string",
+        "description": "Issuance time",
+        "examples": [
+          "2025-09-27T11:55:00.000Z8"
+        ]
+      },
+      "validTimeFrom": {
+        "type": "integer",
+        "examples": [
+          1758974100
+        ]
+      },
+      "validTimeTo": {
+        "type": "integer",
+        "examples": [
+          1758981300
+        ]
+      },
+      "airSigmetType": {
+        "type": "string",
+        "description": "Product type (always SIGMET)",
+        "enum": [
+          "SIGMET"
+        ]
+      },
+      "hazard": {
+        "type": "string",
+        "description": "Hazard type",
+        "examples": [
+          "CONVECTIVE"
+        ]
+      },
+      "qualifier": {
+        "type": "string",
+        "examples": [
+          "OCNL"
+        ]
+      },
+      "altitudeHi1": {
+        "type": "integer",
+        "examples": [
+          35000
+        ]
+      },
+      "altitudeHi2": {
+        "type": "integer",
+        "examples": [
+          35000
+        ]
+      },
+      "altitudeLo1": {
+        "type": "integer"
+      },
+      "altitudeLo2": {
+        "type": "integer"
+      },
+      "movementDir": {
+        "type": "integer",
+        "examples": [
+          90
+        ]
+      },
+      "movementSpd": {
+        "type": "integer",
+        "examples": [
+          10
+        ]
+      },
+      "postProcessFlag": {
+        "type": "integer",
+        "examples": [
+          10
+        ]
+      },
+      "severity": {
+        "type": "integer",
+        "examples": [
+          5
+        ]
+      },
+      "rawAirSigmet": {
+        "type": "string",
+        "description": "Raw product",
+        "examples": [
+          "WSUS33 KKCI 271155\\nSIGW \\nCONVECTIVE SIGMET 24W\\nVALID UNTIL 1355Z\\nAZ CA\\nFROM 10SSW EED-30NNE BZA-50S TRM-30NNW TRM-10SSW EED\\nAREA TS MOV FROM 09010KT. TOPS TO FL350.\\n\\nOUTLOOK VALID 271355-271755\\nFROM BCE-RSK-60SSW SJN-BZA-HEC-BCE\\nWST ISSUANCES POSS. REFER TO MOST RECENT ACUS01 KWNS FROM STORM\\nPREDICTION CENTER FOR SYNOPSIS AND METEOROLOGICAL DETAILS."
+        ]
+      },
+      "coords": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "parameters": {
+            "lat": {
+              "type": "number"
+            },
+            "lon": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  }
+}

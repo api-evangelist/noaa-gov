@@ -1,0 +1,44 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.4085,
+          33.9425,
+          38
+        ]
+      },
+      "properties": {
+        "id": "KLAX",
+        "icaoId": "KLAX",
+        "receiptTime": "2024-01-16 18:56:00",
+        "obsTime": 1705431360,
+        "reportTime": "2024-01-16 18:53:00",
+        "temp": 15.6,
+        "dewp": 7.8,
+        "wdir": 250,
+        "wspd": 10,
+        "wgst": null,
+        "visib": "10+",
+        "altim": 30.03,
+        "rawOb": "KLAX 161853Z 25010KT 10SM FEW020 BKN080 16/08 A3003 RMK AO2 SLP168",
+        "mostRecent": 1,
+        "clouds": [
+          {
+            "cover": "FEW",
+            "base": 2000
+          },
+          {
+            "cover": "BKN",
+            "base": 8000
+          }
+        ],
+        "wxString": null,
+        "presentWx": null
+      }
+    }
+  ]
+}
