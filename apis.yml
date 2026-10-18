@@ -414,6 +414,8 @@ apis:
   humanURL: https://www.swpc.noaa.gov/content/data-access
   baseURL: https://services.swpc.noaa.gov
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
